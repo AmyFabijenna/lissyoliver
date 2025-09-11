@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verben für die Schule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #E8B4CB, #F4D2E0);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #B85A8A;
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .verb-card {
+            background: #F8E8F2;
+            border: 3px solid #E8B4CB;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .verb-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(184, 90, 138, 0.3);
+        }
+        
+        .verb-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #B85A8A;
+            margin-bottom: 10px;
+        }
+        
+        .verb-examples {
+            font-size: 18px;
+            color: #8B4A6B;
+            line-height: 1.6;
+        }
+        
+        .conjugation {
+            background: #E8B4CB;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        
+        .activity-section {
+            background: #F0D8E8;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 2px dashed #E8B4CB;
+        }
+        
+        .activity-title {
+            font-size: 22px;
+            color: #B85A8A;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .exercise {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 5px solid #E8B4CB;
+        }
+        
+        .star {
+            color: #FFD700;
+            font-size: 20px;
+        }
+        
+        .fun-fact {
+            background: #E8B4CB;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 16px;
+        }
+        
+        button {
+            background: #E8B4CB;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background: #B85A8A;
+        }
+        
+        .score {
+            text-align: center;
+            font-size: 20px;
+            color: #B85A8A;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        
+        .verb-category {
+            background: #D4A5C0;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Verben für die Schule 📚</h1>
+        
+        <div class="fun-fact">
+            <span class="star">⭐</span> Diese Verben brauchst du jeden Tag in der Schule! <span class="star">⭐</span>
+        </div>
+
+        <div class="verb-card" onclick="playSound('schreiben')">
+            <div class="verb-category">Schulaktivität</div>
+            <div class="verb-title">✏️ schreiben</div>
+            <div class="verb-examples">
+                Ich schreibe meinen Namen.<br>
+                Du schreibst einen Brief.<br>
+                Wir schreiben eine Geschichte.
+            </div>
+            <div class="conjugation">
+                ich schreibe - du schreibst - er/sie schreibt
+            </div>
+        </div>
+
+        <div class="verb-card" onclick="playSound('lesen')">
+            <div class="verb-category">Schulaktivität</div>
+            <div class="verb-title">📖 lesen</div>
+            <div class="verb-examples">
+                Ich lese ein Buch.<br>
+                Du liest die Aufgabe.<br>
+                Sie liest laut vor.
+            </div>
+            <div class="conjugation">
+                ich lese - du liest - er/sie liest
+            </div>
+        </div>
+
+        <div class="verb-card" onclick="playSound('rechnen')">
+            <div class="verb-category">Mathematik</div>
+            <div class="verb-title">🔢 rechnen</div>
+            <div class="verb-examples">
+                Ich rechne die Aufgabe.<br>
+                Du rechnest schnell.<br>
+                Wir rechnen zusammen.
+            </div>
+            <div class="conjugation">
+                ich rechne - du rechnest - er/sie rechnet
+            </div>
+        </div>
+
+        <div class="verb-card" onclick="playSound('antworten')">
+            <div class="verb-category">Kommunikation</div>
+            <div class="verb-title">🙋‍♀️ antworten</div>
+            <div class="verb-examples">
+                Ich antworte auf die Frage.<br>
+                Du antwortest richtig.<br>
+                Alle antworten laut.
+            </div>
+            <div class="conjugation">
+                ich antworte - du antwortest - er/sie antwortet
+            </div>
+        </div>
+
+        <div class="verb-card" onclick="playSound('malen')">
+            <div class="verb-category">Kunst</div>
+            <div class="verb-title">🎨 malen</div>
+            <div class="verb-examples">
+                Ich male ein Bild.<br>
+                Du malst mit bunten Farben.<br>
+                Sie malen Blumen.
+            </div>
+            <div class="conjugation">
+                ich male - du malst - er/sie malt
+            </div>
+        </div>
+
+        <div class="verb-card" onclick="playSound('hören')">
+            <div class="verb-category">Aufmerksamkeit</div>
+            <div class="verb-title">👂 hören</div>
+            <div class="verb-examples">
+                Ich höre der Lehrerin zu.<br>
+                Du hörst die Geschichte.<br>
+                Wir hören Musik.
+            </div>
+            <div class="conjugation">
+                ich höre - du hörst - er/sie hört
+            </div>
+        </div>
+
+        <div class="verb-card" onclick="playSound('fragen')">
+            <div class="verb-category">Kommunikation</div>
+            <div class="verb-title">❓ fragen</div>
+            <div class="verb-examples">
+                Ich frage die Lehrerin.<br>
+                Du fragst nach Hilfe.<br>
+                Sie fragt viel.
+            </div>
+            <div class="conjugation">
+                ich frage - du fragst - er/sie fragt
+            </div>
+        </div>
+
+        <div class="activity-section">
+            <div class="activity-title">🎯 Schulübungen!</div>
+            
+            <div class="exercise">
+                <strong>Übung 1:</strong> Was machst du mit einem Stift?<br>
+                <div style="margin: 10px 0;">
+                    Ich _____ mit dem Stift.
+                    <button onclick="checkAnswer(1, 'schreibe')">schreibe</button>
+                    <button onclick="checkAnswer(1, 'lese')">lese</button>
+                    <button onclick="checkAnswer(1, 'höre')">höre</button>
+                </div>
+                <div id="result1"></div>
+            </div>
+
+            <div class="exercise">
+                <strong>Übung 2:</strong> Was machst du in Mathematik?<br>
+                <div style="margin: 10px 0;">
+                    In Mathematik _____ ich Aufgaben.
+                    <button onclick="checkAnswer(2, 'rechne')">rechne</button>
+                    <button onclick="checkAnswer(2, 'male')">male</button>
+                    <button onclick="checkAnswer(2, 'schreibe')">schreibe</button>
+                </div>
+                <div id="result2"></div>
+            </div>
+
+            <div class="exercise">
+                <strong>Übung 3:</strong> Was machst du, wenn du nicht verstehst?<br>
+                <div style="margin: 10px 0;">
+                    Ich _____ die Lehrerin.
+                    <button onclick="checkAnswer(3, 'frage')">frage</button>
+                    <button onclick="checkAnswer(3, 'antworte')">antworte</button>
+                    <button onclick="checkAnswer(3, 'male')">male</button>
+                </div>
+                <div id="result3"></div>
+            </div>
+
+            <div class="exercise">
+                <strong>Übung 4:</strong> Ergänze das richtige Verb:<br>
+                <div style="margin: 10px 0;">
+                    Du _____ ein schönes Bild. (Kunst)
+                    <button onclick="checkAnswer(4, 'malst')">malst</button>
+                    <button onclick="checkAnswer(4, 'liest')">liest</button>
+                    <button onclick="checkAnswer(4, 'rechnest')">rechnest</button>
+                </div>
+                <div id="result4"></div>
+            </div>
+        </div>
+
+        <div class="score" id="score">Punkte: 0 / 4 🌟</div>
+
+        <div class="fun-fact">
+            Perfekt! Diese Verben helfen dir jeden Tag in der Schule! 🎓✨
+        </div>
+    </div>
+
+    <script>
+        let score = 0;
+        let answered = {1: false, 2: false, 3: false, 4: false};
+        
+        function playSound(verb) {
+            event.target.closest('.verb-card').style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                event.target.closest('.verb-card').style.transform = 'scale(1)';
+            }, 200);
+        }
+        
+        function checkAnswer(questionNum, selectedAnswer) {
+            const correctAnswers = {1: 'schreibe', 2: 'rechne', 3: 'frage', 4: 'malst'};
+            const resultDiv = document.getElementById('result' + questionNum);
+            
+            if (answered[questionNum]) {
+                return;
+            }
+            
+            if (selectedAnswer === correctAnswers[questionNum]) {
+                resultDiv.innerHTML = '<span style="color: #4CAF50; font-weight: bold;">✅ Richtig! Super gemacht!</span>';
+                score++;
+                answered[questionNum] = true;
+            } else {
+                resultDiv.innerHTML = '<span style="color: #FF6B6B; font-weight: bold;">❌ Nicht ganz richtig. Versuch es nochmal!</span>';
+            }
+            
+            updateScore();
+        }
+        
+        function updateScore() {
+            const scoreDiv = document.getElementById('score');
+            let stars = '';
+            for(let i = 0; i < score; i++) {
+                stars += '⭐';
+            }
+            scoreDiv.innerHTML = `Punkte: ${score} / 4 ${stars}`;
+            
+            if (score === 4) {
+                setTimeout(() => {
+                    alert('🎉 Fantastisch! Du beherrschst alle wichtigen Schulverben! Du bist bereit für den Schulalltag! 🌟📚');
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>

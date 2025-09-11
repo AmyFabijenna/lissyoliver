@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oliver's Große Waldorf-Prüfung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #000;
+            background: linear-gradient(45deg, #e3f2fd, #bbdefb, #90caf9, #64b5f6);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #1976d2;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border: 4px solid #1976d2;
+            padding: 15px;
+            border-radius: 15px;
+            background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #0d47a1;
+            margin-bottom: 30px;
+            font-weight: bold;
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #4caf50;
+        }
+        
+        h2 {
+            color: #1976d2;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 5px solid #1976d2;
+            padding-left: 15px;
+        }
+        
+        .task-section {
+            background: linear-gradient(45deg, #e3f2fd, #f3e5f5, #fff3e0);
+            border: 3px solid #1976d2;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(25, 118, 210, 0.2);
+        }
+        
+        .question {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
+        .answer-box {
+            background-color: #f8f9fa;
+            border: 2px solid #6c757d;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            min-height: 30px;
+        }
+        
+        .fill-blank {
+            border-bottom: 3px solid #1976d2;
+            min-width: 120px;
+            display: inline-block;
+            margin: 0 8px;
+            padding: 2px;
+            background-color: rgba(25, 118, 210, 0.1);
+        }
+        
+        .matching-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .matching-table td {
+            border: 2px solid #1976d2;
+            padding: 15px;
+            text-align: left;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .matching-table .german {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+        }
+        
+        .matching-table .hungarian {
+            background-color: #fff3e0;
+            color: #bf360c;
+        }
+        
+        .checkbox-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checkbox-list li {
+            margin: 10px 0;
+            font-size: 16px;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid #dee2e6;
+        }
+        
+        .checkbox {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #1976d2;
+            display: inline-block;
+            margin-right: 15px;
+            vertical-align: middle;
+            border-radius: 5px;
+            background-color: white;
+        }
+        
+        .emoji-large {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .scenario-box {
+            background: linear-gradient(45deg, #e8f5e8, #c8e6c9);
+            border: 3px solid #4caf50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+        }
+        
+        .story-box {
+            background-color: #fff;
+            border: 3px solid #9c27b0;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 15px;
+            min-height: 150px;
+        }
+        
+        .rap-box {
+            background: linear-gradient(45deg, #ffeb3b, #ffc107);
+            border: 3px solid #ff9800;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 15px;
+            min-height: 120px;
+        }
+        
+        .completion-box {
+            background: linear-gradient(45deg, #c8e6c9, #a5d6a7);
+            border: 3px solid #4caf50;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .points-indicator {
+            background-color: #e3f2fd;
+            border: 2px solid #1976d2;
+            padding: 8px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #0d47a1;
+            display: inline-block;
+            margin: 5px 0;
+        }
+        
+        .hero-title {
+            font-size: 24px;
+            color: #1976d2;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .body-parts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .body-part-item {
+            text-align: center;
+            background-color: white;
+            border: 2px solid #1976d2;
+            border-radius: 10px;
+            padding: 15px;
+            min-width: 100px;
+        }
+        
+        ol, ul {
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        strong {
+            color: #0d47a1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏫 OLIVER'S GROßE WALDORF-PRÜFUNG 🏫</h1>
+        
+        <div class="subtitle">
+            🌟 Du bist bereit für die Waldorfschule! 🌟<br>
+            Lieber Oliver! Zeige jetzt, wie viel Deutsch du gelernt hast! Du bist ein echter Held und schaffst das! 💪
+        </div>
+
+        <div class="task-section">
+            <h2>🎯 TEIL 1: WICHTIGE WALDORF-SCHULPHRASEN</h2>
+            
+            <div class="question">
+                <strong>1.</strong> Du hast etwas nicht verstanden. Was sagst du?
+            </div>
+            <div style="margin: 15px 0;">
+                <label style="display: block; margin: 10px 0; font-size: 16px;">
+                    <input type="radio" name="q1" style="margin-right: 10px;"> ICH BIN FERTIG!
+                </label>
+                <label style="display: block; margin: 10px 0; font-size: 16px;">
+                    <input type="radio" name="q1" style="margin-right: 10px;"> ICH VERSTEHE NICHT!
+                </label>
+                <label style="display: block; margin: 10px 0; font-size: 16px;">
+                    <input type="radio" name="q1" style="margin-right: 10px;"> ICH MALE GERNE!
+                </label>
+                <label style="display: block; margin: 10px 0; font-size: 16px;">
+                    <input type="radio" name="q1" style="margin-right: 10px;"> ICH GEHE SCHLAFEN!
+                </label>
+            </div>
+
+            <div class="question">
+                <strong>2.</strong> Du möchtest zur Toilette. Was fragst du?
+            </div>
+            <div class="answer-box">
+                Schreibe hier deine Antwort...
+            </div>
+
+            <div class="question">
+                <strong>3.</strong> Verbinde die deutschen Sätze mit ihrer ungarischen Bedeutung:
+            </div>
+            <table class="matching-table">
+                <tr>
+                    <td class="german"><strong>DEUTSCH</strong></td>
+                    <td class="hungarian"><strong>UNGARISCH</strong></td>
+                </tr>
+                <tr>
+                    <td class="german">ICH HABE EINE FRAGE <div class="fill-blank" style="min-width: 50px;"></div></td>
+                    <td class="hungarian">A) kötök</td>
+                </tr>
+                <tr>
+                    <td class="german">ICH BRAUCHE HILFE <div class="fill-blank" style="min-width: 50px;"></div></td>
+                    <td class="hungarian">B) barkácsolok</td>
+                </tr>
+                <tr>
+                    <td class="german">ICH STRICKE <div class="fill-blank" style="min-width: 50px;"></div></td>
+                    <td class="hungarian">C) van egy kérdésem</td>
+                </tr>
+                <tr>
+                    <td class="german">ICH BASTLE <div class="fill-blank" style="min-width: 50px;"></div></td>
+                    <td class="hungarian">D) segítségre van szükségem</td>
+                </tr>
+            </table>
+
+            <div class="question">
+                <strong>4.</strong> Was machst du in der Handarbeitsstunde? Ergänze mit ICH-Sätzen:
+            </div>
+            <div style="font-size: 18px; line-height: 2;">
+                🧶 ICH <div class="fill-blank"></div> einen Schal.<br>
+                🎨 ICH <div class="fill-blank"></div> ein schönes Bild.<br>
+                ✏️ ICH <div class="fill-blank"></div> ein Einhorn.<br>
+                ✂️ ICH <div class="fill-blank"></div> eine Karte.
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>👤 TEIL 2: MEIN KÖRPER UND MEINE KLEIDUNG</h2>
+            
+            <div class="question">
+                <strong>5.</strong> Zeige auf deinen Körper und schreibe die deutschen Wörter:
+            </div>
+            <div class="body-parts">
+                <div class="body-part-item">
+                    <div style="font-size: 40px;">👤</div>
+                    DER <div class="fill-blank"></div>
+                </div>
+                <div class="body-part-item">
+                    <div style="font-size: 40px;">👁️</div>
+                    DIE <div class="fill-blank"></div>
+                </div>
+                <div class="body-part-item">
+                    <div style="font-size: 40px;">👂</div>
+                    DIE <div class="fill-blank"></div>
+                </div>
+                <div class="body-part-item">
+                    <div style="font-size: 40px;">✋</div>
+                    DIE <div class="fill-blank"></div>
+                </div>
+                <div class="body-part-item">
+                    <div style="font-size: 40px;">🦵</div>
+                    DIE <div class="fill-blank"></div>
+                </div>
+                <div class="body-part-item">
+                    <div style="font-size: 40px;">🦶</div>
+                    DIE <div class="fill-blank"></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <strong>6.</strong> Was trägst du heute? Beschreibe deine Kleidung:
+            </div>
+            <div style="font-size: 16px; line-height: 2;">
+                👕 ICH TRAGE EIN T-SHIRT.<br>
+                👖 ICH ZIEHE EINE HOSE AN.<br>
+                👟 ICH TRAGE SCHUHE.<br>
+                🧦 ICH ZIEHE SOCKEN AN.
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>🍽️ TEIL 3: ESSEN UND TRINKEN POWER</h2>
+            
+            <div class="question">
+                <strong>7.</strong> Klicke auf dein Lieblings-Essen und schreibe den ICH-Satz:
+            </div>
+            <div style="font-size: 32px; text-align: center; margin: 20px 0;">
+                🍕 🍎 🍌 🍞 🍫 🥛
+            </div>
+            <div class="answer-box">
+                ICH ESSE... / ICH TRINKE...
+            </div>
+
+            <div class="question">
+                <strong>8.</strong> Deine Mahlzeiten - was isst du wann?
+            </div>
+            <div style="font-size: 16px; line-height: 2.5;">
+                🌅 ZUM FRÜHSTÜCK esse ich <div class="fill-blank" style="min-width: 200px;"></div><br>
+                🌞 ZUM MITTAGESSEN esse ich <div class="fill-blank" style="min-width: 200px;"></div><br>
+                🌙 ZUM ABENDESSEN esse ich <div class="fill-blank" style="min-width: 200px;"></div>
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>⏰ TEIL 4: MEIN HELDEN-TAG</h2>
+            
+            <div class="question">
+                <strong>9.</strong> Bringe diese Aktivitäten in die richtige Reihenfolge (1-6):
+            </div>
+            <ul class="checkbox-list">
+                <li><div class="checkbox"></div> ICH GEHE SCHLAFEN</li>
+                <li><div class="checkbox"></div> ICH ESSE FRÜHSTÜCK</li>
+                <li><div class="checkbox"></div> ICH WACHE AUF</li>
+                <li><div class="checkbox"></div> ICH GEHE ZUR SCHULE</li>
+                <li><div class="checkbox"></div> ICH ESSE MITTAGESSEN</li>
+                <li><div class="checkbox"></div> ICH ZIEHE MICH AN</li>
+            </ul>
+
+            <div class="question">
+                <strong>10.</strong> Wann machst du was? Schreibe die Uhrzeiten:
+            </div>
+            <div style="font-size: 16px; line-height: 2.5;">
+                ICH WACHE AUF um <div class="fill-blank"></div> Uhr.<br>
+                ICH ESSE MITTAGESSEN um <div class="fill-blank"></div> Uhr.<br>
+                ICH GEHE SCHLAFEN um <div class="fill-blank"></div> Uhr.
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>🌈 TEIL 5: FARBEN UND BESCHREIBUNGEN</h2>
+            
+            <div class="question">
+                <strong>11.</strong> Male diese Gegenstände in den richtigen Farben und schreibe den deutschen Satz:
+            </div>
+            <div style="font-size: 16px; line-height: 2.5;">
+                🌞 Die Sonne ist <div class="fill-blank"></div>.<br>
+                🌿 Das Gras ist <div class="fill-blank"></div>.<br>
+                ❤️ Das Herz ist <div class="fill-blank"></div>.<br>
+                🌙 Der Mond ist <div class="fill-blank"></div>.
+            </div>
+
+            <div class="question">
+                <strong>12.</strong> Beschreibe dich selbst als Held:
+            </div>
+            <div style="font-size: 16px; line-height: 2.5;">
+                ICH BIN ein <div class="fill-blank"></div> Held! (stark/mutig/cool)<br>
+                ICH HABE <div class="fill-blank"></div> Haare. (Farbe)<br>
+                ICH TRAGE ein <div class="fill-blank"></div> Kostüm. (Farbe)
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>📝 TEIL 6: DIE ARTIKEL-MISSION</h2>
+            
+            <div class="question">
+                <strong>13.</strong> Ergänze die richtigen Artikel (DER, DIE, DAS):
+            </div>
+            <div style="font-size: 16px; line-height: 2.5;">
+                <div class="fill-blank"></div> DRACHE ist mächtig!<br>
+                <div class="fill-blank"></div> RAKETE fliegt schnell!<br>
+                <div class="fill-blank"></div> ROBOTER ist cool!<br>
+                <div class="fill-blank"></div> PRINZESSIN ist schön!<br>
+                <div class="fill-blank"></div> SPIEL macht Spaß!
+            </div>
+
+            <div class="question">
+                <strong>14.</strong> Unbestimmte Artikel (EIN, EINE) - was ist richtig?
+            </div>
+            <div style="font-size: 16px; line-height: 2.5;">
+                ICH SEHE <div class="fill-blank"></div> coole Rakete!<br>
+                ICH HABE <div class="fill-blank"></div> starken Tiger!<br>
+                ICH SPIELE <div class="fill-blank"></div> tolles Spiel!<br>
+                ICH FINDE <div class="fill-blank"></div> Schatz!
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>🎭 TEIL 7: WALDORF-SCHUL-ROLLENSPIEL</h2>
+            
+            <div class="scenario-box">
+                <div class="hero-title">🎬 Szenario: Dein erster Schultag</div>
+                <p><strong>Situation:</strong> Du kommst in deine neue Waldorf-Klasse. Die Lehrerin begrüßt dich freundlich.</p>
+            </div>
+
+            <div class="question">
+                <strong>15.</strong> Die Lehrerin fragt: "Wie heißt du?" - Was antwortest du?
+            </div>
+            <div class="answer-box">
+                Schreibe deine Antwort hier...
+            </div>
+
+            <div class="question">
+                <strong>16.</strong> Du verstehst eine Aufgabe nicht. Was sagst du zur Lehrerin?
+            </div>
+            <div class="answer-box">
+                Schreibe deine Antwort hier...
+            </div>
+
+            <div class="question">
+                <strong>17.</strong> In der Handarbeitsstunde sollt ihr stricken. Du brauchst Hilfe. Was sagst du?
+            </div>
+            <div class="answer-box">
+                Schreibe deine Antwort hier...
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>📖 TEIL 8: MEINE HELDEN-GESCHICHTE</h2>
+            
+            <div class="question">
+                <strong>18.</strong> Erzähle deine eigene Geschichte! Schreibe mindestens 5 Sätze über deinen perfekten Schultag. Verwende ICH-Sätze und alles, was du gelernt hast!
+            </div>
+            <div style="margin: 10px 0; font-style: italic; color: #666;">
+                Beispiel-Anfang: "ICH WACHE AUF und bin aufgeregt für die Schule..."
+            </div>
+            <div class="story-box">
+                ICH WACHE AUF und... (Schreibe hier deine Geschichte!)
+            </div>
+
+            <div style="background: linear-gradient(45deg, #ffeb3b, #ffc107); border: 3px solid #ff9800; padding: 20px; border-radius: 15px; margin: 20px 0;">
+                <div class="hero-title">🏆 BONUS-HELDEN-CHALLENGE! 🏆</div>
+                <div class="question">
+                    Erfinde einen Rap über deine deutsche Superkraft! Verwende mindestens 6 verschiedene ICH-Sätze!
+                </div>
+                <div style="margin: 10px 0; font-style: italic; color: #666;">
+                    Beispiel: "ICH BIN Oliver - HEY HEY! ICH SPRECHE Deutsch - OKAY!"
+                </div>
+                <div class="rap-box">
+                    ICH BIN... (Erschaffe deinen Deutsch-Rap!)
+                </div>
+            </div>
+        </div>
+
+        <div class="completion-box">
+            <div class="hero-title">🎉 DU HAST ES GESCHAFFT, HELD OLIVER! 🎉</div>
+            <p style="font-size: 18px; font-weight: bold; color: #0d47a1;">
+                Du bist jetzt bereit für deine Waldorf-Schule!<br>
+                Du kennst alle wichtigen Sätze, kannst über deinen Körper, dein Essen und deinen Tag sprechen!
+            </p>
+            <div style="background: linear-gradient(45deg, #e3f2fd, #bbdefb); border: 3px solid #1976d2; padding: 20px; border-radius: 15px; margin: 20px 0;">
+                <div style="font-size: 24px; font-weight: bold; color: #1976d2;">
+                    🌟 DU BIST EIN ECHTER DEUTSCH-SUPERHELD! 🌟
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

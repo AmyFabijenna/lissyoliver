@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olivers Deutsch-Lernkarten</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #9ACD32, #B8E6B8);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #CC6600;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(154, 205, 50, 0.9);
+            border: 3px solid #CC6600;
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 150px;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            background: rgba(184, 230, 184, 0.9);
+        }
+        
+        .card.flipped {
+            background: rgba(184, 230, 184, 0.95);
+        }
+        
+        .question, .answer {
+            color: #CC6600;
+            font-size: 1.3em;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+        
+        .hungarian {
+            color: #B8860B;
+            font-size: 1.1em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .answer {
+            display: none;
+        }
+        
+        .card.flipped .question {
+            display: none;
+        }
+        
+        .card.flipped .answer {
+            display: block;
+        }
+        
+        .category {
+            background: #CC6600;
+            color: #9ACD32;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            font-weight: bold;
+        }
+        
+        .instructions {
+            background: rgba(204, 102, 0, 0.2);
+            border: 2px solid #CC6600;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .instructions p {
+            color: #CC6600;
+            font-size: 1.2em;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        
+        .reset-btn {
+            background: #CC6600;
+            color: #9ACD32;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background: #B8860B;
+            transform: scale(1.05);
+        }
+        
+        .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🦋 Olivers Deutsch-Lernkarten für den ersten Schultag 🦋</h1>
+        
+        <div class="instructions">
+            <p>🎯 Klicke auf die Karten, um die Antworten zu sehen!</p>
+            <p>📚 Übe diese Sätze für deinen ersten Tag in der Waldorfschule</p>
+            <p>🇩🇪 Deutsch ↔ 🇭🇺 Magyar</p>
+        </div>
+
+        <div class="card-container">
+            <!-- Sich vorstellen -->
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Vorstellen</div>
+                <div class="question">
+                    <span class="emoji">👋</span>Wie stellst du dich vor?
+                    <div class="hungarian">Hogy mutatkozol be?</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">😊</span>Hallo! Ich heiße Oliver. Ich komme aus Ungarn.
+                    <div class="hungarian">Szia! Oliver vagyok. Magyarországról jövök.</div>
+                </div>
+            </div>
+
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Vorstellen</div>
+                <div class="question">
+                    <span class="emoji">❓</span>Jemand fragt: "Wie heißt du?"
+                    <div class="hungarian">Valaki megkérdezi: "Hogy hívnak?"</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">🙋‍♂️</span>Ich heiße Oliver. Und wie heißt du?
+                    <div class="hungarian">Oliver vagyok. És te hogy hívsz?</div>
+                </div>
+            </div>
+
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Vorstellen</div>
+                <div class="question">
+                    <span class="emoji">🏠</span>Jemand fragt: "Woher kommst du?"
+                    <div class="hungarian">"Honnan jössz?"</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">🇭🇺</span>Ich komme aus Ungarn, aus Budapest. Jetzt wohne ich in Villach.
+                    <div class="hungarian">Magyarországról, Budapestről jövök. Most Villachban lakok.</div>
+                </div>
+            </div>
+
+            <!-- Familie -->
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Familie</div>
+                <div class="question">
+                    <span class="emoji">👨‍👩‍👦</span>"Erzähl von deiner Familie!"
+                    <div class="hungarian">"Mesélj a családodról!"</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">❤️</span>Ich bin mit meiner Familie nach Villach gekommen. Wir haben einen Hund und zwei Katzen.
+                    <div class="hungarian">A családommal jöttem Villachba. Van egy kutyánk és két macskánk.</div>
+                </div>
+            </div>
+
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Familie</div>
+                <div class="question">
+                    <span class="emoji">🐕</span>"Hast du Haustiere?"
+                    <div class="hungarian">"Vannak háziállataid?"</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">🐕🐱</span>Ja! Ich habe einen Hund und zwei Katzen. Sie sind sehr lustig!
+                    <div class="hungarian">Igen! Van egy kutyám és két macskám. Nagyon vicceek!</div>
+                </div>
+            </div>
+
+            <!-- Hobbys -->
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Hobbys</div>
+                <div class="question">
+                    <span class="emoji">🎯</span>"Was machst du gerne?"
+                    <div class="hungarian">"Mit csinálsz szívesen?"</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">🥋</span>Ich liebe Wandern, Judo und Schwimmen. Ich beobachte auch gerne Käfer!
+                    <div class="hungarian">Szeretek túrázni, judózni és úszni. Szívesen figyelem a bogarakat is!</div>
+                </div>
+            </div>
+
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Hobbys</div>
+                <div class="question">
+                    <span class="emoji">🪲</span>"Käfer? Das ist interessant!"
+                    <div class="hungarian">"Bogarak? Ez érdekes!"</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">🔍</span>Ja! Ich bringe gerne Käfer nach Hause und lasse sie dann frei.
+                    <div class="hungarian">Igen! Szívesen viszek bogarakat haza, aztán szabadon engedem őket.</div>
+                </div>
+            </div>
+
+            <!-- Schule - Erste Begegnung -->
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Schule</div>
+                <div class="question">
+                    <span class="emoji">🏫</span>"Bist du neu hier?"
+                    <div class="hungarian">"Új vagy itt?"</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">✨</span>Ja, heute ist mein erster Tag. Ich lerne noch Deutsch.
+                    <div class="hungarian">Igen, ma az első napom. Még tanulom a németet.</div>
+                </div>
+            </div>
+
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Schule</div>
+                <div class="question">
+                    <span class="emoji">❓</span>"Welche Klasse bist du?"
+                    <div class="hungarian">"Hányadikos vagy?"</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">3️⃣</span>Ich bin in der dritten Klasse. Ich bin neun Jahre alt.
+                    <div class="hungarian">Harmadikos vagyok. Kilenc éves vagyok.</div>
+                </div>
+            </div>
+
+            <!-- Höflichkeit -->
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Höflichkeit</div>
+                <div class="question">
+                    <span class="emoji">🙏</span>Jemand hilft dir. Was sagst du?
+                    <div class="hungarian">Valaki segít neked. Mit mondasz?</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">😊</span>Vielen Dank! Das ist sehr nett von dir.
+                    <div class="hungarian">Köszönöm szépen! Nagyon kedves tőled.</div>
+                </div>
+            </div>
+
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Höflichkeit</div>
+                <div class="question">
+                    <span class="emoji">🙋‍♂️</span>Du brauchst Hilfe. Wie fragst du?
+                    <div class="hungarian">Segítségre van szükséged. Hogyan kérdezed?</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">🤝</span>Entschuldigung, kannst du mir bitte helfen?
+                    <div class="hungarian">Elnézést, tudsz nekem segíteni, kérlek?</div>
+                </div>
+            </div>
+
+            <!-- Klassenzimmer -->
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Klassenzimmer</div>
+                <div class="question">
+                    <span class="emoji">📚</span>Du verstehst etwas nicht. Was sagst du?
+                    <div class="hungarian">Nem értesz valamit. Mit mondasz?</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">❓</span>Entschuldigung, ich verstehe das nicht. Können Sie das wiederholen?
+                    <div class="hungarian">Elnézést, nem értem. Meg tudná ismételni?</div>
+                </div>
+            </div>
+
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Klassenzimmer</div>
+                <div class="question">
+                    <span class="emoji">✋</span>Du möchtest etwas sagen. Wie machst du das?
+                    <div class="hungarian">Valamit szeretnél mondani. Hogyan csinálod?</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">🙋‍♂️</span>Ich melde mich und sage: "Ich hätte gerne etwas gesagt."
+                    <div class="hungarian">Jelentkezem és azt mondom: "Szeretnék valamit mondani."</div>
+                </div>
+            </div>
+
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Klassenzimmer</div>
+                <div class="question">
+                    <span class="emoji">🚽</span>Du musst zur Toilette. Was sagst du?
+                    <div class="hungarian">El kell menned a mosdóba. Mit mondasz?</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">🚪</span>Entschuldigung, darf ich bitte zur Toilette gehen?
+                    <div class="hungarian">Elnézést, elmehetek a mosdóba, kérem?</div>
+                </div>
+            </div>
+
+            <!-- Freundschaft -->
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Freundschaft</div>
+                <div class="question">
+                    <span class="emoji">🤝</span>"Möchtest du mit uns spielen?"
+                    <div class="hungarian">"Akarsz velünk játszani?"</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">🎉</span>Ja, gerne! Was spielen wir denn?
+                    <div class="hungarian">Igen, szívesen! Mit játszunk?</div>
+                </div>
+            </div>
+
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Freundschaft</div>
+                <div class="question">
+                    <span class="emoji">🥪</span>Pause - jemand fragt: "Was isst du?"
+                    <div class="hungarian">Szünet - valaki kérdezi: "Mit eszel?"</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">🍎</span>Ich esse mein Pausenbrot. Magst du auch etwas?
+                    <div class="hungarian">A tízórait eszem. Akarsz te is?</div>
+                </div>
+            </div>
+
+            <!-- Verständigung -->
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Verständigung</div>
+                <div class="question">
+                    <span class="emoji">🗣️</span>Du sprichst zu schnell deutsch. Was sagst du?
+                    <div class="hungarian">Túl gyorsan beszélsz németül. Mit mondasz?</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">⏰</span>Entschuldigung, können Sie bitte langsamer sprechen? Ich lerne noch Deutsch.
+                    <div class="hungarian">Elnézést, beszélhetne lassabban? Még tanulom a németet.</div>
+                </div>
+            </div>
+
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Verständigung</div>
+                <div class="question">
+                    <span class="emoji">🤔</span>Du kennst ein Wort nicht. Wie fragst du?
+                    <div class="hungarian">Nem ismersz egy szót. Hogyan kérdezel?</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">❓</span>Was bedeutet das Wort "..."? Können Sie es erklären?
+                    <div class="hungarian">Mit jelent ez a szó: "..."? Meg tudná magyarázni?</div>
+                </div>
+            </div>
+
+            <!-- Komplimente -->
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Komplimente</div>
+                <div class="question">
+                    <span class="emoji">🌟</span>Jemand sagt: "Dein Deutsch ist schon gut!"
+                    <div class="hungarian">Valaki azt mondja: "A németed már jó!"</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">😊</span>Vielen Dank! Ich übe jeden Tag. Es ist noch schwer für mich.
+                    <div class="hungarian">Köszönöm szépen! Minden nap gyakorlok. Még nehéz nekem.</div>
+                </div>
+            </div>
+
+            <!-- Verabschiedung -->
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Verabschiedung</div>
+                <div class="question">
+                    <span class="emoji">👋</span>Schule ist zu Ende. Wie verabschiedest du dich?
+                    <div class="hungarian">Vége az iskolának. Hogyan köszönsz el?</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">🌅</span>Tschüss! Bis morgen! Schönen Tag noch!
+                    <div class="hungarian">Szia! Holnap találkozunk! Szép napot!</div>
+                </div>
+            </div>
+
+            <div class="card" onclick="flipCard(this)">
+                <div class="category">Verabschiedung</div>
+                <div class="question">
+                    <span class="emoji">🏃‍♂️</span>Du musst schnell nach Hause. Was sagst du?
+                    <div class="hungarian">Gyorsan haza kell menned. Mit mondasz?</div>
+                </div>
+                <div class="answer">
+                    <span class="emoji">🏠</span>Entschuldigung, ich muss jetzt nach Hause. Bis bald!
+                    <div class="hungarian">Elnézést, most haza kell mennem. Hamarosan találkozunk!</div>
+                </div>
+            </div>
+        </div>
+
+        <button class="reset-btn" onclick="resetAllCards()">🔄 Alle Karten zurückdrehen</button>
+    </div>
+
+    <script>
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+
+        function resetAllCards() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.classList.remove('flipped');
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'r' || e.key === 'R') {
+                resetAllCards();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Das Verb "haben" - Für Lizi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #E6B3BA 0%, #D4A5AB 50%, #C8969D 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #2c2c2c;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #D4A5AB, #C8969D);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,215,0,0.2) 50%, transparent 60%);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tabs {
+            display: flex;
+            background: #f5f0f0;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 20px;
+            background: #f5f0f0;
+            border: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #8B4B5C;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background: white;
+            color: #2c2c2c;
+            border-bottom: 3px solid #D4A5AB;
+            box-shadow: inset 0 2px 4px rgba(212,165,171,0.2);
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        .explanation-box {
+            background: linear-gradient(135deg, #f8f5f5, #f0eded);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 2px solid #E6B3BA;
+            position: relative;
+        }
+        
+        .explanation-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #E6B3BA, #FFD700, #E6B3BA);
+            border-radius: 15px;
+            z-index: -1;
+        }
+        
+        .explanation-box h2 {
+            color: #8B4B5C;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .conjugation-table {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #E6B3BA;
+        }
+        
+        .conjugation-row {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: linear-gradient(135deg, #faf8f8, #f5f2f2);
+            border-radius: 10px;
+            border-left: 4px solid #D4A5AB;
+        }
+        
+        .pronoun {
+            font-weight: bold;
+            color: #8B4B5C;
+            width: 80px;
+            font-size: 1.1em;
+        }
+        
+        .verb {
+            font-weight: bold;
+            color: #2c2c2c;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+        
+        .object {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .example-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            border: 2px solid #E6B3BA;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .example-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #E6B3BA, #FFD700, #E6B3BA);
+        }
+        
+        .example-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+        
+        .example-sentence {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c2c2c;
+            margin-bottom: 8px;
+        }
+        
+        .example-translation {
+            color: #8B4B5C;
+            font-style: italic;
+            font-size: 1em;
+        }
+        
+        .animal-section {
+            margin-top: 40px;
+        }
+        
+        .animal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .animal-card {
+            background: linear-gradient(135deg, #fff8f9, #faf5f6);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #E6B3BA;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .animal-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 50%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1); opacity: 1; }
+        }
+        
+        .animal-emoji {
+            font-size: 3em;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .animal-sentence {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c2c2c;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .animal-translation {
+            color: #8B4B5C;
+            font-style: italic;
+            font-size: 1em;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .highlight-verb {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            padding: 2px 8px;
+            border-radius: 6px;
+            color: #2c2c2c;
+            font-weight: bold;
+        }
+        
+        .practice-button {
+            background: linear-gradient(135deg, #D4A5AB, #C8969D);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px 10px;
+            box-shadow: 0 4px 12px rgba(212,165,171,0.3);
+        }
+        
+        .practice-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(212,165,171,0.4);
+        }
+        
+        .quiz-container {
+            background: linear-gradient(135deg, #fff8f9, #faf5f6);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 2px solid #E6B3BA;
+        }
+        
+        .question {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: #2c2c2c;
+            font-weight: bold;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .option {
+            padding: 15px 20px;
+            background: white;
+            border: 2px solid #E6B3BA;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        
+        .option:hover {
+            background: #f8f5f5;
+            border-color: #D4A5AB;
+        }
+        
+        .option.correct {
+            background: #d4f7d4;
+            border-color: #28a745;
+        }
+        
+        .option.wrong {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+        
+        .score {
+            text-align: center;
+            font-size: 1.3em;
+            color: #8B4B5C;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎁 Das Verb "haben" 🎁</h1>
+            <p>Für Lizi - Lerne spielerisch Deutsch!</p>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showSection('explanation', this)">📖 Magyarázat</button>
+            <button class="tab" onclick="showSection('belongings', this)">🧸 Játékok</button>
+            <button class="tab" onclick="showSection('body', this)">👁️ Testrészek</button>
+            <button class="tab" onclick="showSection('family', this)">👨‍👩‍👧‍👦 Család</button>
+            <button class="tab" onclick="showSection('quiz', this)">🎯 Gyakorlás</button>
+        </div>
+        
+        <div class="content">
+            <div id="explanation" class="section active">
+                <div class="explanation-box">
+                    <h2>Mi a "haben" ige? 🤔</h2>
+                    <p>A "haben" ige azt jelenti, hogy "van nekem" vagy "birtokolok". Ez nagyon fontos ige a németben!</p>
+                    <p>Például: <strong>Ich habe eine Katze</strong> = <strong>Van egy macskám</strong></p>
+                </div>
+                
+                <div class="conjugation-table">
+                    <h2 style="text-align: center; color: #8B4B5C; margin-bottom: 20px;">A "haben" ige ragozása</h2>
+                    
+                    <div class="conjugation-row">
+                        <span class="pronoun">ich</span>
+                        <span class="verb highlight-verb">habe</span>
+                        <span class="object">Hunger</span>
+                        <span style="margin-left: 20px; color: #8B4B5C;">→ éhes vagyok</span>
+                    </div>
+                    
+                    <div class="conjugation-row">
+                        <span class="pronoun">du</span>
+                        <span class="verb highlight-verb">hast</span>
+                        <span class="object">Durst</span>
+                        <span style="margin-left: 20px; color: #8B4B5C;">→ szomjas vagy</span>
+                    </div>
+                    
+                    <div class="conjugation-row">
+                        <span class="pronoun">er</span>
+                        <span class="verb highlight-verb">hat</span>
+                        <span class="object">einen Ball</span>
+                        <span style="margin-left: 20px; color: #8B4B5C;">→ van egy labdája</span>
+                    </div>
+                    
+                    <div class="conjugation-row">
+                        <span class="pronoun">sie</span>
+                        <span class="verb highlight-verb">hat</span>
+                        <span class="object">eine Puppe</span>
+                        <span style="margin-left: 20px; color: #8B4B5C;">→ van egy babája</span>
+                    </div>
+                    
+                    <div class="conjugation-row">
+                        <span class="pronoun">es</span>
+                        <span class="verb highlight-verb">hat</span>
+                        <span class="object">vier Beine</span>
+                        <span style="margin-left: 20px; color: #8B4B5C;">→ négy lába van</span>
+                    </div>
+                    
+                    <div class="conjugation-row">
+                        <span class="pronoun">wir</span>
+                        <span class="verb highlight-verb">haben</span>
+                        <span class="object">ein Haus</span>
+                        <span style="margin-left: 20px; color: #8B4B5C;">→ van egy házunk</span>
+                    </div>
+                    
+                    <div class="conjugation-row">
+                        <span class="pronoun">ihr</span>
+                        <span class="verb highlight-verb">habt</span>
+                        <span class="object">Geburtstag</span>
+                        <span style="margin-left: 20px; color: #8B4B5C;">→ szülinapotok van</span>
+                    </div>
+                    
+                    <div class="conjugation-row">
+                        <span class="pronoun">sie</span>
+                        <span class="verb highlight-verb">haben</span>
+                        <span class="object">Zeit</span>
+                        <span style="margin-left: 20px; color: #8B4B5C;">→ van idejük</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="belongings" class="section">
+                <div class="explanation-box">
+                    <h2>Játékok és tárgyak 🧸🎮</h2>
+                    <p>Itt tanulhatod, hogy mit birtokolsz vagy mire van szükséged.</p>
+                </div>
+                
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <div class="example-sentence">Ich <span class="highlight-verb">habe</span> eine Puppe.</div>
+                        <div class="example-translation">Van egy babám.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Du <span class="highlight-verb">hast</span> einen Ball.</div>
+                        <div class="example-translation">Van egy labdád.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Oliver <span class="highlight-verb">hat</span> ein Auto.</div>
+                        <div class="example-translation">Olivernek van egy autója.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Wir <span class="highlight-verb">haben</span> Bücher.</div>
+                        <div class="example-translation">Vannak könyveink.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Ich <span class="highlight-verb">habe</span> Hunger.</div>
+                        <div class="example-translation">Éhes vagyok.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Du <span class="highlight-verb">hast</span> Durst.</div>
+                        <div class="example-translation">Szomjas vagy.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Sie <span class="highlight-verb">hat</span> ein Fahrrad.</div>
+                        <div class="example-translation">Van egy kerékpárja.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Ihr <span class="highlight-verb">habt</span> Spielzeug.</div>
+                        <div class="example-translation">Vannak játékaitok.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Er <span class="highlight-verb">hat</span> ein Handy.</div>
+                        <div class="example-translation">Van egy telefonja.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Sie <span class="highlight-verb">haben</span> Kuchen.</div>
+                        <div class="example-translation">Van süteményük.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="body" class="section">
+                <div class="explanation-box">
+                    <h2>Testrészek 👁️👂</h2>
+                    <p>Tanuld meg, hogyan mondd el, milyen testrészeid vannak!</p>
+                </div>
+                
+                <div class="animal-grid">
+                    <div class="animal-card">
+                        <div class="animal-emoji">👁️</div>
+                        <div class="animal-sentence">Ich <span class="highlight-verb">habe</span> zwei Augen.</div>
+                        <div class="animal-translation">Van két szemem.</div>
+                    </div>
+                    
+                    <div class="animal-card">
+                        <div class="animal-emoji">👂</div>
+                        <div class="animal-sentence">Du <span class="highlight-verb">hast</span> zwei Ohren.</div>
+                        <div class="animal-translation">Van két füled.</div>
+                    </div>
+                    
+                    <div class="animal-card">
+                        <div class="animal-emoji">👃</div>
+                        <div class="animal-sentence">Er <span class="highlight-verb">hat</span> eine Nase.</div>
+                        <div class="animal-translation">Van egy orra.</div>
+                    </div>
+                    
+                    <div class="animal-card">
+                        <div class="animal-emoji">👄</div>
+                        <div class="animal-sentence">Sie <span class="highlight-verb">hat</span> einen Mund.</div>
+                        <div class="animal-translation">Van egy szája.</div>
+                    </div>
+                    
+                    <div class="animal-card">
+                        <div class="animal-emoji">🦷</div>
+                        <div class="animal-sentence">Wir <span class="highlight-verb">haben</span> Zähne.</div>
+                        <div class="animal-translation">Vannak fogaink.</div>
+                    </div>
+                    
+                    <div class="animal-card">
+                        <div class="animal-emoji">✋</div>
+                        <div class="animal-sentence">Ihr <span class="highlight-verb">habt</span> Hände.</div>
+                        <div class="animal-translation">Vannak kezeitek.</div>
+                    </div>
+                    
+                    <div class="animal-card">
+                        <div class="animal-emoji">🦵</div>
+                        <div class="animal-sentence">Sie <span class="highlight-verb">haben</span> Beine.</div>
+                        <div class="animal-translation">Vannak lábaik.</div>
+                    </div>
+                    
+                    <div class="animal-card">
+                        <div class="animal-emoji">🦶</div>
+                        <div class="animal-sentence">Das Baby <span class="highlight-verb">hat</span> kleine Füße.</div>
+                        <div class="animal-translation">A babának kicsi lábai vannak.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="family" class="section">
+                <div class="explanation-box">
+                    <h2>Családtagok 👨‍👩‍👧‍👦</h2>
+                    <p>Mondd el, kik a családtagjaid!</p>
+                </div>
+                
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <div class="example-sentence">Ich <span class="highlight-verb">habe</span> eine Mama.</div>
+                        <div class="example-translation">Van egy mamám.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Ich <span class="highlight-verb">habe</span> einen Papa.</div>
+                        <div class="example-translation">Van egy papám.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Du <span class="highlight-verb">hast</span> einen Bruder.</div>
+                        <div class="example-translation">Van egy testvéred.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Sie <span class="highlight-verb">hat</span> eine Schwester.</div>
+                        <div class="example-translation">Van egy nővére.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Oliver <span class="highlight-verb">hat</span> eine Oma.</div>
+                        <div class="example-translation">Olivernek van nagyimája.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Wir <span class="highlight-verb">haben</span> einen Opa.</div>
+                        <div class="example-translation">Van nagyapánk.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Ihr <span class="highlight-verb">habt</span> eine Katze.</div>
+                        <div class="example-translation">Van egy macskátok.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Sie <span class="highlight-verb">haben</span> einen Hund.</div>
+                        <div class="example-translation">Van egy kutyájuk.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Er <span class="highlight-verb">hat</span> einen Onkel.</div>
+                        <div class="example-translation">Van egy nagybátyja.</div>
+                    </div>
+                    
+                    <div class="example-card">
+                        <div class="example-sentence">Sie <span class="highlight-verb">hat</span> eine Tante.</div>
+                        <div class="example-translation">Van egy nénije.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="quiz" class="section">
+                <div class="quiz-container">
+                    <div class="score">Pontok: <span id="score">0</span> / <span id="total">0</span></div>
+                    <div id="quiz-content">
+                        <!-- Quiz content will be generated here -->
+                    </div>
+                    <button class="practice-button" onclick="startQuiz()">🎯 Új gyakorlás</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let score = 0;
+        let total = 0;
+        let currentQuestion = 0;
+        
+        const quizData = [
+            {
+                question: "Ich ___ eine Puppe.",
+                options: ["habe", "hast", "hat", "haben"],
+                correct: 0
+            },
+            {
+                question: "Du ___ einen Ball.",
+                options: ["habe", "hast", "hat", "haben"],
+                correct: 1
+            },
+            {
+                question: "Oliver ___ Hunger.",
+                options: ["habe", "hast", "hat", "haben"],
+                correct: 2
+            },
+            {
+                question: "Wir ___ ein Haus.",
+                options: ["habe", "hast", "hat", "haben"],
+                correct: 3
+            },
+            {
+                question: "Sie ___ zwei Augen.",
+                options: ["habe", "hast", "hat", "haben"],
+                correct: 2
+            },
+            {
+                question: "Ihr ___ eine Katze.",
+                options: ["habe", "hast", "habt", "haben"],
+                correct: 2
+            },
+            {
+                question: "Ich ___ einen Bruder.",
+                options: ["habe", "hast", "hat", "haben"],
+                correct: 0
+            },
+            {
+                question: "Du ___ Durst.",
+                options: ["habe", "hast", "hat", "haben"],
+                correct: 1
+            },
+            {
+                question: "Er ___ ein Auto.",
+                options: ["habe", "hast", "hat", "haben"],
+                correct: 2
+            },
+            {
+                question: "Sie ___ Spielzeug.",
+                options: ["habe", "hast", "hat", "haben"],
+                correct: 3
+            }
+        ];
+        
+        function showSection(sectionName, clickedTab) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.add('active');
+            
+            // Add active class to clicked tab
+            if (clickedTab) {
+                clickedTab.classList.add('active');
+            }
+        }
+        
+        function startQuiz() {
+            score = 0;
+            total = 0;
+            currentQuestion = 0;
+            // Shuffle questions
+            quizData.sort(() => Math.random() - 0.5);
+            updateScore();
+            showNextQuestion();
+        }
+        
+        function showNextQuestion() {
+            if (currentQuestion >= Math.min(5, quizData.length)) {
+                showQuizResults();
+                return;
+            }
+            
+            const question = quizData[currentQuestion];
+            const quizContent = document.getElementById('quiz-content');
+            
+            quizContent.innerHTML = `
+                <div class="question">${currentQuestion + 1}. ${question.question}</div>
+                <div class="options">
+                    ${question.options.map((option, index) => 
+                        `<div class="option" onclick="selectAnswer(${index})">${option}</div>`
+                    ).join('')}
+                </div>
+            `;
+        }
+        
+        function selectAnswer(selectedIndex) {
+            const question = quizData[currentQuestion];
+            const options = document.querySelectorAll('.option');
+            
+            total++;
+            
+            options.forEach((option, index) => {
+                if (index === question.correct) {
+                    option.classList.add('correct');
+                } else if (index === selectedIndex) {
+                    option.classList.add('wrong');
+                }
+                option.onclick = null; // Disable further clicks
+            });
+            
+            if (selectedIndex === question.correct) {
+                score++;
+            }
+            
+            updateScore();
+            
+            setTimeout(() => {
+                currentQuestion++;
+                showNextQuestion();
+            }, 2000);
+        }
+        
+        function updateScore() {
+            document.getElementById('score').textContent = score;
+            document.getElementById('total').textContent = total;
+        }
+        
+        function showQuizResults() {
+            const quizContent = document.getElementById('quiz-content');
+            const percentage = Math.round((score / total) * 100);
+            let emoji = '👍';
+            let message = 'Jól csináltad!';
+            
+            if (percentage >= 80) {
+                emoji = '🏆';
+                message = 'Fantasztikus!';
+            } else if (percentage >= 60) {
+                emoji = '⭐';
+                message = 'Nagyon jó!';
+            } else if (percentage < 50) {
+                emoji = '🌸';
+                message = 

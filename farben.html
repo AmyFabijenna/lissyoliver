@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deutsche Lektion 6</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #c0392b;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        h3 {
+            color: #8e44ad;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .section {
+            background-color: #f8f9fa;
+            border: 2px solid #dee2e6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .color-section {
+            background: linear-gradient(45deg, #ffebee, #e8f5e8, #e3f2fd, #fff3e0);
+            border: 3px solid #666;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .vocabulary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .vocabulary-table th,
+        .vocabulary-table td {
+            border: 2px solid #333;
+            padding: 12px;
+            text-align: left;
+            font-size: 16px;
+        }
+        
+        .vocabulary-table th {
+            background-color: #34495e;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .vocabulary-table tr:nth-child(even) {
+            background-color: #ecf0f1;
+        }
+        
+        .color-box {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #000;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        .red { background-color: #f44336; }
+        .blue { background-color: #2196f3; }
+        .green { background-color: #4caf50; }
+        .yellow { background-color: #ffeb3b; }
+        .orange { background-color: #ff9800; }
+        .purple { background-color: #9c27b0; }
+        .pink { background-color: #e91e63; }
+        .brown { background-color: #795548; }
+        .black { background-color: #000000; }
+        .white { background-color: #ffffff; }
+        .gray { background-color: #9e9e9e; }
+        
+        .example-box {
+            background-color: #e8f5e8;
+            border: 2px solid #27ae60;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .exercise-box {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .adjective-box {
+            background-color: #f0e6ff;
+            border: 2px solid #9c27b0;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .homework-box {
+            background-color: #f8d7da;
+            border: 2px solid #dc3545;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .character-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .character-card {
+            border: 2px solid #666;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fafafa;
+            text-align: center;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+        
+        .large-text {
+            font-size: 18px;
+        }
+        
+        .huge-text {
+            font-size: 22px;
+        }
+        
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        
+        .fill-blank {
+            border-bottom: 2px solid #333;
+            min-width: 100px;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        
+        .sentence-builder {
+            border: 3px dashed #666;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .grammar-box {
+            background-color: #e3f2fd;
+            border: 2px solid #1976d2;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>DEUTSCHE LEKTION 6: FARBEN & BESCHREIBUNGEN!</h1>
+    <p class="large-text bold" style="text-align: center;">Für Oliver den Helden 🦸‍♂️ und Lizi die Prinzessin 👑</p>
+
+    <div class="section">
+        <h2>🌈 AKTIVIERUNG: WIE SIEHT DEINE WELT AUS?</h2>
+        <p class="large-text">Heute lernen wir, wie wir Dinge beschreiben! Welche Farbe hat dein Lieblings-T-Shirt?</p>
+        <div class="example-box">
+            <p class="bold">Fragen zum Start:</p>
+            <ul>
+                <li>"Milyen színű a kedvenc póló?" → "Welche Farbe hat dein Lieblings-T-Shirt?"</li>
+                <li>"Nagy vagy kicsi a szobád?" → "Ist dein Zimmer groß oder klein?"</li>
+                <li>"Milyen az állatod?" → "Wie ist dein Haustier?"</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="color-section">
+        <h2>🎨 FARBEN-POWER: DIE WELT IST BUNT!</h2>
+        
+        <table class="vocabulary-table">
+            <tr>
+                <th>FARBE</th>
+                <th>DEUTSCH</th>
+                <th>UNGARISCH</th>
+                <th>BEISPIEL</th>
+            </tr>
+            <tr>
+                <td><div class="color-box red"></div></td>
+                <td><strong>ROT</strong></td>
+                <td>piros</td>
+                <td>Das Auto ist rot.</td>
+            </tr>
+            <tr>
+                <td><div class="color-box blue"></div></td>
+                <td><strong>BLAU</strong></td>
+                <td>kék</td>
+                <td>Der Himmel ist blau.</td>
+            </tr>
+            <tr>
+                <td><div class="color-box green"></div></td>
+                <td><strong>GRÜN</strong></td>
+                <td>zöld</td>
+                <td>Das Gras ist grün.</td>
+            </tr>
+            <tr>
+                <td><div class="color-box yellow"></div></td>
+                <td><strong>GELB</strong></td>
+                <td>sárga</td>
+                <td>Die Sonne ist gelb.</td>
+            </tr>
+            <tr>
+                <td><div class="color-box orange"></div></td>
+                <td><strong>ORANGE</strong></td>
+                <td>narancssárga</td>
+                <td>Die Orange ist orange.</td>
+            </tr>
+            <tr>
+                <td><div class="color-box purple"></div></td>
+                <td><strong>LILA</strong></td>
+                <td>lila</td>
+                <td>Die Blume ist lila.</td>
+            </tr>
+            <tr>
+                <td><div class="color-box pink"></div></td>
+                <td><strong>ROSA</strong></td>
+                <td>rózsaszín</td>
+                <td>Das Kleid ist rosa.</td>
+            </tr>
+            <tr>
+                <td><div class="color-box brown"></div></td>
+                <td><strong>BRAUN</strong></td>
+                <td>barna</td>
+                <td>Der Bär ist braun.</td>
+            </tr>
+            <tr>
+                <td><div class="color-box black"></div></td>
+                <td><strong>SCHWARZ</strong></td>
+                <td>fekete</td>
+                <td>Die Nacht ist schwarz.</td>
+            </tr>
+            <tr>
+                <td><div class="color-box white"></div></td>
+                <td><strong>WEIß</strong></td>
+                <td>fehér</td>
+                <td>Der Schnee ist weiß.</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="adjective-box">
+        <h2>💪 BESCHREIBUNGS-WÖRTER FÜR HELDEN UND PRINZESSINNEN</h2>
+        
+        <div class="character-grid">
+            <div class="character-card">
+                <h3>OLIVER'S HELDEN-WÖRTER</h3>
+                <ul style="text-align: left;">
+                    <li><strong>GROß</strong> = nagy</li>
+                    <li><strong>STARK</strong> = erős</li>
+                    <li><strong>SCHNELL</strong> = gyors</li>
+                    <li><strong>MUTIG</strong> = bátor</li>
+                    <li><strong>COOL</strong> = menő</li>
+                    <li><strong>GEFÄHRLICH</strong> = veszélyes</li>
+                </ul>
+            </div>
+            
+            <div class="character-card">
+                <h3>LIZI'S PRINZESSINNEN-WÖRTER</h3>
+                <ul style="text-align: left;">
+                    <li><strong>SCHÖN</strong> = szép</li>
+                    <li><strong>KLEIN</strong> = kicsi</li>
+                    <li><strong>SÜß</strong> = édes/aranyos</li>
+                    <li><strong>ELEGANT</strong> = elegáns</li>
+                    <li><strong>GLITZERND</strong> = csillogó</li>
+                    <li><strong>MAGISCH</strong> = varázslatos</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="example-box">
+            <h3>Gemeinsame Beschreibungen:</h3>
+            <ul>
+                <li><strong>ALT</strong> = öreg | <strong>JUNG</strong> = fiatal</li>
+                <li><strong>WARM</strong> = meleg | <strong>KALT</strong> = hideg</li>
+                <li><strong>HELL</strong> = világos | <strong>DUNKEL</strong> = sötét</li>
+                <li><strong>LAUT</strong> = hangos | <strong>LEISE</strong> = csendes</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="grammar-box">
+        <h2>📚 WICHTIGE REGEL: FARBEN UND BESCHREIBUNGEN</h2>
+        
+        <div class="example-box">
+            <h3>So funktioniert es:</h3>
+            <ul class="large-text">
+                <li><strong>DER</strong> Drache ist <strong>grün</strong>.</li>
+                <li><strong>DIE</strong> Prinzessin ist <strong>schön</strong>.</li>
+                <li><strong>DAS</strong> Auto ist <strong>rot</strong>.</li>
+            </ul>
+        </div>
+        
+        <div class="example-box">
+            <h3>Mit ICH-Sätzen:</h3>
+            <ul class="large-text">
+                <li>ICH SEHE <strong>DEN grünen</strong> Drachen.</li>
+                <li>ICH MAG <strong>DIE schöne</strong> Prinzessin.</li>
+                <li>ICH FAHRE <strong>DAS rote</strong> Auto.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🔥 SUPER-SÄTZE MIT FARBEN UND BESCHREIBUNGEN</h2>
+        
+        <div class="sentence-builder">
+            <h3>Oliver's Helden-Beschreibungen:</h3>
+            <ul>
+                <li>ICH BIN ein <strong>starker</strong> Held!</li>
+                <li>ICH SEHE den <strong>großen roten</strong> Drachen!</li>
+                <li>ICH HABE ein <strong>blaues schnelles</strong> Auto!</li>
+                <li>ICH KÄMPFE gegen den <strong>schwarzen gefährlichen</strong> Roboter!</li>
+                <li>ICH FINDE den <strong>goldenen glitzernden</strong> Schatz!</li>
+            </ul>
+        </div>
+
+        <div class="sentence-builder">
+            <h3>Lizi's Prinzessinnen-Beschreibungen:</h3>
+            <ul>
+                <li>ICH BIN eine <strong>schöne</strong> Prinzessin!</li>
+                <li>ICH TRAGE ein <strong>rosa elegantes</strong> Kleid!</li>
+                <li>ICH REITE auf dem <strong>weißen magischen</strong> Einhorn!</li>
+                <li>ICH HABE eine <strong>goldene glitzernde</strong> Krone!</li>
+                <li>ICH WOHNE in einem <strong>großen schönen</strong> Schloss!</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="exercise-box">
+        <h2>🏃‍♂️ ÜBUNG 1: FARBEN ERKENNEN</h2>
+        <p><strong>Aufgabe:</strong> Sage die richtige Farbe auf Deutsch!</p>
+        <ol>
+            <li>Die Tomate ist <span class="fill-blank"></span>. (rot)</li>
+            <li>Das Gras ist <span class="fill-blank"></span>. (grün)</li>
+            <li>Der Himmel ist <span class="fill-blank"></span>. (blau)</li>
+            <li>Die Sonne ist <span class="fill-blank"></span>. (gelb)</li>
+            <li>Die Nacht ist <span class="fill-blank"></span>. (schwarz)</li>
+        </ol>
+    </div>
+
+    <div class="exercise-box">
+        <h2>🎯 ÜBUNG 2: BESCHREIBUNGS-SÄTZE BAUEN</h2>
+        <p><strong>Aufgabe:</strong> Macht komplette Sätze!</p>
+        <ul>
+            <li>DER Tiger + gelb + stark → <span class="fill-blank" style="min-width: 200px;"></span></li>
+            <li>DIE Blume + rosa + schön → <span class="fill-blank" style="min-width: 200px;"></span></li>
+            <li>DAS Auto + rot + schnell → <span class="fill-blank" style="min-width: 200px;"></span></li>
+        </ul>
+        
+        <div class="example-box">
+            <p><strong>Lösung:</strong></p>
+            <ul>
+                <li>DER Tiger ist gelb und stark.</li>
+                <li>DIE Blume ist rosa und schön.</li>
+                <li>DAS Auto ist rot und schnell.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="exercise-box">
+        <h2>🌈 ÜBUNG 3: MEIN ZIMMER BESCHREIBEN</h2>
+        
+        <div class="sentence-builder">
+            <h3>Beschreibe dein Zimmer mit diesen Sätzen:</h3>
+            <ol class="large-text">
+                <li>ICH SEHE <span class="fill-blank"></span> Wände. (Farbe)</li>
+                <li>ICH HABE ein <span class="fill-blank"></span> Bett. (Farbe)</li>
+                <li>ICH SEHE einen <span class="fill-blank"></span> Stuhl. (Farbe)</li>
+                <li>ICH HABE <span class="fill-blank"></span> Spielsachen. (Farbe)</li>
+                <li>Mein Zimmer ist <span class="fill-blank"></span>. (groß/klein)</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="exercise-box">
+        <h2>🗣️ ÜBUNG 4: RATESPIEL</h2>
+        <p><strong>Spiel für beide:</strong> Einer beschreibt, der andere rät!</p>
+        
+        <div class="example-box">
+            <p><strong>Beispiele:</strong></p>
+            <ul>
+                <li>"ICH BIN grün und groß. ICH FLIEGE." → Drache!</li>
+                <li>"ICH BIN rosa und schön. ICH TANZE." → Prinzessin!</li>
+                <li>"ICH BIN rot und schnell. ICH FAHRE." → Auto!</li>
+            </ul>
+        </div>
+        
+        <p><strong>Begriffe zum Raten:</strong> Tiger, Einhorn, Roboter, Schloss, Rakete, Blume</p>
+    </div>
+
+    <div class="exercise-box">
+        <h2>🎨 ÜBUNG 5: MEIN LIEBLINGS-ALLES</h2>
+        
+        <div class="sentence-builder">
+            <h3>Erzähle von deinen Lieblingssachen:</h3>
+            <ul class="large-text">
+                <li>Mein Lieblings-Tier ist <span class="fill-blank"></span> und <span class="fill-blank"></span>.</li>
+                <li>Mein Lieblings-Essen ist <span class="fill-blank"></span> und <span class="fill-blank"></span>.</li>
+                <li>Mein Lieblings-Spielzeug ist <span class="fill-blank"></span> und <span class="fill-blank"></span>.</li>
+                <li>Meine Lieblings-Farbe ist <span class="fill-blank"></span>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="homework-box">
+        <h2>📝 FARBEN-HAUSAUFGABE</h2>
+        
+        <h3>Mission 1: Farben-Detektiv</h3>
+        <ul>
+            <li><strong>Jeden Tag:</strong> Finde 5 Gegenstände zu Hause und sage ihre Farbe auf Deutsch</li>
+            <li><strong>Beispiel:</strong> "Der Apfel ist rot. Die Banane ist gelb. Das Buch ist blau."</li>
+        </ul>
+
+        <h3>Mission 2: Familien-Beschreibung</h3>
+        <ul>
+            <li>Beschreibe jedes Familienmitglied mit 2 deutschen Wörtern</li>
+            <li><strong>Beispiel:</strong> "Mama ist schön und nett. Papa ist groß und stark."</li>
+            <li>Sage es ihnen auf Deutsch!</li>
+        </ul>
+
+        <h3>Mission 3: Mein buntes Bild</h3>
+        <ul>
+            <li>Male ein Bild mit mindestens 7 verschiedenen Farben</li>
+            <li>Schreibe unter jede Farbe das deutsche Wort</li>
+            <li>Erzähle das Bild: "ICH SEHE rot, ICH SEHE blau..."</li>
+        </ul>
+
+        <h3>Mission 4: Tägliche Beschreibung</h3>
+        <ul>
+            <li><strong>Morgens:</strong> "ICH ZIEHE das ... T-Shirt an." (mit Farbe)</li>
+            <li><strong>Mittags:</strong> "ICH ESSE das ... Essen." (mit Farbe)</li>
+            <li><strong>Abends:</strong> "ICH SEHE den ... Himmel." (mit Farbe)</li>
+        </ul>
+
+        <h3>Mission 5: Meine Lieblingsfarbe</h3>
+        <ul>
+            <li>Sammle eine Woche lang alles in deiner Lieblingsfarbe</li>
+            <li>Mache ICH-Sätze: "ICH HABE einen blauen Stift, ICH SEHE eine blaue Blume..."</li>
+            <li>Zähle am Ende: "ICH HABE ... blaue Sachen gefunden!"</li>
+        </ul>
+
+        <h3>BONUS-Challenge:</h3>
+        <p class="bold large-text">Erfinde ein Lied über Farben und singe es deiner Familie vor! 🎵</p>
+    </div>
+
+    <div class="section">
+        <h2>🏆 HEUTE HABEN WIR EROBERT:</h2>
+        <ul class="large-text">
+            <li>✅ 10 wichtige Farben gelernt</li>
+            <li>✅ 16 Beschreibungs-Wörter gemeistert</li>
+            <li>✅ Sätze mit Farben und Eigenschaften gebaut</li>
+            <li>✅ Unser Zimmer und unsere Lieblingssachen beschrieben</li>
+            <li>✅ ICH-Sätze mit Beschreibungen kombiniert</li>
+        </ul>
+        
+        <div class="example-box">
+            <p class="bold huge-text" style="text-align: center;">
+                Jetzt könnt ihr eure ganze Welt auf Deutsch beschreiben! 🌈
+            </p>
+            <p class="large-text" style="text-align: center;">
+                Oliver der starke Held und Lizi die schöne Prinzessin! ⭐
+            </p>
+        </div>
+    </div>
+</body>
+</html>

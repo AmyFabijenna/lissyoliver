@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waldtiere lernen mit Oliver und Lizi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap');
+        
+        body {
+            background: linear-gradient(135deg, #2E8B57, #228B22, #32CD32);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #2C3E50;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            color: #1B4332;
+            font-weight: bold;
+        }
+        
+        .animals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .animal-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .animal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .animal-emoji {
+            font-size: 60px;
+            margin-bottom: 15px;
+            display: block;
+            animation: bounce 2s infinite;
+        }
+        
+        .animal-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 8px;
+        }
+        
+        .animal-type {
+            font-size: 14px;
+            color: #1B4332;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        
+        .animal-habitat {
+            font-size: 13px;
+            color: #2C3E50;
+            background: rgba(27, 67, 50, 0.1);
+            padding: 8px 12px;
+            border-radius: 10px;
+            margin-top: 8px;
+            display: inline-block;
+            line-height: 1.3;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2C3E50;
+            text-align: center;
+            margin: 40px 0 25px 0;
+            background: rgba(255,255,255,0.3);
+            padding: 15px;
+            border-radius: 15px;
+        }
+        
+        .learning-tip {
+            background: rgba(27, 67, 50, 0.1);
+            border: 3px solid #1B4332;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .learning-tip h3 {
+            color: #2C3E50;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .learning-tip p {
+            color: #1B4332;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .click-effect {
+            animation: pulse 0.5s ease;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .fun-fact {
+            background: linear-gradient(45deg, rgba(44, 62, 80, 0.1), rgba(27, 67, 50, 0.1));
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #1B4332;
+        }
+        
+        .fun-fact h4 {
+            color: #2C3E50;
+            margin: 0 0 5px 0;
+            font-size: 18px;
+        }
+        
+        .fun-fact p {
+            color: #1B4332;
+            margin: 0;
+            font-size: 16px;
+        }
+        
+        .forest-map {
+            background: rgba(44, 62, 80, 0.1);
+            border: 2px dashed #1B4332;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .forest-map h3 {
+            color: #2C3E50;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .discovered-animals {
+            color: #1B4332;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+        
+        .explorer-badge {
+            background: linear-gradient(45deg, #228B22, #32CD32);
+            color: #2C3E50;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 10px;
+            box-shadow: 0 4px 15px rgba(34, 139, 34, 0.3);
+        }
+        
+        .seasonal-info {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid #DAA520;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .seasonal-info h4 {
+            color: #B8860B;
+            margin: 0 0 8px 0;
+            font-size: 18px;
+        }
+        
+        .seasonal-info p {
+            color: #DAA520;
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">🌲 WALDTIERE ENTDECKEN 🦌</h1>
+            <p class="subtitle">Ein Wanderguide für Oliver und Lizi</p>
+        </div>
+        
+        <div class="learning-tip">
+            <h3>🥾 Wald-Expedition</h3>
+            <p>Klickt auf die Tiere und erfahrt, wo sie im österreichischen Wald leben!</p>
+        </div>
+        
+        <div class="section-title">🦌 Große Säugetiere</div>
+        <div class="animals-grid">
+            <div class="animal-card" onclick="discoverAnimal('Reh', 'Auf Lichtungen und am Waldrand')">
+                <span class="animal-emoji">🦌</span>
+                <div class="animal-name">das Reh</div>
+                <div class="animal-type">Paarhufer</div>
+                <div class="animal-habitat">Auf Lichtungen und am Waldrand</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Hirsch', 'In dichten Wäldern')">
+                <span class="animal-emoji">🦌</span>
+                <div class="animal-name">der Hirsch</div>
+                <div class="animal-type">Paarhufer</div>
+                <div class="animal-habitat">In dichten Wäldern</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Wildschwein', 'Im Unterholz und bei Bächen')">
+                <span class="animal-emoji">🐗</span>
+                <div class="animal-name">das Wildschwein</div>
+                <div class="animal-type">Paarhufer</div>
+                <div class="animal-habitat">Im Unterholz und bei Bächen</div>
+            </div>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>🌟 Wusstet ihr schon?</h4>
+            <p>Rehe sind die häufigsten Waldtiere in Österreich - ihr seht sie oft am Morgen oder Abend!</p>
+        </div>
+        
+        <div class="section-title">🦊 Raubtiere</div>
+        <div class="animals-grid">
+            <div class="animal-card" onclick="discoverAnimal('Fuchs', 'In Erdbauen am Waldrand')">
+                <span class="animal-emoji">🦊</span>
+                <div class="animal-name">der Fuchs</div>
+                <div class="animal-type">Raubtier</div>
+                <div class="animal-habitat">In Erdbauen am Waldrand</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Dachs', 'In tiefen Erdbauten')">
+                <span class="animal-emoji">🦡</span>
+                <div class="animal-name">der Dachs</div>
+                <div class="animal-type">Raubtier</div>
+                <div class="animal-habitat">In tiefen Erdbauten</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Marder', 'In Baumhöhlen und Dachböden')">
+                <span class="animal-emoji">🦫</span>
+                <div class="animal-name">der Marder</div>
+                <div class="animal-type">Raubtier</div>
+                <div class="animal-habitat">In Baumhöhlen und Dachböden</div>
+            </div>
+        </div>
+        
+        <div class="seasonal-info">
+            <h4>🍂 Jahreszeiten-Tipp</h4>
+            <p>Im Herbst seht ihr Tiere öfter, weil sie Vorräte sammeln!</p>
+        </div>
+        
+        <div class="section-title">🐿️ Kleine Säugetiere</div>
+        <div class="animals-grid">
+            <div class="animal-card" onclick="discoverAnimal('Eichhörnchen', 'In den Baumkronen')">
+                <span class="animal-emoji">🐿️</span>
+                <div class="animal-name">das Eichhörnchen</div>
+                <div class="animal-type">Nagetier</div>
+                <div class="animal-habitat">In den Baumkronen</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Hase', 'Auf Wiesen am Waldrand')">
+                <span class="animal-emoji">🐰</span>
+                <div class="animal-name">der Hase</div>
+                <div class="animal-type">Hasenartige</div>
+                <div class="animal-habitat">Auf Wiesen am Waldrand</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Igel', 'Im Laub und Unterholz')">
+                <span class="animal-emoji">🦔</span>
+                <div class="animal-name">der Igel</div>
+                <div class="animal-type">Stacheltier</div>
+                <div class="animal-habitat">Im Laub und Unterholz</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Maus', 'In Erdlöchern und alten Baumstümpfen')">
+                <span class="animal-emoji">🐭</span>
+                <div class="animal-name">die Maus</div>
+                <div class="animal-type">Nagetier</div>
+                <div class="animal-habitat">In Erdlöchern und alten Baumstümpfen</div>
+            </div>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>🥜 Eichhörnchen-Geheimnis</h4>
+            <p>Eichhörnchen verstecken über 10.000 Nüsse pro Jahr - und finden 85% davon wieder!</p>
+        </div>
+        
+        <div class="section-title">🦅 Raubvögel</div>
+        <div class="animals-grid">
+            <div class="animal-card" onclick="discoverAnimal('Bussard', 'Hoch in den Baumkronen')">
+                <span class="animal-emoji">🦅</span>
+                <div class="animal-name">der Bussard</div>
+                <div class="animal-type">Greifvogel</div>
+                <div class="animal-habitat">Hoch in den Baumkronen</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Eule', 'In alten Baumhöhlen')">
+                <span class="animal-emoji">🦉</span>
+                <div class="animal-name">die Eule</div>
+                <div class="animal-type">Greifvogel</div>
+                <div class="animal-habitat">In alten Baumhöhlen</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Habicht', 'Im dichten Nadelwald')">
+                <span class="animal-emoji">🦅</span>
+                <div class="animal-name">der Habicht</div>
+                <div class="animal-type">Greifvogel</div>
+                <div class="animal-habitat">Im dichten Nadelwald</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🐦 Singvögel</div>
+        <div class="animals-grid">
+            <div class="animal-card" onclick="discoverAnimal('Rotkehlchen', 'Im Unterholz zwischen Büschen')">
+                <span class="animal-emoji">🐦</span>
+                <div class="animal-name">das Rotkehlchen</div>
+                <div class="animal-type">Singvogel</div>
+                <div class="animal-habitat">Im Unterholz zwischen Büschen</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Amsel', 'Auf dem Waldboden')">
+                <span class="animal-emoji">🐦‍⬛</span>
+                <div class="animal-name">die Amsel</div>
+                <div class="animal-type">Singvogel</div>
+                <div class="animal-habitat">Auf dem Waldboden</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Meise', 'An Ästen und in Nistkästen')">
+                <span class="animal-emoji">🐦</span>
+                <div class="animal-name">die Meise</div>
+                <div class="animal-type">Singvogel</div>
+                <div class="animal-habitat">An Ästen und in Nistkästen</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Specht', 'An Baumstämmen klopfend')">
+                <span class="animal-emoji">🐦</span>
+                <div class="animal-name">der Specht</div>
+                <div class="animal-type">Klettervogel</div>
+                <div class="animal-habitat">An Baumstämmen klopfend</div>
+            </div>
+        </div>
+        
+        <div class="seasonal-info">
+            <h4>🌸 Frühlings-Tipp</h4>
+            <p>Im Frühling singen die Vögel am lautesten - perfekte Zeit zum Lauschen!</p>
+        </div>
+        
+        <div class="section-title">🐍 Reptilien & Amphibien</div>
+        <div class="animals-grid">
+            <div class="animal-card" onclick="discoverAnimal('Echse', 'Auf sonnigen Steinen')">
+                <span class="animal-emoji">🦎</span>
+                <div class="animal-name">die Echse</div>
+                <div class="animal-type">Reptil</div>
+                <div class="animal-habitat">Auf sonnigen Steinen</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Schlange', 'Im warmen Unterholz')">
+                <span class="animal-emoji">🐍</span>
+                <div class="animal-name">die Schlange</div>
+                <div class="animal-type">Reptil</div>
+                <div class="animal-habitat">Im warmen Unterholz</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Frosch', 'Bei Waldteichen und Bächen')">
+                <span class="animal-emoji">🐸</span>
+                <div class="animal-name">der Frosch</div>
+                <div class="animal-type">Amphibium</div>
+                <div class="animal-habitat">Bei Waldteichen und Bächen</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Salamander', 'Unter feuchten Steinen')">
+                <span class="animal-emoji">🦎</span>
+                <div class="animal-name">der Salamander</div>
+                <div class="animal-type">Amphibium</div>
+                <div class="animal-habitat">Unter feuchten Steinen</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🐛 Insekten & Krabbeltiere</div>
+        <div class="animals-grid">
+            <div class="animal-card" onclick="discoverAnimal('Käfer', 'Unter Baumrinde')">
+                <span class="animal-emoji">🪲</span>
+                <div class="animal-name">der Käfer</div>
+                <div class="animal-type">Insekt</div>
+                <div class="animal-habitat">Unter Baumrinde</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Schmetterling', 'Auf Waldblumen')">
+                <span class="animal-emoji">🦋</span>
+                <div class="animal-name">der Schmetterling</div>
+                <div class="animal-type">Insekt</div>
+                <div class="animal-habitat">Auf Waldblumen</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Ameise', 'In großen Ameisenstraßen')">
+                <span class="animal-emoji">🐜</span>
+                <div class="animal-name">die Ameise</div>
+                <div class="animal-type">Insekt</div>
+                <div class="animal-habitat">In großen Ameisenstraßen</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Spinne', 'In Netzen zwischen Ästen')">
+                <span class="animal-emoji">🕷️</span>
+                <div class="animal-name">die Spinne</div>
+                <div class="animal-type">Spinnentier</div>
+                <div class="animal-habitat">In Netzen zwischen Ästen</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Libelle', 'Über Waldgewässern')">
+                <span class="animal-emoji">🦟</span>
+                <div class="animal-name">die Libelle</div>
+                <div class="animal-type">Insekt</div>
+                <div class="animal-habitat">Über Waldgewässern</div>
+            </div>
+            <div class="animal-card" onclick="discoverAnimal('Biene', 'Bei blühenden Bäumen')">
+                <span class="animal-emoji">🐝</span>
+                <div class="animal-name">die Biene</div>
+                <div class="animal-type">Insekt</div>
+                <div class="animal-habitat">Bei blühenden Bäumen</div>
+            </div>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>🐜 Ameisen-Power</h4>
+            <p>Ein Ameisenvolk kann bis zu 1 Million Ameisen haben - wie eine ganze Stadt!</p>
+        </div>
+        
+        <div class="forest-map">
+            <h3>🗺️ Eure Wald-Expedition</h3>
+            <div class="discovered-animals" id="discoveredAnimals">
+                Startet eure Expedition und entdeckt die Waldtiere!
+            </div>
+        </div>
+        
+        <div class="learning-tip">
+            <h3>🏆 Wald-Forscher Belohnung</h3>
+            <p>Wenn ihr alle Tiere entdeckt habt, bekommt ihr ein Naturforscher-Diplom!</p>
+            <div id="explorer-badge" style="display: none;">
+                <div class="explorer-badge">🌟 WALD-EXPERTE 🌟</div>
+            </div>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>📱 Entdecker-Tipp</h4>
+            <p>Macht Fotos oder zeichnet die Tiere, die ihr seht - so erinnert ihr euch besser!</p>
+        </div>
+        
+        <div class="seasonal-info">
+            <h4>⏰ Beste Beobachtungszeiten</h4>
+            <p>Morgens früh oder abends sind die meisten Waldtiere aktiv!</p>
+        </div>
+        
+        <div class="learning-tip">
+            <h3>🌟 Fantastisch, Oliver und Lizi!</h3>
+            <p>Ihr seid echte Waldforscher geworden! 🌲🦌✨</p>
+        </div>
+    </div>
+    
+    <script>
+        let discoveredAnimals = [];
+        const totalAnimals = 24; // Anzahl der Tiere
+        
+        function discoverAnimal(animalName, habitat) {
+            // Visual feedback
+            event.target.closest('.animal-card').classList.add('click-effect');
+            setTimeout(() => {
+                event.target.closest('.animal-card').classList.remove('click-effect');
+            }, 500);
+            
+            // Audio feedback (if browser supports it)
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(animalName);
+                utterance.lang = 'de-DE';
+                utterance.rate = 0.8;
+                speechSynthesis.speak(utterance);
+            }
+            
+            // Add to discovered animals
+            if (!discoveredAnimals.includes(animalName)) {
+                discoveredAnimals.push(animalName);
+                updateForestMap();
+                checkExpeditionComplete();
+            }
+            
+            // Console log for learning reinforcement
+            console.log(`🌲 Entdeckt: ${animalName} - ${habitat}`);
+        }
+        
+        function updateForestMap() {
+            const mapElement = document.getElementById('discoveredAnimals');
+            if (discoveredAnimals.length === 0) {
+                mapElement.textContent = 'Startet eure Expedition und entdeckt die Waldtiere!';
+            } else {
+                mapElement.innerHTML = `🐾 Entdeckte Waldtiere (${discoveredAnimals.length}/${totalAnimals}):<br>` + 
+                                     discoveredAnimals.join(' • ');
+            }
+        }
+        
+        function checkExpeditionComplete() {
+            if (discoveredAnimals.length >= totalAnimals) {
+                document.getElementById('explorer-badge').style.display = 'block';
+                setTimeout(() => {
+                    alert('🎉 HERZLICHEN GLÜCKWUNSCH! 🎉\n\nIhr habt alle Waldtiere entdeckt!\nIhr seid jetzt echte Naturforscher! 🌲🦌🌟');
+                }, 500);
+            }
+        }
+        
+        // Add some interactive sparkles
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.animal-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 40);
+            });
+        });
+        
+        // Add some fun interactions
+        let discoveryCount = 0;
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.animal-card')) {
+                discoveryCount++;
+                if (discoveryCount === 7) {
+                    setTimeout(() => {
+                        alert('🌲 Toll! Ihr seid echte Walddetektive! 🔍');
+                        discoveryCount = 0;
+                    }, 100);
+                }
+            }
+        });
+        
+        // Forest expedition progress tracker
+        setInterval(() => {
+            if (discoveredAnimals.length > 0 && discoveredAnimals.length < totalAnimals) {
+                if (discoveredAnimals.length === Math.floor(totalAnimals / 2)) {
+                    console.log('🏔️ Halbzeit eurer Wald-Expedition!');
+                }
+                if (discoveredAnimals.length === Math.floor(totalAnimals * 0.75)) {
+                    console.log('🎯 Ihr seid schon fast Wald-Experten!');
+                }
+            }
+        }, 2000);
+        
+        // Add forest sounds effect (visual only)
+        let soundEffectCount = 0;
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.animal-card')) {
+                soundEffectCount++;
+                if (soundEffectCount % 5 === 0) {
+                    // Add a subtle visual "sound wave" effect
+                    const card = e.target.closest('.animal-card');
+                    card.style.boxShadow = '0 15px 35px rgba(34, 139, 34, 0.4)';
+                    setTimeout(() => {
+                        card.style.boxShadow = '0 8px 20px rgba(0,0,0,0.1)';
+                    }, 1000);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

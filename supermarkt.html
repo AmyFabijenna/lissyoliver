@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermarkt lernen mit Oliver und Lizi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap');
+        
+        body {
+            background: linear-gradient(135deg, #D8B2C4, #E6C7D3);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #2C3E50;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            color: #8E4B78;
+            font-weight: bold;
+        }
+        
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .item-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .item-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .item-emoji {
+            font-size: 60px;
+            margin-bottom: 15px;
+            display: block;
+            animation: bounce 2s infinite;
+        }
+        
+        .item-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 8px;
+        }
+        
+        .item-type {
+            font-size: 16px;
+            color: #8E4B78;
+            font-style: italic;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2C3E50;
+            text-align: center;
+            margin: 40px 0 25px 0;
+            background: rgba(255,255,255,0.3);
+            padding: 15px;
+            border-radius: 15px;
+        }
+        
+        .learning-tip {
+            background: rgba(142, 75, 120, 0.1);
+            border: 3px solid #8E4B78;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .learning-tip h3 {
+            color: #2C3E50;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .learning-tip p {
+            color: #8E4B78;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .click-effect {
+            animation: pulse 0.5s ease;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .fun-fact {
+            background: linear-gradient(45deg, rgba(44, 62, 80, 0.1), rgba(142, 75, 120, 0.1));
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #8E4B78;
+        }
+        
+        .fun-fact h4 {
+            color: #2C3E50;
+            margin: 0 0 5px 0;
+            font-size: 18px;
+        }
+        
+        .fun-fact p {
+            color: #8E4B78;
+            margin: 0;
+            font-size: 16px;
+        }
+        
+        .shopping-basket {
+            background: rgba(44, 62, 80, 0.1);
+            border: 2px dashed #8E4B78;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .shopping-basket h3 {
+            color: #2C3E50;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .shopping-list {
+            color: #8E4B78;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">🛒 SUPERMARKT LERNEN 🛍️</h1>
+            <p class="subtitle">Ein Einkaufsguide für Oliver und Lizi</p>
+        </div>
+        
+        <div class="learning-tip">
+            <h3>💡 Lerntipp</h3>
+            <p>Klickt auf die Produkte und lernt die deutschen Namen!</p>
+        </div>
+        
+        <div class="section-title">🍝 Nudeln & Getreide</div>
+        <div class="items-grid">
+            <div class="item-card" onclick="speakItem('Nudeln')">
+                <span class="item-emoji">🍝</span>
+                <div class="item-name">die Nudeln</div>
+                <div class="item-type">Teigware</div>
+            </div>
+            <div class="item-card" onclick="speakItem('Reis')">
+                <span class="item-emoji">🍚</span>
+                <div class="item-name">der Reis</div>
+                <div class="item-type">Getreide</div>
+            </div>
+            <div class="item-card" onclick="speakItem('Brot')">
+                <span class="item-emoji">🍞</span>
+                <div class="item-name">das Brot</div>
+                <div class="item-type">Backware</div>
+            </div>
+            <div class="item-card" onclick="speakItem('Brötchen')">
+                <span class="item-emoji">🥖</span>
+                <div class="item-name">das Brötchen</div>
+                <div class="item-type">Backware</div>
+            </div>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>🌾 Wusstet ihr schon?</h4>
+            <p>Nudeln gibt es in über 600 verschiedenen Formen!</p>
+        </div>
+        
+        <div class="section-title">🥛 Milchprodukte</div>
+        <div class="items-grid">
+            <div class="item-card" onclick="speakItem('Milch')">
+                <span class="item-emoji">🥛</span>
+                <div class="item-name">die Milch</div>
+                <div class="item-type">Milchprodukt</div>
+            </div>
+            <div class="item-card" onclick="speakItem('Käse')">
+                <span class="item-emoji">🧀</span>
+                <div class="item-name">der Käse</div>
+                <div class="item-type">Milchprodukt</div>
+            </div>
+            <div class="item-card" onclick="speakItem('Joghurt')">
+                <span class="item-emoji">🥛</span>
+                <div class="item-name">der Joghurt</div>
+                <div class="item-type">Milchprodukt</div>
+            </div>
+            <div class="item-card" onclick="speakItem('Butter')">
+                <span class="item-emoji">🧈</span>
+                <div class="item-name">die Butter</div>
+                <div class="item-type">Milchprodukt</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🥩 Fleisch & Wurst</div>
+        <div class="items-grid">
+            <div class="item-card" onclick="speakItem('Fleisch')">
+                <span class="item-emoji">🥩</span>
+                <div class="item-name">das Fleisch</div>
+                <div class="item-type">Fleischware</div>
+            </div>
+            <div class="item-card" onclick="speakItem('Wurst')">
+                <span class="item-emoji">🌭</span>
+                <div class="item-name">die Wurst</div>
+                <div class="item-type">Fleischware</div>
+            </div>
+            <div class="item-card" onclick="speakItem('Schinken')">
+                <span class="item-emoji">🥓</span>
+                <div class="item-name">der Schinken</div>
+                <div class="item-type">Fleischware</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🐟 Fisch</div>
+        <div class="items-grid">
+            <div class="item-card" onclick="speakItem('Fisch')">
+                <span class="item-emoji">🐟</span>
+                <div class="item-name">der Fisch</div>
+                <div class="item-type">Meeresprodukt</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🥚 Eier</div>
+        <div class="items-grid">
+            <div class="item-card" onclick="speakItem('Ei')">
+                <span class="item-emoji">🥚</span>
+                <div class="item-name">das Ei</div>
+                <div class="item-type">Tierprodukt</div>
+            </div>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>🥚 Coole Info</h4>
+            <p>Ein Ei hat alle wichtigen Nährstoffe für den Körper!</p>
+        </div>
+        
+        <div class="section-title">🍯 Süße Sachen</div>
+        <div class="items-grid">
+            <div class="item-card" onclick="speakItem('Honig')">
+                <span class="item-emoji">🍯</span>
+                <div class="item-name">der Honig</div>
+                <div class="item-type">Süßungsmittel</div>
+            </div>
+            <div class="item-card" onclick="speakItem('Zucker')">
+                <span class="item-emoji">🧊</span>
+                <div class="item-name">der Zucker</div>
+                <div class="item-type">Süßungsmittel</div>
+            </div>
+            <div class="item-card" onclick="speakItem('Marmelade')">
+                <span class="item-emoji">🍓</span>
+                <div class="item-name">die Marmelade</div>
+                <div class="item-type">Brotaufstrich</div>
+            </div>
+            <div class="item-card" onclick="speakItem('Schokolade')">
+                <span class="item-emoji">🍫</span>
+                <div class="item-name">die Schokolade</div>
+                <div class="item-type">Süßware</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🥤 Getränke</div>
+        <div class="items-grid">
+            <div class="item-card" onclick="speakItem('Wasser')">
+                <span class="item-emoji">💧</span>
+                <div class="item-name">das Wasser</div>
+                <div class="item-type">Getränk</div>
+            </div>
+            <div class="item-card" onclick="speakItem('Saft')">
+                <span class="item-emoji">🧃</span>
+                <div class="item-name">der Saft</div>
+                <div class="item-type">Getränk</div>
+            </div>
+            <div class="item-card" onclick="speakItem('Tee')">
+                <span class="item-emoji">🍵</span>
+                <div class="item-name">der Tee</div>
+                <div class="item-type">Heißgetränk</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🧂 Gewürze & Öl</div>
+        <div class="items-grid">
+            <div class="item-card" onclick="speakItem('Salz')">
+                <span class="item-emoji">🧂</span>
+                <div class="item-name">das Salz</div>
+                <div class="item-type">Gewürz</div>
+            </div>
+            <div class="item-card" onclick="speakItem('Pfeffer')">
+                <span class="item-emoji">⚫</span>
+                <div class="item-name">der Pfeffer</div>
+                <div class="item-type">Gewürz</div>
+            </div>
+            <div class="item-card" onclick="speakItem('Öl')">
+                <span class="item-emoji">🫗</span>
+                <div class="item-name">das Öl</div>
+                <div class="item-type">Speiseöl</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🥫 Konserven</div>
+        <div class="items-grid">
+            <div class="item-card" onclick="speakItem('Dose')">
+                <span class="item-emoji">🥫</span>
+                <div class="item-name">die Dose</div>
+                <div class="item-type">Konserve</div>
+            </div>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>🛒 Einkaufstipp</h4>
+            <p>Macht immer eine Einkaufsliste, damit ihr nichts vergesst!</p>
+        </div>
+        
+        <div class="shopping-basket">
+            <h3>🛒 Meine Einkaufsliste</h3>
+            <div class="shopping-list" id="shoppingList">
+                Klickt auf Produkte, um sie eurer Liste hinzuzufügen!
+            </div>
+        </div>
+        
+        <div class="learning-tip">
+            <h3>🌟 Super gemacht, Oliver und Lizi!</h3>
+            <p>Ihr seid echte Supermarkt-Profis geworden! 🛍️✨</p>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>🎮 Spiel-Idee</h4>
+            <p>Spielt "Supermarkt" zu Hause und übt die deutschen Wörter!</p>
+        </div>
+    </div>
+    
+    <script>
+        let shoppingList = [];
+        
+        function speakItem(itemName) {
+            // Visual feedback
+            event.target.closest('.item-card').classList.add('click-effect');
+            setTimeout(() => {
+                event.target.closest('.item-card').classList.remove('click-effect');
+            }, 500);
+            
+            // Audio feedback (if browser supports it)
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(itemName);
+                utterance.lang = 'de-DE';
+                utterance.rate = 0.8;
+                speechSynthesis.speak(utterance);
+            }
+            
+            // Add to shopping list
+            if (!shoppingList.includes(itemName)) {
+                shoppingList.push(itemName);
+                updateShoppingList();
+            }
+            
+            // Console log for learning reinforcement
+            console.log(`🛒 Gelernt: ${itemName}`);
+        }
+        
+        function updateShoppingList() {
+            const listElement = document.getElementById('shoppingList');
+            if (shoppingList.length === 0) {
+                listElement.textContent = 'Klickt auf Produkte, um sie eurer Liste hinzuzufügen!';
+            } else {
+                listElement.textContent = '📝 ' + shoppingList.join(' • ');
+            }
+        }
+        
+        // Add some interactive sparkles
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.item-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 50);
+            });
+        });
+        
+        // Add some fun interactions
+        let clickCount = 0;
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.item-card')) {
+                clickCount++;
+                if (clickCount === 10) {
+                    setTimeout(() => {
+                        alert('🌟 Wow! Ihr seid super Einkäufer! 🛒✨');
+                        clickCount = 0;
+                    }, 100);
+                }
+            }
+        });
+        
+        // Clear shopping list on double click
+        document.getElementById('shoppingList').addEventListener('dblclick', function() {
+            shoppingList = [];
+            updateShoppingList();
+            alert('🗑️ Einkaufsliste geleert!');
+        });
+    </script>
+</body>
+</html>

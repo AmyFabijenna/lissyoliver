@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Igék ragozása - A1 szint</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #E6B3BA 0%, #D4A5AB 50%, #C8969D 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #2c2c2c;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #D4A5AB, #C8969D);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,215,0,0.2) 50%, transparent 60%);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tabs {
+            display: flex;
+            background: #f5f0f0;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 20px;
+            background: #f5f0f0;
+            border: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #8B4B5C;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background: white;
+            color: #2c2c2c;
+            border-bottom: 3px solid #D4A5AB;
+            box-shadow: inset 0 2px 4px rgba(212,165,171,0.2);
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        .explanation-box {
+            background: linear-gradient(135deg, #f8f5f5, #f0eded);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 2px solid #E6B3BA;
+            position: relative;
+        }
+        
+        .explanation-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #E6B3BA, #FFD700, #E6B3BA);
+            border-radius: 15px;
+            z-index: -1;
+        }
+        
+        .explanation-box h2 {
+            color: #8B4B5C;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .exercise-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 2px solid #E6B3BA;
+        }
+        
+        .exercise-item {
+            background: linear-gradient(135deg, #faf8f8, #f5f2f2);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 12px;
+            border-left: 4px solid #D4A5AB;
+        }
+        
+        .hungarian-instruction {
+            font-size: 1.2em;
+            color: #8B4B5C;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .german-input-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .german-input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #E6B3BA;
+            border-radius: 8px;
+            font-size: 1.1em;
+            background: white;
+        }
+        
+        .german-input:focus {
+            outline: none;
+            border-color: #D4A5AB;
+            box-shadow: 0 0 8px rgba(212,165,171,0.3);
+        }
+        
+        .check-button {
+            background: linear-gradient(135deg, #D4A5AB, #C8969D);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        
+        .check-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(212,165,171,0.3);
+        }
+        
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            display: none;
+        }
+        
+        .feedback.correct {
+            background: #d4f7d4;
+            color: #28a745;
+            border: 1px solid #28a745;
+        }
+        
+        .feedback.wrong {
+            background: #f8d7da;
+            color: #dc3545;
+            border: 1px solid #dc3545;
+        }
+        
+        .correct-answer {
+            background: #e8f5e8;
+            padding: 8px;
+            border-radius: 6px;
+            margin-top: 8px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .progress-bar {
+            background: #f0f0f0;
+            height: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #D4A5AB, #FFD700);
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+        
+        .progress-text {
+            text-align: center;
+            color: #8B4B5C;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .reset-button {
+            background: linear-gradient(135deg, #8B4B5C, #D4A5AB);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px 10px;
+            box-shadow: 0 4px 12px rgba(212,165,171,0.3);
+        }
+        
+        .reset-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(212,165,171,0.4);
+        }
+        
+        .verb-highlight {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .conjugation-table {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #E6B3BA;
+        }
+        
+        .conjugation-row {
+            display: grid;
+            grid-template-columns: 80px 1fr 1fr 1fr 1fr 1fr 1fr;
+            gap: 10px;
+            padding: 10px;
+            margin: 5px 0;
+            background: linear-gradient(135deg, #faf8f8, #f5f2f2);
+            border-radius: 8px;
+            align-items: center;
+            font-size: 0.95em;
+        }
+        
+        .conjugation-header {
+            background: linear-gradient(135deg, #D4A5AB, #E6B3BA);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .pronoun-cell {
+            font-weight: bold;
+            color: #8B4B5C;
+        }
+        
+        .verb-cell {
+            color: #2c2c2c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Igék ragozása 📚</h1>
+            <p>A1 szint - Gyakorlás segédigékkel</p>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showSection('overview', this)">📖 Áttekintés</button>
+            <button class="tab" onclick="showSection('practice1', this)">🎯 Haben gyakorlás</button>
+            <button class="tab" onclick="showSection('practice2', this)">🎯 Modal igék</button>
+            <button class="tab" onclick="showSection('practice3', this)">🎯 Egyéb igék</button>
+        </div>
+        
+        <div class="content">
+            <div id="overview" class="section active">
+                <div class="explanation-box">
+                    <h2>Hogyan működik a gyakorlás? 🤔</h2>
+                    <p>Minden gyakorlatban magyar nyelvű utasításokat kapsz. A feladatod, hogy az adott mondatot különböző személyekben ragozd. Például:</p>
+                    <p><strong>Magyar:</strong> "Alakítsd át: Van tüze? (Ön) → én formában"</p>
+                    <p><strong>Német:</strong> "Ich habe Feuer."</p>
+                </div>
+                
+                <div class="conjugation-table">
+                    <h2 style="text-align: center; color: #8B4B5C; margin-bottom: 20px;">Segédigék ragozása</h2>
+                    
+                    <div class="conjugation-row conjugation-header">
+                        <div>Személy</div>
+                        <div>sein (lenni)</div>
+                        <div>haben (birtokolni)</div>
+                        <div>können (tudni)</div>
+                        <div>dürfen (szabad)</div>
+                        <div>müssen (muszáj)</div>
+                        <div>wollen (akarni)</div>
+                    </div>
+                    
+                    <div class="conjugation-row">
+                        <div class="pronoun-cell">ich</div>
+                        <div class="verb-cell">bin</div>
+                        <div class="verb-cell">habe</div>
+                        <div class="verb-cell">kann</div>
+                        <div class="verb-cell">darf</div>
+                        <div class="verb-cell">muss</div>
+                        <div class="verb-cell">will</div>
+                    </div>
+                    
+                    <div class="conjugation-row">
+                        <div class="pronoun-cell">du</div>
+                        <div class="verb-cell">bist</div>
+                        <div class="verb-cell">hast</div>
+                        <div class="verb-cell">kannst</div>
+                        <div class="verb-cell">darfst</div>
+                        <div class="verb-cell">musst</div>
+                        <div class="verb-cell">willst</div>
+                    </div>
+                    
+                    <div class="conjugation-row">
+                        <div class="pronoun-cell">er/sie/es</div>
+                        <div class="verb-cell">ist</div>
+                        <div class="verb-cell">hat</div>
+                        <div class="verb-cell">kann</div>
+                        <div class="verb-cell">darf</div>
+                        <div class="verb-cell">muss</div>
+                        <div class="verb-cell">will</div>
+                    </div>
+                    
+                    <div class="conjugation-row">
+                        <div class="pronoun-cell">wir</div>
+                        <div class="verb-cell">sind</div>
+                        <div class="verb-cell">haben</div>
+                        <div class="verb-cell">können</div>
+                        <div class="verb-cell">dürfen</div>
+                        <div class="verb-cell">müssen</div>
+                        <div class="verb-cell">wollen</div>
+                    </div>
+                    
+                    <div class="conjugation-row">
+                        <div class="pronoun-cell">ihr</div>
+                        <div class="verb-cell">seid</div>
+                        <div class="verb-cell">habt</div>
+                        <div class="verb-cell">könnt</div>
+                        <div class="verb-cell">dürft</div>
+                        <div class="verb-cell">müsst</div>
+                        <div class="verb-cell">wollt</div>
+                    </div>
+                    
+                    <div class="conjugation-row">
+                        <div class="pronoun-cell">sie/Sie</div>
+                        <div class="verb-cell">sind</div>
+                        <div class="verb-cell">haben</div>
+                        <div class="verb-cell">können</div>
+                        <div class="verb-cell">dürfen</div>
+                        <div class="verb-cell">müssen</div>
+                        <div class="verb-cell">wollen</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="practice1" class="section">
+                <div class="explanation-box">
+                    <h2>Haben ige gyakorlása 🎯</h2>
+                    <p>Alakítsd át a mondatokat a zárójelben megadott személyre!</p>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress1"></div>
+                </div>
+                <div class="progress-text" id="progress-text1">0 / 0 helyes</div>
+                
+                <div class="exercise-container" id="haben-exercises">
+                    <!-- Exercises will be generated here -->
+                </div>
+                
+                <button class="reset-button" onclick="resetSection('practice1')">🔄 Újrakezdés</button>
+            </div>
+            
+            <div id="practice2" class="section">
+                <div class="explanation-box">
+                    <h2>Modal igék gyakorlása 🎯</h2>
+                    <p>Alakítsd át a mondatokat a különböző személyekre!</p>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress2"></div>
+                </div>
+                <div class="progress-text" id="progress-text2">0 / 0 helyes</div>
+                
+                <div class="exercise-container" id="modal-exercises">
+                    <!-- Exercises will be generated here -->
+                </div>
+                
+                <button class="reset-button" onclick="resetSection('practice2')">🔄 Újrakezdés</button>
+            </div>
+            
+            <div id="practice3" class="section">
+                <div class="explanation-box">
+                    <h2>Egyéb igék gyakorlása 🎯</h2>
+                    <p>Gyakorold a möchten, brauchen, kommen és essen igéket!</p>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress3"></div>
+                </div>
+                <div class="progress-text" id="progress-text3">0 / 0 helyes</div>
+                
+                <div class="exercise-container" id="other-exercises">
+                    <!-- Exercises will be generated here -->
+                </div>
+                
+                <button class="reset-button" onclick="resetSection('practice3')">🔄 Újrakezdés</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const habenExercises = [
+            {
+                instruction: "Van tüze? (Sie) → Alakítsd át 'ich' formában:",
+                answer: "Ich habe Feuer.",
+                hint: "Ich + haben ragozott alakja"
+            },
+            {
+                instruction: "Van tüzed? (du) → Alakítsd át 'Sie' formában:",
+                answer: "Haben Sie Feuer?",
+                hint: "Sie + haben + Feuer?"
+            },
+            {
+                instruction: "Nekünk szabadságunk van. (wir) → Alakítsd át 'ihr' formában:",
+                answer: "Ihr habt frei.",
+                hint: "Ihr + haben ragozott alakja + frei"
+            },
+            {
+                instruction: "Zárva vagyunk. (wir) → Alakítsd át 'Sie' formában:",
+                answer: "Sie haben geschlossen.",
+                hint: "Sie + haben + geschlossen"
+            },
+            {
+                instruction: "Nyitva vagyunk. (wir) → Alakítsd át 'ich' formában:",
+                answer: "Ich habe geöffnet.",
+                hint: "Ich + habe + geöffnet"
+            },
+            {
+                instruction: "Szomjas Ön? (Sie) → Alakítsd át 'du' formában:",
+                answer: "Hast du Durst?",
+                hint: "Hast + du + Durst?"
+            },
+            {
+                instruction: "Éhes vagy? (du) → Alakítsd át 'Sie' formában:",
+                answer: "Haben Sie Hunger?",
+                hint: "Haben + Sie + Hunger?"
+            },
+            {
+                instruction: "Van tüze? (Sie) → Alakítsd át 'wir' formában:",
+                answer: "Wir haben Feuer.",
+                hint: "Wir + haben + Feuer"
+            },
+            {
+                instruction: "Zárva vagyunk. (wir) → Alakítsd át 'ihr' formában:",
+                answer: "Ihr habt geschlossen.",
+                hint: "Ihr + habt + geschlossen"
+            },
+            {
+                instruction: "Nyitva vagyunk. (wir) → Alakítsd át 'er' formában:",
+                answer: "Er hat geöffnet.",
+                hint: "Er + hat + geöffnet"
+            }
+        ];
+        
+        const modalExercises = [
+            {
+                instruction: "Várnunk kell. (wir) → Alakítsd át 'ich' formában:",
+                answer: "Ich muss warten.",
+                hint: "Ich + muss + warten"
+            },
+            {
+                instruction: "Ön ide nem mehet be. (Sie) → Alakítsd át 'du' formában:",
+                answer: "Du darfst hier nicht hineingehen.",
+                hint: "Du + darfst + hier nicht hineingehen"
+            },
+            {
+                instruction: "Bejöhetnek. (Sie) → Alakítsd át 'ihr' formában:",
+                answer: "Ihr könnt hereinkommen.",
+                hint: "Ihr + könnt + hereinkommen"
+            },
+            {
+                instruction: "Ma gyorsan be akarom fejezni. (ich) → Alakítsd át 'wir' formában:",
+                answer: "Wir wollen heute schnell fertig werden.",
+                hint: "Wir + wollen + heute schnell fertig werden"
+            },
+            {
+                instruction: "Jössz velem? (du) → Alakítsd át 'Sie' formában:",
+                answer: "Wollen Sie mitkommen?",
+                hint: "Wollen + Sie + mitkommen?"
+            },
+            {
+                instruction: "Akar itt várni? (Sie) → Alakítsd át 'ich' formában:",
+                answer: "Ich will hier warten.",
+                hint: "Ich + will + hier warten"
+            },
+            {
+                instruction: "Ma nem kell dolgoznom. (ich) → Alakítsd át 'du' formában:",
+                answer: "Du musst heute nicht arbeiten.",
+                hint: "Du + musst + heute nicht arbeiten"
+            },
+            {
+                instruction: "Este be kell zárnod az ajtót. (du) → Alakítsd át 'Sie' formában:",
+                answer: "Sie müssen am Abend die Tür zusperren.",
+                hint: "Sie + müssen + am Abend die Tür zusperren"
+            },
+            {
+                instruction: "Vigyázzon! (Sie) → Alakítsd át 'ihr' formában:",
+                answer: "Ihr sollt aufpassen!",
+                hint: "Ihr + sollt + aufpassen!"
+            },
+            {
+                instruction: "Kevesebbet kellene dohányoznom. (ich) → Alakítsd át 'Sie' formában:",
+                answer: "Sie sollten weniger rauchen.",
+                hint: "Sie + sollten + weniger rauchen"
+            }
+        ];
+        
+        const otherExercises = [
+            {
+                instruction: "Ma korábban szeretnék elmenni. (ich) → Alakítsd át 'wir' formában:",
+                answer: "Wir möchten heute früher gehen.",
+                hint: "Wir + möchten + heute früher gehen"
+            },
+            {
+                instruction: "Te is kérsz egy almát? (du) → Alakítsd át 'Sie' formában:",
+                answer: "Möchten Sie auch einen Apfel?",
+                hint: "Möchten + Sie + auch einen Apfel?"
+            },
+            {
+                instruction: "Kell-e segítség? (du) → Alakítsd át 'Sie' formában:",
+                answer: "Brauchen Sie Hilfe?",
+                hint: "Brauchen + Sie + Hilfe?"
+            },
+            {
+                instruction: "Szeretnék egy almát. (ich) → Alakítsd át 'er' formában:",
+                answer: "Er möchte einen Apfel.",
+                hint: "Er + möchte + einen Apfel"
+            },
+            {
+                instruction: "Segítségre van szükségem. (ich) → Alakítsd át 'wir' formában:",
+                answer: "Wir brauchen Hilfe.",
+                hint: "Wir + brauchen + Hilfe"
+            },
+            {
+                instruction: "Jövök. (ich) → Alakítsd át 'sie' (többes szám) formában:",
+                answer: "Sie kommen.",
+                hint: "Sie + kommen"
+            },
+            {
+                instruction: "Eszel kenyeret? (du) → Alakítsd át 'Sie' formában:",
+                answer: "Essen Sie Brot?",
+                hint: "Essen + Sie + Brot?"
+            },
+            {
+                instruction: "Kenyeret eszünk. (wir) → Alakítsd át 'ihr' formában:",
+                answer: "Ihr esst Brot.",
+                hint: "Ihr + esst + Brot"
+            },
+            {
+                instruction: "Ő eszik. (er) → Alakítsd át 'ich' formában:",
+                answer: "Ich esse.",
+                hint: "Ich + esse"
+            },
+            {
+                instruction: "Ti jöttök? (ihr) → Alakítsd át 'Sie' formában:",
+                answer: "Kommen Sie?",
+                hint: "Kommen + Sie?"
+            }
+        ];
+        
+        let sectionScores = {
+            practice1: { correct: 0, total: 0 },
+            practice2: { correct: 0, total: 0 },
+            practice3: { correct: 0, total: 0 }
+        };
+        
+        function showSection(sectionName, clickedTab) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            document.getElementById(sectionName).classList.add('active');
+            
+            if (clickedTab) {
+                clickedTab.classList.add('active');
+            }
+            
+            if (sectionName === 'practice1' && !document.getElementById('haben-exercises').hasChildNodes()) {
+                generateExercises('haben-exercises', habenExercises, 'practice1');
+            } else if (sectionName === 'practice2' && !document.getElementById('modal-exercises').hasChildNodes()) {
+                generateExercises('modal-exercises', modalExercises, 'practice2');
+            } else if (sectionName === 'practice3' && !document.getElementById('other-exercises').hasChildNodes()) {
+                generateExercises('other-exercises', otherExercises, 'practice3');
+            }
+        }
+        
+        function generateExercises(containerId, exercises, sectionId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            exercises.forEach((exercise, index) => {
+                const exerciseDiv = document.createElement('div');
+                exerciseDiv.className = 'exercise-item';
+                exerciseDiv.innerHTML = `
+                    <div class="hungarian-instruction">${index + 1}. ${exercise.instruction}</div>
+                    <div class="german-input-container">
+                        <input type="text" class="german-input" id="input-${sectionId}-${index}" placeholder="Írd be a német mondatot...">
+                        <button class="check-button" onclick="checkAnswer('${sectionId}', ${index})">Ellenőrzés</button>
+                    </div>
+                    <div class="feedback" id="feedback-${sectionId}-${index}"></div>
+                `;
+                container.appendChild(exerciseDiv);
+            });
+            
+            updateProgress(sectionId);
+        }
+        
+        function checkAnswer(sectionId, exerciseIndex) {
+            const exercises = sectionId === 'practice1' ? habenExercises : 
+                             sectionId === 'practice2' ? modalExercises : otherExercises;
+            
+            const input = document.getElementById(`input-${sectionId}-${exerciseIndex}`);
+            const feedback = document.getElementById(`feedback-${sectionId}-${exerciseIndex}`);
+            const userAnswer = input.value.trim();
+            const correctAnswer = exercises[exerciseIndex].answer;
+            const hint = exercises[exerciseIndex].hint;
+            
+            if (!userAnswer) {
+                feedback.className = 'feedback wrong';
+                feedback.style.display = 'block';
+                feedback.innerHTML = 'Kérlek, írj be egy választ!';
+                return;
+            }
+            
+            // Normalize answers for comparison
+            const normalizedUser = userAnswer.toLowerCase().replace(/[.,!?]/g, '').trim();
+            const normalizedCorrect = correctAnswer.toLowerCase().replace(/[.,!?]/g, '').trim();
+            
+            if (normalizedUser === normalizedCorrect) {
+                feedback.className = 'feedback correct';
+                feedback.innerHTML = '✅ Helyes! Nagyszerű!';
+                input.style.borderColor = '#28a745';
+                input.disabled = true;
+                
+                if (!input.dataset.counted) {
+                    sectionScores[sectionId].correct++;
+                    input.dataset.counted = 'true';
+                }
+            } else {
+                feedback.className = 'feedback wrong';
+                feedback.innerHTML = `❌ Nem helyes. Segítség: ${hint}<div class="correct-answer">Helyes válasz: <strong>${correctAnswer}</strong></div>`;
+                input.style.borderColor = '#dc3545';
+            }
+            
+            if (!input.dataset.attempted) {
+                sectionScores[sectionId].total++;
+                input.dataset.attempted = 'true';
+            }
+            
+            feedback.style.display = 'block';
+            updateProgress(sectionId);
+        }
+        
+        function updateProgress(sectionId) {
+            const score = sectionScores[sectionId];
+            const progressFill = document.getElementById(`progress${sectionId.slice(-1)}`);
+            const progressText = document.getElementById(`progress-text${sectionId.slice(-1)}`);
+            
+            const percentage = score.total === 0 ? 0 : (score.correct / score.total) * 100;
+            progressFill.style.width = percentage + '%';
+            progressText.textContent = `${score.correct} / ${score.total} helyes`;
+        }
+        
+        function resetSection(sectionId) {
+            sectionScores[sectionId] = { correct: 0, total: 0 };
+            
+            const containerId = sectionId === 'practice1' ? 'haben-exercises' :
+                               sectionId === 'practice2' ? 'modal-exercises' : 'other-exercises';
+            
+            const exercises = sectionId === 'practice1' ? habenExercises :
+                             sectionId === 'practice2' ? modalExercises : otherExercises;
+            
+            generateExercises(containerId, exercises, sectionId);
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('overview');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olivers Sätze</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e6f0ff, #d1e4ff, #bdd9ff);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(135, 171, 230, 0.2);
+            border: 1px solid rgba(173, 199, 255, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #5a7fc7;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(90, 127, 199, 0.2);
+        }
+        
+        .sentence {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 14px 18px;
+            background: rgba(189, 217, 255, 0.25);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid #87abe6;
+        }
+        
+        .sentence:hover {
+            background: rgba(189, 217, 255, 0.45);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(135, 171, 230, 0.15);
+        }
+        
+        .sentence:active {
+            transform: translateX(3px) scale(0.98);
+        }
+        
+        .emoji {
+            font-size: 1.6em;
+            margin-right: 15px;
+            min-width: 45px;
+        }
+        
+        .text {
+            font-size: 1.15em;
+            color: #4a6bb3;
+            font-weight: 500;
+        }
+        
+        .speaking {
+            background: rgba(135, 171, 230, 0.4) !important;
+            animation: pulse 1s infinite;
+            border-left-color: #5a7fc7;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        .intro {
+            text-align: center;
+            color: #6b8dd6;
+            margin-bottom: 25px;
+            font-size: 1.15em;
+        }
+        
+        .highlight {
+            background: linear-gradient(45deg, rgba(189, 217, 255, 0.4), rgba(173, 199, 255, 0.4));
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 Olivers Sätze 🌟</h1>
+        <div class="intro">Klicke auf einen Satz, um ihn vorgelesen zu bekommen!</div>
+        
+        <div class="sentence" onclick="speakText('Wir sind auf einem Boot.', this)">
+            <div class="emoji">⛵</div>
+            <div class="text">Wir sind auf einem Boot.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Wir sitzen auf dem Sofa.', this)">
+            <div class="emoji">🛋️</div>
+            <div class="text">Wir sitzen auf dem Sofa.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Wir essen Schampinjon-suppe.', this)">
+            <div class="emoji">🍄</div>
+            <div class="text">Wir essen Champignonsuppe.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Wir gehen zur Schule.', this)">
+            <div class="emoji">🏫</div>
+            <div class="text">Wir gehen zur Schule.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Wir essen Zerealien.', this)">
+            <div class="emoji">🥣</div>
+            <div class="text">Wir essen Zerealien.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Wir spielen.', this)">
+            <div class="emoji">🎮</div>
+            <div class="text">Wir spielen.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Wir spielen Fangen.', this)">
+            <div class="emoji">🏃‍♂️</div>
+            <div class="text">Wir spielen Fangen.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Wir haben einen Hund und zwei Katzen.', this)">
+            <div class="emoji">🐕</div>
+            <div class="text">Wir haben einen Hund und zwei Katzen.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Wir haben einen Apfelbaum.', this)">
+            <div class="emoji">🍎</div>
+            <div class="text">Wir haben einen Apfelbaum.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Wir haben Tannenbäume.', this)">
+            <div class="emoji">🌲</div>
+            <div class="text">Wir haben Tannenbäume.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Ich habe einen Slimey.', this)">
+            <div class="emoji">🟢</div>
+            <div class="text">Ich habe einen Slimey.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Wir haben ein schönes Haus.', this)">
+            <div class="emoji">🏠</div>
+            <div class="text">Wir haben ein schönes Haus.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Wir haben schöne Bäume.', this)">
+            <div class="emoji">🌳</div>
+            <div class="text">Wir haben schöne Bäume.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Wir haben einen schönen Garten.', this)">
+            <div class="emoji">🌻</div>
+            <div class="text">Wir haben einen schönen Garten.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Wir haben einen großen Fernseher.', this)">
+            <div class="emoji">📺</div>
+            <div class="text">Wir haben einen großen Fernseher.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Ich habe eine bunte Hose.', this)">
+            <div class="emoji">👖</div>
+            <div class="text">Ich habe eine bunte Hose.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Oma und Opa sind lieb.', this)">
+            <div class="emoji">👴</div>
+            <div class="text">Oma und Opa sind lieb.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Sie sind sehr herzlich.', this)">
+            <div class="emoji">❤️</div>
+            <div class="text">Sie sind sehr herzlich.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Sie haben ein großes und schönes Sofa!', this)">
+            <div class="emoji">🛋️</div>
+            <div class="text">Sie haben ein großes und schönes Sofa!</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Meine Freunde spielen gerne mit Käfern.', this)">
+            <div class="emoji">🪲</div>
+            <div class="text">Meine Freunde spielen gerne mit Käfern.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Sie sind sehr lieb.', this)">
+            <div class="emoji">😊</div>
+            <div class="text">Sie sind sehr lieb.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Sie gehen oft ins Einkaufszentrum.', this)">
+            <div class="emoji">🛒</div>
+            <div class="text">Sie gehen oft ins Einkaufszentrum.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Sie kaufen sich viele Sachen.', this)">
+            <div class="emoji">🛍️</div>
+            <div class="text">Sie kaufen sich viele Sachen.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Sie kaufen gerne Käfer.', this)">
+            <div class="emoji">🪲</div>
+            <div class="text">Sie kaufen gerne Käfer.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Sie geben mir manchmal Käfer.', this)">
+            <div class="emoji">🎁</div>
+            <div class="text">Sie geben mir manchmal Käfer.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Ich gebe ihnen auch Käfer.', this)">
+            <div class="emoji">🤝</div>
+            <div class="text">Ich gebe ihnen auch Käfer.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Sie kommen oft zu uns.', this)">
+            <div class="emoji">🚶‍♂️</div>
+            <div class="text">Sie kommen oft zu uns.</div>
+        </div>
+        
+        <div class="sentence" onclick="speakText('Ich gehe oft zu ihnen.', this)">
+            <div class="emoji">🚶‍♂️</div>
+            <div class="text">Ich gehe oft zu ihnen.</div>
+        </div>
+    </div>
+
+    <script>
+        function speakText(text, element) {
+            // Visual feedback
+            element.classList.add('speaking');
+            
+            // Remove previous speaking classes
+            document.querySelectorAll('.sentence').forEach(el => {
+                if (el !== element) {
+                    el.classList.remove('speaking');
+                }
+            });
+            
+            // Use Speech Synthesis API
+            if ('speechSynthesis' in window) {
+                // Cancel any ongoing speech
+                speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'de-DE';
+                utterance.rate = 0.8;
+                utterance.pitch = 1.0;
+                
+                utterance.onend = function() {
+                    element.classList.remove('speaking');
+                };
+                
+                utterance.onerror = function() {
+                    element.classList.remove('speaking');
+                };
+                
+                speechSynthesis.speak(utterance);
+            } else {
+                // Fallback for browsers without speech synthesis
+                setTimeout(() => {
+                    element.classList.remove('speaking');
+                }, 2000);
+                alert('Dein Browser unterstützt leider keine Sprachausgabe.');
+            }
+        }
+    </script>
+</body>
+</html>

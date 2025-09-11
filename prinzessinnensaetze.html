@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lizis Deutsch-Prüfung</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #000;
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0, #fd79a8, #e17055);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #e91e63;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border: 4px solid #e91e63;
+            padding: 15px;
+            border-radius: 15px;
+            background: linear-gradient(45deg, #fce4ec, #f8bbd9);
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 20px;
+            color: #9c27b0;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        
+        h2 {
+            color: #e91e63;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 5px solid #e91e63;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #9c27b0;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .task-section {
+            background: linear-gradient(45deg, #fce4ec, #f3e5f5, #e1f5fe);
+            border: 3px solid #e91e63;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+        }
+        
+        .new-words-box {
+            background: linear-gradient(45deg, #fff3e0, #fce4ec);
+            border: 4px solid #ff9800;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .vocabulary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .vocabulary-table th,
+        .vocabulary-table td {
+            border: 2px solid #e91e63;
+            padding: 15px;
+            text-align: left;
+            font-size: 16px;
+        }
+        
+        .vocabulary-table th {
+            background-color: #e91e63;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .vocabulary-table tr:nth-child(even) {
+            background-color: #fce4ec;
+        }
+        
+        .vocabulary-table tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+        
+        .example-box {
+            background-color: #e8f5e8;
+            border: 2px solid #4caf50;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        
+        .exercise-box {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        
+        .princess-card {
+            border: 3px solid #e91e63;
+            padding: 20px;
+            border-radius: 15px;
+            background: linear-gradient(45deg, #fce4ec, #f8bbd9);
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .fill-blank {
+            border-bottom: 3px solid #e91e63;
+            min-width: 120px;
+            display: inline-block;
+            margin: 0 8px;
+            padding: 2px;
+            background-color: rgba(233, 30, 99, 0.1);
+        }
+        
+        .large-text {
+            font-size: 20px;
+        }
+        
+        .huge-text {
+            font-size: 24px;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        
+        .points-box {
+            background: linear-gradient(45deg, #ffeb3b, #ffc107);
+            border: 3px solid #ff9800;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .color-box {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #000;
+            margin-right: 10px;
+            vertical-align: middle;
+            border-radius: 5px;
+        }
+        
+        .red { background-color: #f44336; }
+        .blue { background-color: #2196f3; }
+        .green { background-color: #4caf50; }
+        .yellow { background-color: #ffeb3b; }
+        .orange { background-color: #ff9800; }
+        .purple { background-color: #9c27b0; }
+        .pink { background-color: #e91e63; }
+        .white { background-color: #ffffff; }
+        
+        .crown {
+            font-size: 30px;
+            color: #ffd700;
+        }
+        
+        .sparkle {
+            color: #e91e63;
+            font-size: 20px;
+        }
+        
+        .completion-box {
+            background: linear-gradient(45deg, #c8e6c9, #a5d6a7);
+            border: 3px solid #4caf50;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👑 LIZIS GROSSE DEUTSCH-PRÜFUNG 👑</h1>
+        <p class="subtitle">Prinzessinnen-Challenge: Zeige dein Deutsch-Können!</p>
+        
+        <div class="new-words-box">
+            <h2><span class="crown">👑</span> NEUE PRINZESSINNEN-SÄTZE! <span class="crown">👑</span></h2>
+            <div class="large-text bold">
+                <p>🙋‍♀️ <span style="color: #e91e63;">"ICH HABE EINE FRAGE!"</span> = Nekem kérdésem van!</p>
+                <p>🤔 <span style="color: #9c27b0;">"ICH VERSTEHE NICHT!"</span> = Nem értem!</p>
+            </div>
+            <div class="example-box">
+                <h3>Wann sagst du das?</h3>
+                <ul>
+                    <li><strong>"ICH HABE EINE FRAGE!"</strong> - wenn du etwas wissen möchtest</li>
+                    <li><strong>"ICH VERSTEHE NICHT!"</strong> - wenn etwas zu schwer ist</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>🌈 AUFGABE 1: FARBEN-PRINZESSIN (10 Punkte)</h2>
+            <p class="large-text">Schreibe die deutschen Farb-Wörter zu den Kästchen!</p>
+            
+            <div class="exercise-box">
+                <ol class="large-text">
+                    <li><div class="color-box pink"></div> Das ist <span class="fill-blank"></span>!</li>
+                    <li><div class="color-box purple"></div> Das ist <span class="fill-blank"></span>!</li>
+                    <li><div class="color-box yellow"></div> Das ist <span class="fill-blank"></span>!</li>
+                    <li><div class="color-box white"></div> Das ist <span class="fill-blank"></span>!</li>
+                    <li><div class="color-box blue"></div> Das ist <span class="fill-blank"></span>!</li>
+                </ol>
+            </div>
+            
+            <div class="points-box">
+                ⭐ Für jede richtige Farbe: 2 Punkte!
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>🍎 AUFGABE 2: ESSEN WIE EINE PRINZESSIN (15 Punkte)</h2>
+            <p class="large-text">Ergänze die ICH-Sätze mit dem richtigen Essen!</p>
+            
+            <div class="exercise-box">
+                <p><strong>Wörter zum Auswählen:</strong> PIZZA • SCHOKOLADE • MILCH • APFEL • KEKSE</p>
+                <ol class="large-text">
+                    <li>Zum Frühstück: ICH ESSE einen <span class="fill-blank"></span>.</li>
+                    <li>Zum Mittag: ICH ESSE <span class="fill-blank"></span>.</li>
+                    <li>Zum Trinken: ICH TRINKE <span class="fill-blank"></span>.</li>
+                    <li>Als Süßigkeit: ICH ESSE <span class="fill-blank"></span>.</li>
+                    <li>Zum Naschen: ICH ESSE <span class="fill-blank"></span>.</li>
+                </ol>
+            </div>
+            
+            <div class="points-box">
+                ⭐ Für jeden richtigen ICH-Satz: 3 Punkte!
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>⏰ AUFGABE 3: PRINZESSINNEN-TAG (12 Punkte)</h2>
+            <p class="large-text">Bringe Lizis Tag in die richtige Reihenfolge! Schreibe 1, 2, 3, 4...</p>
+            
+            <div class="exercise-box">
+                <ul class="large-text">
+                    <li><span class="fill-blank" style="min-width: 40px;"></span> ICH GEHE SCHLAFEN</li>
+                    <li><span class="fill-blank" style="min-width: 40px;"></span> ICH ESSE FRÜHSTÜCK</li>
+                    <li><span class="fill-blank" style="min-width: 40px;"></span> ICH WACHE AUF</li>
+                    <li><span class="fill-blank" style="min-width: 40px;"></span> ICH SPIELE</li>
+                    <li><span class="fill-blank" style="min-width: 40px;"></span> ICH GEHE ZUR SCHULE</li>
+                    <li><span class="fill-blank" style="min-width: 40px;"></span> ICH ESSE ABENDESSEN</li>
+                </ul>
+            </div>
+            
+            <div class="points-box">
+                ⭐ Für die richtige Reihenfolge: 12 Punkte!
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>👗 AUFGABE 4: ARTIKEL-PRINZESSIN (18 Punkte)</h2>
+            <p class="large-text">Welcher Artikel ist richtig? Kreise ein: DER, DIE oder DAS!</p>
+            
+            <div class="exercise-box">
+                <ol class="large-text">
+                    <li>ICH SEHE <u>DER / DIE / DAS</u> Prinzessin.</li>
+                    <li>ICH NEHME <u>DER / DIE / DAS</u> Krone.</li>
+                    <li>ICH REITE auf <u>DER / DIE / DAS</u> Einhorn.</li>
+                    <li>ICH FINDE <u>DER / DIE / DAS</u> Schloss.</li>
+                    <li>ICH HÖRE <u>DER / DIE / DAS</u> Musik.</li>
+                    <li>ICH SEHE <u>DER / DIE / DAS</u> Drachen.</li>
+                </ol>
+            </div>
+            
+            <div class="points-box">
+                ⭐ Für jeden richtigen Artikel: 3 Punkte!
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>🎨 AUFGABE 5: BESCHREIBUNGS-MAGIE (15 Punkte)</h2>
+            <p class="large-text">Beschreibe diese Prinzessinnen-Sachen! Verwende die Wörter aus der Box!</p>
+            
+            <div class="exercise-box">
+                <p><strong>Wörter-Box:</strong> SCHÖN • ROSA • GLITZERND • GROSS • MAGISCH</p>
+                <ol class="large-text">
+                    <li>Das Einhorn ist <span class="fill-blank"></span> und <span class="fill-blank"></span>.</li>
+                    <li>Die Krone ist <span class="fill-blank"></span> und <span class="fill-blank"></span>.</li>
+                    <li>Das Schloss ist <span class="fill-blank"></span>.</li>
+                </ol>
+            </div>
+            
+            <div class="points-box">
+                ⭐ Für jedes richtige Beschreibungs-Wort: 3 Punkte!
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>🎵 AUFGABE 6: NEUE SÄTZE ÜBEN (10 Punkte)</h2>
+            <p class="large-text">Wann sagst du diese neuen Sätze? Verbinde richtig!</p>
+            
+            <div class="exercise-box">
+                <table class="vocabulary-table">
+                    <tr>
+                        <th>SITUATION</th>
+                        <th>WAS SAGST DU?</th>
+                    </tr>
+                    <tr>
+                        <td>Du weißt nicht, wie man "Schmetterling" sagt</td>
+                        <td>A) ICH HABE EINE FRAGE!</td>
+                    </tr>
+                    <tr>
+                        <td>Der Lehrer erklärt zu schnell</td>
+                        <td>B) ICH VERSTEHE NICHT!</td>
+                    </tr>
+                    <tr>
+                        <td>Du möchtest wissen, wann Pause ist</td>
+                        <td>A) ICH HABE EINE FRAGE!</td>
+                    </tr>
+                    <tr>
+                        <td>Ein Wort ist zu schwer für dich</td>
+                        <td>B) ICH VERSTEHE NICHT!</td>
+                    </tr>
+                    <tr>
+                        <td>Du weißt nicht, was "Hausaufgabe" bedeutet</td>
+                        <td>B) ICH VERSTEHE NICHT!</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="points-box">
+                ⭐ Für jede richtige Verbindung: 2 Punkte!
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>💎 BONUS-AUFGABE: MEINE PRINZESSINNEN-GESCHICHTE (10 Bonus-Punkte)</h2>
+            <p class="large-text">Schreibe 5 ICH-Sätze über deinen Prinzessinnen-Tag! Verwende die neuen Sätze!</p>
+            
+            <div class="exercise-box">
+                <ol class="large-text">
+                    <li>ICH <span class="fill-blank" style="min-width: 200px;"></span></li>
+                    <li>ICH <span class="fill-blank" style="min-width: 200px;"></span></li>
+                    <li>ICH <span class="fill-blank" style="min-width: 200px;"></span></li>
+                    <li>ICH HABE EINE FRAGE: <span class="fill-blank" style="min-width: 150px;"></span>?</li>
+                    <li>ICH VERSTEHE NICHT: <span class="fill-blank" style="min-width: 150px;"></span></li>
+                </ol>
+            </div>
+            
+            <div class="points-box">
+                <span class="sparkle">✨</span> Für kreative Sätze: Bis zu 10 Bonus-Punkte! <span class="sparkle">✨</span>
+            </div>
+        </div>
+
+        <div class="princess-card">
+            <h2><span class="crown">👑</span> PUNKTEVERTEILUNG <span class="crown">👑</span></h2>
+            <div class="large-text">
+                <p><strong>Aufgabe 1 (Farben):</strong> _____ / 10 Punkte</p>
+                <p><strong>Aufgabe 2 (Essen):</strong> _____ / 15 Punkte</p>
+                <p><strong>Aufgabe 3 (Tagesablauf):</strong> _____ / 12 Punkte</p>
+                <p><strong>Aufgabe 4 (Artikel):</strong> _____ / 18 Punkte</p>
+                <p><strong>Aufgabe 5 (Beschreibungen):</strong> _____ / 15 Punkte</p>
+                <p><strong>Aufgabe 6 (Neue Sätze):</strong> _____ / 10 Punkte</p>
+                <p><strong>Bonus-Aufgabe:</strong> _____ / 10 Punkte</p>
+                <hr style="border: 2px solid #e91e63; margin: 20px 0;">
+                <p class="huge-text bold"><strong>GESAMT:</strong> _____ / 80 Punkte (+10 Bonus)</p>
+            </div>
+        </div>
+
+        <div class="completion-box">
+            <h2><span class="sparkle">✨🌟</span> PRINZESSINNEN-BEWERTUNG <span class="sparkle">🌟✨</span></h2>
+            <div class="large-text bold">
+                <p><strong>80-90 Punkte:</strong> 👑 DEUTSCHE PRINZESSIN! Du bist eine echte Sprachprinzessin!</p>
+                <p><strong>70-79 Punkte:</strong> 💎 PRINZESSINNEN-SCHÜLERIN! Sehr gut gemacht!</p>
+                <p><strong>60-69 Punkte:</strong> 🌸 DEUTSCH-FEE! Du lernst super!</p>
+                <p><strong>50-59 Punkte:</strong> 🦄 EINHORN-REITERIN! Weiter so!</p>
+                <p><strong>Unter 50 Punkte:</strong> 🌈 REGENBOGEN-PRINZESSIN! Übe weiter, du schaffst das!</p>
+            </div>
+            
+            <div style="margin-top: 30px; padding: 20px; background: linear-gradient(45deg, #fce4ec, #f8bbd9); border-radius: 15px;">
+                <p class="huge-text bold" style="text-align: center; color: #e91e63;">
+                    SUPER GEMACHT, PRINZESSIN LIZI! 👑✨<br>
+                    Du kannst jetzt:<br>
+                    • In 8 Farben denken! 🌈<br>
+                    • Über dein Essen sprechen! 🍎<br>
+                    • Deinen ganzen Tag erzählen! ⏰<br>
+                    • Artikel wie eine Deutsche verwenden! 📚<br>
+                    • Alles schön beschreiben! 💎<br>
+                    • Um Hilfe bitten auf Deutsch! 🙋‍♀️
+                </p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; padding: 20px; background: linear-gradient(45deg, #fff3e0, #fce4ec); border-radius: 15px; border: 3px solid #ff9800;">
+            <p class="large-text bold">
+                🏆 <span style="color: #e91e63;">LIZIS DEUTSCH-ABENTEUER GEHT WEITER!</span> 🏆<br>
+                <span style="color: #9c27b0;">Du bist bereit für noch mehr Prinzessinnen-Deutsch!</span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

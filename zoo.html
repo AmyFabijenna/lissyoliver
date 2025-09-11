@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zootiere lernen mit Oliver und Lizi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap');
+        
+        body {
+            background: linear-gradient(135deg, #D8B2C4, #E6C7D3);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #2C3E50;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            color: #8E4B78;
+            font-weight: bold;
+        }
+        
+        .animals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .animal-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .animal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .animal-emoji {
+            font-size: 60px;
+            margin-bottom: 15px;
+            display: block;
+            animation: bounce 2s infinite;
+        }
+        
+        .animal-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 8px;
+        }
+        
+        .animal-type {
+            font-size: 16px;
+            color: #8E4B78;
+            font-style: italic;
+        }
+        
+        .animal-sound {
+            font-size: 14px;
+            color: #2C3E50;
+            background: rgba(142, 75, 120, 0.1);
+            padding: 5px 10px;
+            border-radius: 10px;
+            margin-top: 8px;
+            display: inline-block;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2C3E50;
+            text-align: center;
+            margin: 40px 0 25px 0;
+            background: rgba(255,255,255,0.3);
+            padding: 15px;
+            border-radius: 15px;
+        }
+        
+        .learning-tip {
+            background: rgba(142, 75, 120, 0.1);
+            border: 3px solid #8E4B78;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .learning-tip h3 {
+            color: #2C3E50;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .learning-tip p {
+            color: #8E4B78;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .click-effect {
+            animation: pulse 0.5s ease;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .fun-fact {
+            background: linear-gradient(45deg, rgba(44, 62, 80, 0.1), rgba(142, 75, 120, 0.1));
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #8E4B78;
+        }
+        
+        .fun-fact h4 {
+            color: #2C3E50;
+            margin: 0 0 5px 0;
+            font-size: 18px;
+        }
+        
+        .fun-fact p {
+            color: #8E4B78;
+            margin: 0;
+            font-size: 16px;
+        }
+        
+        .zoo-map {
+            background: rgba(44, 62, 80, 0.1);
+            border: 2px dashed #8E4B78;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .zoo-map h3 {
+            color: #2C3E50;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .visited-animals {
+            color: #8E4B78;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+        
+        .safari-badge {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #2C3E50;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 10px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">🦁 ZOOTIERE LERNEN 🐘</h1>
+            <p class="subtitle">Ein Safari-Abenteuer für Oliver und Lizi</p>
+        </div>
+        
+        <div class="learning-tip">
+            <h3>🎯 Safari-Mission</h3>
+            <p>Klickt auf die Tiere und macht die Geräusche nach!</p>
+        </div>
+        
+        <div class="section-title">🦁 Große Säugetiere</div>
+        <div class="animals-grid">
+            <div class="animal-card" onclick="speakAnimal('Löwe', 'ROAAAR!')">
+                <span class="animal-emoji">🦁</span>
+                <div class="animal-name">der Löwe</div>
+                <div class="animal-type">Raubtier</div>
+                <div class="animal-sound">macht: ROAAAR!</div>
+            </div>
+            <div class="animal-card" onclick="speakAnimal('Elefant', 'TÖRÖÖÖ!')">
+                <span class="animal-emoji">🐘</span>
+                <div class="animal-name">der Elefant</div>
+                <div class="animal-type">Dickhäuter</div>
+                <div class="animal-sound">macht: TÖRÖÖÖ!</div>
+            </div>
+            <div class="animal-card" onclick="speakAnimal('Giraffe', 'macht fast keine Geräusche')">
+                <span class="animal-emoji">🦒</span>
+                <div class="animal-name">die Giraffe</div>
+                <div class="animal-type">Paarhufer</div>
+                <div class="animal-sound">ist meist leise</div>
+            </div>
+            <div class="animal-card" onclick="speakAnimal('Nashorn', 'SCHNAUF!')">
+                <span class="animal-emoji">🦏</span>
+                <div class="animal-name">das Nashorn</div>
+                <div class="animal-type">Dickhäuter</div>
+                <div class="animal-sound">macht: SCHNAUF!</div>
+            </div>
+            <div class="animal-card" onclick="speakAnimal('Nilpferd', 'GRUNZ!')">
+                <span class="animal-emoji">🦛</span>
+                <div class="animal-name">das Nilpferd</div>
+                <div class="animal-type">Paarhufer</div>
+                <div class="animal-sound">macht: GRUNZ!</div>
+            </div>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>🌟 Wusstet ihr schon?</h4>
+            <p>Ein Elefant kann bis zu 6000 Liter Wasser am Tag trinken!</p>
+        </div>
+        
+        <div class="section-title">🐵 Affen & Bären</div>
+        <div class="animals-grid">
+            <div class="animal-card" onclick="speakAnimal('Affe', 'UH UH AH AH!')">
+                <span class="animal-emoji">🐵</span>
+                <div class="animal-name">der Affe</div>
+                <div class="animal-type">Primat</div>
+                <div class="animal-sound">macht: UH UH AH AH!</div>
+            </div>
+            <div class="animal-card" onclick="speakAnimal('Bär', 'BRUMM!')">
+                <span class="animal-emoji">🐻</span>
+                <div class="animal-name">der Bär</div>
+                <div class="animal-type">Raubtier</div>
+                <div class="animal-sound">macht: BRUMM!</div>
+            </div>
+            <div class="animal-card" onclick="speakAnimal('Panda', 'macht leise Geräusche')">
+                <span class="animal-emoji">🐼</span>
+                <div class="animal-name">der Panda</div>
+                <div class="animal-type">Bär</div>
+                <div class="animal-sound">ist sehr ruhig</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🐯 Raubkatzen</div>
+        <div class="animals-grid">
+            <div class="animal-card" onclick="speakAnimal('Tiger', 'ROAAAR!')">
+                <span class="animal-emoji">🐯</span>
+                <div class="animal-name">der Tiger</div>
+                <div class="animal-type">Raubtier</div>
+                <div class="animal-sound">macht: ROAAAR!</div>
+            </div>
+            <div class="animal-card" onclick="speakAnimal('Leopard', 'FAUCHT!')">
+                <span class="animal-emoji">🐆</span>
+                <div class="animal-name">der Leopard</div>
+                <div class="animal-type">Raubtier</div>
+                <div class="animal-sound">macht: FAUCHT!</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🦓 Huftiere</div>
+        <div class="animals-grid">
+            <div class="animal-card" onclick="speakAnimal('Zebra', 'WIEHERT!')">
+                <span class="animal-emoji">🦓</span>
+                <div class="animal-name">das Zebra</div>
+                <div class="animal-type">Pferdeart</div>
+                <div class="animal-sound">macht: WIEHERT!</div>
+            </div>
+            <div class="animal-card" onclick="speakAnimal('Kamel', 'MÄHT!')">
+                <span class="animal-emoji">🐪</span>
+                <div class="animal-name">das Kamel</div>
+                <div class="animal-type">Paarhufer</div>
+                <div class="animal-sound">macht: MÄHT!</div>
+            </div>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>🦓 Zebra-Geheimnis</h4>
+            <p>Jedes Zebra hat ein einzigartiges Streifenmuster - wie ein Fingerabdruck!</p>
+        </div>
+        
+        <div class="section-title">🐧 Vögel</div>
+        <div class="animals-grid">
+            <div class="animal-card" onclick="speakAnimal('Pinguin', 'QUIETSCHT!')">
+                <span class="animal-emoji">🐧</span>
+                <div class="animal-name">der Pinguin</div>
+                <div class="animal-type">Vogel</div>
+                <div class="animal-sound">macht: QUIETSCHT!</div>
+            </div>
+            <div class="animal-card" onclick="speakAnimal('Flamingo', 'TROMPETET!')">
+                <span class="animal-emoji">🦩</span>
+                <div class="animal-name">der Flamingo</div>
+                <div class="animal-type">Vogel</div>
+                <div class="animal-sound">macht: TROMPETET!</div>
+            </div>
+            <div class="animal-card" onclick="speakAnimal('Papagei', 'KRÄCHZT!')">
+                <span class="animal-emoji">🦜</span>
+                <div class="animal-name">der Papagei</div>
+                <div class="animal-type">Vogel</div>
+                <div class="animal-sound">macht: KRÄCHZT!</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🐊 Reptilien</div>
+        <div class="animals-grid">
+            <div class="animal-card" onclick="speakAnimal('Krokodil', 'SCHNAPPT!')">
+                <span class="animal-emoji">🐊</span>
+                <div class="animal-name">das Krokodil</div>
+                <div class="animal-type">Reptil</div>
+                <div class="animal-sound">macht: SCHNAPPT!</div>
+            </div>
+            <div class="animal-card" onclick="speakAnimal('Schildkröte', 'ist sehr leise')">
+                <span class="animal-emoji">🐢</span>
+                <div class="animal-name">die Schildkröte</div>
+                <div class="animal-type">Reptil</div>
+                <div class="animal-sound">ist sehr leise</div>
+            </div>
+            <div class="animal-card" onclick="speakAnimal('Schlange', 'ZISCHT!')">
+                <span class="animal-emoji">🐍</span>
+                <div class="animal-name">die Schlange</div>
+                <div class="animal-type">Reptil</div>
+                <div class="animal-sound">macht: ZISCHT!</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🦘 Beuteltiere</div>
+        <div class="animals-grid">
+            <div class="animal-card" onclick="speakAnimal('Känguru', 'HÜPFT!')">
+                <span class="animal-emoji">🦘</span>
+                <div class="animal-name">das Känguru</div>
+                <div class="animal-type">Beuteltier</div>
+                <div class="animal-sound">macht: HÜPFT!</div>
+            </div>
+            <div class="animal-card" onclick="speakAnimal('Koala', 'BRUMMT leise!')">
+                <span class="animal-emoji">🐨</span>
+                <div class="animal-name">der Koala</div>
+                <div class="animal-type">Beuteltier</div>
+                <div class="animal-sound">macht: BRUMMT leise!</div>
+            </div>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>🦘 Känguru-Power</h4>
+            <p>Kängurus können bis zu 60 km/h schnell hüpfen!</p>
+        </div>
+        
+        <div class="section-title">🦒 Meerestiere im Zoo</div>
+        <div class="animals-grid">
+            <div class="animal-card" onclick="speakAnimal('Seehund', 'ARK ARK!')">
+                <span class="animal-emoji">🦭</span>
+                <div class="animal-name">der Seehund</div>
+                <div class="animal-type">Meeressäuger</div>
+                <div class="animal-sound">macht: ARK ARK!</div>
+            </div>
+            <div class="animal-card" onclick="speakAnimal('Delfin', 'KLICKT!')">
+                <span class="animal-emoji">🐬</span>
+                <div class="animal-name">der Delfin</div>
+                <div class="animal-type">Meeressäuger</div>
+                <div class="animal-sound">macht: KLICKT!</div>
+            </div>
+        </div>
+        
+        <div class="zoo-map">
+            <h3>🗺️ Eure Zoo-Safari</h3>
+            <div class="visited-animals" id="visitedAnimals">
+                Startet eure Safari und entdeckt alle Tiere!
+            </div>
+        </div>
+        
+        <div class="learning-tip">
+            <h3>🏆 Safari-Belohnung</h3>
+            <p>Wenn ihr alle Tiere besucht habt, bekommt ihr ein Safari-Diplom!</p>
+            <div id="safari-badge" style="display: none;">
+                <div class="safari-badge">🌟 SAFARI-EXPERTE 🌟</div>
+            </div>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>🎨 Bastel-Idee</h4>
+            <p>Malt eure Lieblings-Zootiere und schreibt die deutschen Namen dazu!</p>
+        </div>
+        
+        <div class="learning-tip">
+            <h3>🌟 Fantastisch, Oliver und Lizi!</h3>
+            <p>Ihr seid echte Tier-Experten geworden! 🦁🐘✨</p>
+        </div>
+    </div>
+    
+    <script>
+        let visitedAnimals = [];
+        const totalAnimals = 20; // Anzahl der Tiere
+        
+        function speakAnimal(animalName, animalSound) {
+            // Visual feedback
+            event.target.closest('.animal-card').classList.add('click-effect');
+            setTimeout(() => {
+                event.target.closest('.animal-card').classList.remove('click-effect');
+            }, 500);
+            
+            // Audio feedback (if browser supports it)
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(animalName);
+                utterance.lang = 'de-DE';
+                utterance.rate = 0.8;
+                speechSynthesis.speak(utterance);
+            }
+            
+            // Add to visited animals
+            if (!visitedAnimals.includes(animalName)) {
+                visitedAnimals.push(animalName);
+                updateZooMap();
+                checkSafariComplete();
+            }
+            
+            // Console log for learning reinforcement
+            console.log(`🦁 Entdeckt: ${animalName} - ${animalSound}`);
+        }
+        
+        function updateZooMap() {
+            const mapElement = document.getElementById('visitedAnimals');
+            if (visitedAnimals.length === 0) {
+                mapElement.textContent = 'Startet eure Safari und entdeckt alle Tiere!';
+            } else {
+                mapElement.innerHTML = `🐾 Entdeckte Tiere (${visitedAnimals.length}/${totalAnimals}):<br>` + 
+                                     visitedAnimals.join(' • ');
+            }
+        }
+        
+        function checkSafariComplete() {
+            if (visitedAnimals.length >= totalAnimals) {
+                document.getElementById('safari-badge').style.display = 'block';
+                setTimeout(() => {
+                    alert('🎉 HERZLICHEN GLÜCKWUNSCH! 🎉\n\nIhr habt alle Tiere entdeckt!\nIhr seid jetzt echte Safari-Experten! 🦁🐘🌟');
+                }, 500);
+            }
+        }
+        
+        // Add some interactive sparkles
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.animal-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 50);
+            });
+        });
+        
+        // Add some fun interactions
+        let roarCount = 0;
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.animal-card')) {
+                roarCount++;
+                if (roarCount === 5) {
+                    setTimeout(() => {
+                        alert('🦁 ROAAAR! Ihr macht das super! 🌟');
+                        roarCount = 0;
+                    }, 100);
+                }
+            }
+        });
+        
+        // Safari progress tracker
+        setInterval(() => {
+            if (visitedAnimals.length > 0 && visitedAnimals.length < totalAnimals) {
+                if (visitedAnimals.length === Math.floor(totalAnimals / 2)) {
+                    console.log('🎯 Halbzeit eurer Safari-Reise!');
+                }
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

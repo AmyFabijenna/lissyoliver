@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deutsche Lektion 12</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #c0392b;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        h3 {
+            color: #8e44ad;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .section {
+            background-color: #f8f9fa;
+            border: 2px solid #dee2e6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .furniture-section {
+            background: linear-gradient(45deg, #fff8e1, #f3e5f5, #e8f5e8, #e3f2fd);
+            border: 3px solid #666;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .objects-section {
+            background: linear-gradient(45deg, #ffe0e6, #fff0e6, #e6f3ff, #e6ffe6);
+            border: 3px solid #666;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .vocabulary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .vocabulary-table th,
+        .vocabulary-table td {
+            border: 2px solid #333;
+            padding: 12px;
+            text-align: left;
+            font-size: 16px;
+        }
+        
+        .vocabulary-table th {
+            background-color: #34495e;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .vocabulary-table tr:nth-child(even) {
+            background-color: #ecf0f1;
+        }
+        
+        .item-symbol {
+            font-size: 32px;
+            text-align: center;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        
+        .example-box {
+            background-color: #e8f5e8;
+            border: 2px solid #27ae60;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .exercise-box {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .game-box {
+            background-color: #d4edda;
+            border: 3px solid #28a745;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .story-box {
+            background-color: #f0e6ff;
+            border: 2px solid #9c27b0;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .homework-box {
+            background-color: #f8d7da;
+            border: 2px solid #dc3545;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .room-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .room-card {
+            border: 2px solid #666;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fafafa;
+            text-align: center;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+        
+        .large-text {
+            font-size: 18px;
+        }
+        
+        .huge-text {
+            font-size: 22px;
+        }
+        
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        
+        .fill-blank {
+            border-bottom: 2px solid #333;
+            min-width: 100px;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        
+        .sentence-builder {
+            border: 3px dashed #666;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .activity-box {
+            background-color: #e3f2fd;
+            border: 3px solid #2196f3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .celebration-box {
+            background: linear-gradient(45deg, #ffd700, #ffeb3b, #4caf50, #2196f3);
+            border: 4px solid #ff6b35;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>DEUTSCHE LEKTION 12: MEIN ZUHAUSE - MÖBEL & ALLTAGSGEGENSTÄNDE</h1>
+    <p class="large-text bold" style="text-align: center;">Für Oliver den Helden 🦸‍♂️ und Lizi die Prinzessin 👑</p>
+    <p class="huge-text bold" style="text-align: center; color: #ff6b35;">🏠 WILLKOMMEN IN UNSEREM DEUTSCHEN ZUHAUSE! 🏠</p>
+
+    <div class="section">
+        <h2>🌟 HEUTE EROBERN WIR UNSER ZUHAUSE!</h2>
+        <p class="large-text">Heute lernen wir alle wichtigen Möbel und Gegenstände, die wir jeden Tag benutzen! Wir können dann unser ganzes Zuhause auf Deutsch beschreiben!</p>
+        <div class="example-box">
+            <p class="bold">Fragen zum Start:</p>
+            <ul>
+                <li>"Wo sitzt du gerne?" → "Hol szeretsz ülni?"</li>
+                <li>"Was siehst du im Wohnzimmer?" → "Mit látsz a nappaliban?"</li>
+                <li>"Womit spielst du?" → "Mivel játszol?"</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="furniture-section">
+        <h2>🪑 MÖBEL-POWER: UNSERE STARKEN HELFER IM HAUS!</h2>
+        
+        <table class="vocabulary-table">
+            <tr>
+                <th>SYMBOL</th>
+                <th>DEUTSCH</th>
+                <th>UNGARISCH</th>
+                <th>ICH-SATZ</th>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🪑</div></td>
+                <td><strong>DER STUHL</strong></td>
+                <td>szék</td>
+                <td>ICH SITZE AUF DEM STUHL</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🛋️</div></td>
+                <td><strong>DAS SOFA</strong></td>
+                <td>kanapé</td>
+                <td>ICH ENTSPANNE AUF DEM SOFA</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🛏️</div></td>
+                <td><strong>DAS BETT</strong></td>
+                <td>ágy</td>
+                <td>ICH SCHLAFE IM BETT</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🪞</div></td>
+                <td><strong>DER TISCH</strong></td>
+                <td>asztal</td>
+                <td>ICH ESSE AM TISCH</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">📺</div></td>
+                <td><strong>DER FERNSEHER</strong></td>
+                <td>televízió</td>
+                <td>ICH SCHAUE FERNSEHER</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🚪</div></td>
+                <td><strong>DIE TÜR</strong></td>
+                <td>ajtó</td>
+                <td>ICH ÖFFNE DIE TÜR</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🪟</div></td>
+                <td><strong>DAS FENSTER</strong></td>
+                <td>ablak</td>
+                <td>ICH SCHAUE AUS DEM FENSTER</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🕯️</div></td>
+                <td><strong>DIE LAMPE</strong></td>
+                <td>lámpa</td>
+                <td>ICH SCHALTE DIE LAMPE AN</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">📚</div></td>
+                <td><strong>DAS REGAL</strong></td>
+                <td>polc</td>
+                <td>ICH STELLE BÜCHER INS REGAL</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🗄️</div></td>
+                <td><strong>DER SCHRANK</strong></td>
+                <td>szekrény</td>
+                <td>ICH ÖFFNE DEN SCHRANK</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="objects-section">
+        <h2>🎯 ALLTAGSGEGENSTÄNDE: MEINE WICHTIGEN HELFER!</h2>
+        
+        <table class="vocabulary-table">
+            <tr>
+                <th>SYMBOL</th>
+                <th>DEUTSCH</th>
+                <th>UNGARISCH</th>
+                <th>ICH-SATZ</th>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">📖</div></td>
+                <td><strong>DAS BUCH</strong></td>
+                <td>könyv</td>
+                <td>ICH LESE EIN BUCH</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">✏️</div></td>
+                <td><strong>DER STIFT</strong></td>
+                <td>toll</td>
+                <td>ICH SCHREIBE MIT DEM STIFT</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🧸</div></td>
+                <td><strong>DAS SPIELZEUG</strong></td>
+                <td>játék</td>
+                <td>ICH SPIELE MIT DEM SPIELZEUG</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🎒</div></td>
+                <td><strong>DIE TASCHE</strong></td>
+                <td>táska</td>
+                <td>ICH PACKE DIE TASCHE</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🥤</div></td>
+                <td><strong>DAS GLAS</strong></td>
+                <td>pohár</td>
+                <td>ICH TRINKE AUS DEM GLAS</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🍽️</div></td>
+                <td><strong>DER TELLER</strong></td>
+                <td>tányér</td>
+                <td>ICH ESSE VOM TELLER</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🥄</div></td>
+                <td><strong>DER LÖFFEL</strong></td>
+                <td>kanál</td>
+                <td>ICH ESSE MIT DEM LÖFFEL</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🔑</div></td>
+                <td><strong>DER SCHLÜSSEL</strong></td>
+                <td>kulcs</td>
+                <td>ICH SCHLIESSE MIT DEM SCHLÜSSEL AUF</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">📱</div></td>
+                <td><strong>DAS HANDY</strong></td>
+                <td>telefon</td>
+                <td>ICH TELEFONIERE MIT DEM HANDY</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">⏰</div></td>
+                <td><strong>DIE UHR</strong></td>
+                <td>óra</td>
+                <td>ICH SCHAUE AUF DIE UHR</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="story-box">
+        <h2>📖 ABENTEUER-GESCHICHTE: OLIVER UND LIZI ERKUNDEN IHR ZUHAUSE</h2>
+        
+        <div class="sentence-builder">
+            <h3>🦸‍♂️ Olivers Zuhause-Tour:</h3>
+            <p class="large-text">
+                <strong>ICH WACHE IM BETT AUF</strong> und bin bereit für den Tag!<br>
+                <strong>ICH SITZE AM TISCH</strong> und frühstücke mit der Familie!<br>
+                <strong>ICH LESE EIN BUCH AUF DEM SOFA</strong> - es ist sehr spannend!<br>
+                <strong>ICH SCHAUE AUS DEM FENSTER</strong> und sehe die Sonne!<br>
+                <strong>ICH SPIELE MIT MEINEM SPIELZEUG</strong> auf dem Boden!<br>
+                <strong>ICH SCHALTE DIE LAMPE AN</strong>, weil es dunkel wird!<br>
+                <strong>MEIN ZUHAUSE IST GEMÜTLICH</strong>! 🏠
+            </p>
+        </div>
+
+        <div class="sentence-builder">
+            <h3>👑 Lizis Zuhause-Abenteuer:</h3>
+            <p class="large-text">
+                <strong>ICH STEHE VOR DEM SPIEGEL</strong> und kämme mein Haar!<br>
+                <strong>ICH ESSE VOM TELLER</strong> mein leckeres Frühstück!<br>
+                <strong>ICH ENTSPANNE AUF DEM SOFA</strong> wie eine echte Prinzessin!<br>
+                <strong>ICH STELLE MEINE BÜCHER INS REGAL</strong> - sehr ordentlich!<br>
+                <strong>ICH ÖFFNE DEN SCHRANK</strong> und wähle mein Kleid!<br>
+                <strong>ICH SCHAUE AUF DIE UHR</strong> - es ist Zeit zu spielen!<br>
+                <strong>ICH LIEBE MEIN ZUHAUSE</strong>! ✨
+            </p>
+        </div>
+    </div>
+
+    <div class="activity-box">
+        <h2>🏠 ZIMMER-ENTDECKUNG: WO IST WAS?</h2>
+        
+        <div class="room-grid">
+            <div class="room-card">
+                <h3>🛏️ SCHLAFZIMMER</h3>
+                <ul style="text-align: left;">
+                    <li><strong>DAS BETT</strong> steht in der Ecke</li>
+                    <li><strong>DER SCHRANK</strong> ist groß und braun</li>
+                    <li><strong>DIE LAMPE</strong> leuchtet hell</li>
+                    <li><strong>DAS FENSTER</strong> zeigt in den Garten</li>
+                </ul>
+            </div>
+            
+            <div class="room-card">
+                <h3>🛋️ WOHNZIMMER</h3>
+                <ul style="text-align: left;">
+                    <li><strong>DAS SOFA</strong> ist sehr bequem</li>
+                    <li><strong>DER FERNSEHER</strong> ist groß</li>
+                    <li><strong>DAS REGAL</strong> hat viele Bücher</li>
+                    <li><strong>DER TISCH</strong> steht in der Mitte</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="example-box">
+            <h3>🌟 WICHTIGE PRÄPOSITIONEN (KLEINE WÖRTER):</h3>
+            <ul class="large-text">
+                <li><strong>AUF</strong> dem Sofa = a kanapén</li>
+                <li><strong>AM</strong> Tisch = az asztalnál</li>
+                <li><strong>IM</strong> Bett = az ágyban</li>
+                <li><strong>INS</strong> Regal = a polcba</li>
+                <li><strong>AUS</strong> dem Fenster = az ablakból</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="game-box">
+        <h2>🎲 SPIEL 1: MÖBEL-VERSTECKEN</h2>
+        
+        <h3>🔍 So geht's:</h3>
+        <ol class="large-text">
+            <li><strong>Einer versteckt sich</strong> hinter einem Möbelstück</li>
+            <li><strong>Die anderen raten:</strong> "Bist du hinter dem Sofa?"</li>
+            <li><strong>Antwort:</strong> "Ja, ich bin hinter dem Sofa!" oder "Nein!"</li>
+        </ol>
+        
+        <div class="example-box">
+            <h3>Versteck-Sätze:</h3>
+            <ul>
+                <li>🪑 <strong>"ICH VERSTECKE MICH HINTER DEM STUHL!"</strong></li>
+                <li>🛋️ <strong>"ICH BIN UNTER DEM SOFA!"</strong></li>
+                <li>🗄️ <strong>"ICH STEHE NEBEN DEM SCHRANK!"</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="game-box">
+        <h2>🎨 SPIEL 2: GEGENSTÄNDE-MEMORY</h2>
+        
+        <div class="activity-box">
+            <h3>🧠 Gedächtnis-Training:</h3>
+            <ol>
+                <li>🔍 <strong>Schaut euch 1 Minute lang einen Raum an</strong></li>
+                <li>👀 <strong>Schließt die Augen</strong></li>
+                <li>🗣️ <strong>Nennt alle Gegenstände, die ihr gesehen habt!</strong></li>
+                <li>✅ <strong>Kontrolliert zusammen!</strong></li>
+            </ol>
+        </div>
+        
+        <div class="example-box">
+            <p class="bold large-text">🏆 Wer die meisten Gegenstände richtig nennt, gewinnt!</p>
+            <p>Beispiel: "Ich sehe einen Stuhl, ein Buch, eine Lampe und einen Teller!"</p>
+        </div>
+    </div>
+
+    <div class="exercise-box">
+        <h2>🏃‍♂️ ÜBUNG 1: WAS MACHE ICH WO?</h2>
+        <p><strong>Aufgabe:</strong> Verbindet die Aktivitäten mit den richtigen Möbeln!</p>
+        
+        <div class="sentence-builder">
+            <ul class="large-text">
+                <li>ICH SCHLAFE <span class="fill-blank"></span>. (im Bett)</li>
+                <li>ICH ESSE <span class="fill-blank"></span>. (am Tisch)</li>
+                <li>ICH ENTSPANNE <span class="fill-blank"></span>. (auf dem Sofa)</li>
+                <li>ICH LESE <span class="fill-blank"></span>. (auf dem Stuhl)</li>
+                <li>ICH SCHAUE <span class="fill-blank"></span>. (aus dem Fenster)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="exercise-box">
+        <h2>🎯 ÜBUNG 2: MEIN LIEBLINGS-GEGENSTAND</h2>
+        
+        <div class="sentence-builder">
+            <h3>🌟 Erzählt von eurem Lieblings-Gegenstand:</h3>
+            <ol class="large-text">
+                <li>MEIN LIEBLINGS-GEGENSTAND IST <span class="fill-blank"></span>.</li>
+                <li>ER/ES IST <span class="fill-blank"></span>. (Farbe)</li>
+                <li>ICH BENUTZE IHN/ES, UM <span class="fill-blank"></span>.</li>
+                <li>ER/ES STEHT/LIEGT <span class="fill-blank"></span>.</li>
+                <li>ICH FINDE IHN/ES <span class="fill-blank"></span>. (toll/schön/praktisch)</li>
+            </ol>
+        </div>
+        
+        <div class="example-box">
+            <h3>Beispiel von Lizi:</h3>
+            <p><strong>"MEIN LIEBLINGSBUCH IST ROSA. ICH LESE ES AUF DEM SOFA. ES LIEGT IMMER NEBEN MEINEM BETT. ICH FINDE ES SEHR SCHÖN!"</strong></p>
+        </div>
+    </div>
+
+    <div class="exercise-box">
+        <h2>🗣️ ÜBUNG 3: ZUHAUSE-FÜHRUNG</h2>
+        
+        <div class="activity-box">
+            <h3>🏠 Macht eine Tour durch euer Zuhause:</h3>
+            <ol class="large-text">
+                <li><strong>Geht von Zimmer zu Zimmer</strong></li>
+                <li><strong>Nennt alle Möbel und Gegenstände</strong></li>
+                <li><strong>Sagt, was ihr dort macht</strong></li>
+                <li><strong>Beschreibt die Farben</strong></li>
+            </ol>
+        </div>
+        
+        <div class="example-box">
+            <h3>🌟 Tour-Sätze:</h3>
+            <ul>
+                <li>"HIER IST MEIN SCHLAFZIMMER. ICH SCHLAFE IM BETT."</li>
+                <li>"DAS IST UNSER WOHNZIMMER. WIR SCHAUEN ZUSAMMEN FERNSEHER."</li>
+                <li>"HIER ESSEN WIR. DER TISCH IST BRAUN UND GROß."</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="celebration-box">
+        <h2>🎉 GROßE CHALLENGE: MEIN DEUTSCH-ZUHAUSE! 🎉</h2>
+        
+        <div class="sentence-builder">
+            <h3>🏠 ZEIGT EURE ZUHAUSE-EXPERTISE:</h3>
+            <ol class="huge-text bold">
+                <li>BESCHREIBT EUER LIEBLINGSZIMMER KOMPLETT! 🛏️</li>
+                <li>ERZÄHLT EINEN GANZEN TAG ZU HAUSE! ⏰</li>
+                <li>SPIELT "ZUHAUSE" AUF DEUTSCH! 🎭</li>
+                <li>ERFINDET EINE MÖBEL-GESCHICHTE! 📖</li>
+            </ol>
+        </div>
+        
+        <div class="example-box">
+            <p class="huge-text bold" style="text-align: center; color: #ff6b35;">
+                IHR KENNT JETZT EUER GANZES ZUHAUSE AUF DEUTSCH! 🏆
+            </p>
+        </div>
+    </div>
+
+    <div class="homework-box">
+        <h2>🏠 HAUSAUFGABE: DIE GROßE ZUHAUSE-MISSION!</h2>
+        
+        <h3>🔍 Mission 1: Zuhause-Detektiv</h3>
+        <ul>
+            <li><strong>Macht eine Liste:</strong> Schreibt alle Möbel und Gegenstände auf, die ihr findet!</li>
+            <li><strong>Zählt sie:</strong> Wie viele Stühle, Tische, Lampen habt ihr?</li>
+            <li><strong>Beschreibt sie:</strong> Welche Farbe haben sie? Wo stehen sie?</li>
+        </ul>
+
+        <h3>🎨 Mission 2: Mein Traumzimmer</h3>
+        <ul>
+            <li>Malt euer Traumzimmer und beschriftet alles auf Deutsch</li>
+            <li>Erzählt, was ihr in diesem Zimmer machen würdet</li>
+            <li>Welche Farben würdet ihr wählen?</li>
+        </ul>
+
+        <h3>👨‍👩‍👧‍👦 Mission 3: Familie-Interview</h3>
+        <ul>
+            <li>Fragt eure Familie: "Was ist euer Lieblings-Möbelstück?"</li>
+            <li>Bringt ihnen die deutschen Wörter bei</li>
+            <li>Spielt zusammen das Versteck-Spiel auf Deutsch</li>
+        </ul>
+
+        <h3>📚 Mission 4: Meine Zuhause-Geschichte</h3>
+        <ul>
+            <li>Schreibt eine kleine Geschichte über einen Tag zu Hause</li>
+            <li>Benutzt mindestens 10 neue deutsche Wörter</li>
+            <li>Lest die Geschichte eurer Familie vor</li>
+        </ul>
+
+        <div class="example-box">
+            <h3>🌟 BONUS-Challenge:</h3>
+            <p class="bold large-text">Klebt deutsche Zettel an alle Möbel und Gegenstände in eurem Zuhause - so wird euer ganzes Haus zu einer deutschen Lernwelt! 🏷️</p>
+        </div>
+    </div>
+
+    <div class="celebration-box">
+        <h2>🏆 SUPER! WIEDER EINE NEUE DEUTSCHE WELT EROBERT!</h2>
+        
+        <div class="example-box">
+            <p class="huge-text bold" style="text-align: center; color: #2c3e50;">
+                🏠 JETZT KENNT IHR EUER ZUHAUSE AUF DEUTSCH! 🏠
+            </p>
+            <p class="large-text" style="text-align: center; color: #c0392b;">
+                Oliver der mutige Held und Lizi die kluge Prinzessin<br>
+                können jetzt über ihr ganzes Zuhause sprechen! 🌟
+            </p>
+            <p class="huge-text bold" style="text-align: center; color: #27ae60;">
+                BIS ZUM NÄCHSTEN ABENTEUER! 🚀✨
+            </p>
+        </div>
+    </div>
+</body>
+</html>

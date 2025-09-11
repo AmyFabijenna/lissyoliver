@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lizis Bild-Deutsch-Prüfung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.4;
+            color: #000;
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0, #fd79a8, #e17055);
+            min-height: 100vh;
+            margin: 0;
+            padding: 15px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #e91e63;
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border: 4px solid #e91e63;
+            padding: 20px;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #fce4ec, #f8bbd9);
+        }
+        
+        .instruction {
+            background-color: #fff3cd;
+            border: 3px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        .task-section {
+            background: linear-gradient(45deg, #fce4ec, #f3e5f5, #e1f5fe);
+            border: 4px solid #e91e63;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.2);
+        }
+        
+        h2 {
+            color: #e91e63;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .emoji-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+            gap: 15px;
+        }
+        
+        .emoji-item {
+            text-align: center;
+            background-color: white;
+            border: 3px solid #e91e63;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 10px;
+            min-width: 120px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .emoji {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .word-to-copy {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2196f3;
+            margin-bottom: 8px;
+            border: 2px dashed #2196f3;
+            padding: 5px;
+            border-radius: 8px;
+            background-color: #e3f2fd;
+        }
+        
+        .write-line {
+            border-bottom: 3px solid #e91e63;
+            min-width: 150px;
+            height: 30px;
+            display: inline-block;
+            margin: 5px;
+            background-color: rgba(233, 30, 99, 0.05);
+        }
+        
+        .big-emoji {
+            font-size: 64px;
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .copy-section {
+            background-color: #e3f2fd;
+            border: 3px solid #2196f3;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+        
+        .write-section {
+            background-color: #fff3e0;
+            border: 3px solid #ff9800;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+        
+        .points-box {
+            background: linear-gradient(45deg, #ffeb3b, #ffc107);
+            border: 3px solid #ff9800;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .body-part {
+            width: 100px;
+            height: 100px;
+            border: 3px solid #9c27b0;
+            border-radius: 15px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .simple-drawing {
+            font-size: 40px;
+            color: #9c27b0;
+        }
+        
+        .sequence-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .sequence-item {
+            background-color: white;
+            border: 3px solid #4caf50;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            min-width: 100px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .number-circle {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e91e63;
+            border-radius: 50%;
+            background-color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        
+        .completion-box {
+            background: linear-gradient(45deg, #c8e6c9, #a5d6a7);
+            border: 4px solid #4caf50;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👑 LIZI HERCEGNŐ NÉMET VIZSGÁJA 👑</h1>
+        
+        <div class="instruction">
+            <strong>ÚTMUTATÓ:</strong> Írd le a német szavakat a képek alá! Először másold le, aztán próbáld meg egyedül!
+        </div>
+
+        <div class="task-section">
+            <h2>🌈 1. FELADAT: SZÍNEK - FARBEN</h2>
+            <div class="instruction">Másold le a színek nevét! (10 pont)</div>
+            
+            <div class="copy-section">
+                <h3 style="color: #2196f3;">📝 MÁSOLÁS:</h3>
+                <div class="emoji-row">
+                    <div class="emoji-item">
+                        <div class="emoji">❤️</div>
+                        <div class="word-to-copy">ROT</div>
+                        <div class="write-line"></div>
+                    </div>
+                    <div class="emoji-item">
+                        <div class="emoji">💙</div>
+                        <div class="word-to-copy">BLAU</div>
+                        <div class="write-line"></div>
+                    </div>
+                    <div class="emoji-item">
+                        <div class="emoji">💛</div>
+                        <div class="word-to-copy">GELB</div>
+                        <div class="write-line"></div>
+                    </div>
+                    <div class="emoji-item">
+                        <div class="emoji">💚</div>
+                        <div class="word-to-copy">GRÜN</div>
+                        <div class="write-line"></div>
+                    </div>
+                    <div class="emoji-item">
+                        <div class="emoji">🩷</div>
+                        <div class="word-to-copy">ROSA</div>
+                        <div class="write-line"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="points-box">
+                ⭐ Minden helyes szóért: 2 pont!
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>🍎 2. FELADAT: ÉTELEK - ESSEN</h2>
+            <div class="instruction">Először másold, aztán írd egyedül! (15 pont)</div>
+            
+            <div class="copy-section">
+                <h3 style="color: #2196f3;">📝 MÁSOLÁS:</h3>
+                <div class="emoji-row">
+                    <div class="emoji-item">
+                        <div class="emoji">🍎</div>
+                        <div class="word-to-copy">APFEL</div>
+                        <div class="write-line"></div>
+                    </div>
+                    <div class="emoji-item">
+                        <div class="emoji">🍕</div>
+                        <div class="word-to-copy">PIZZA</div>
+                        <div class="write-line"></div>
+                    </div>
+                    <div class="emoji-item">
+                        <div class="emoji">🥛</div>
+                        <div class="word-to-copy">MILCH</div>
+                        <div class="write-line"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="write-section">
+                <h3 style="color: #ff9800;">✏️ EGYEDÜL ÍRÁS:</h3>
+                <div class="emoji-row">
+                    <div class="emoji-item">
+                        <div class="emoji">🍫</div>
+                        <div class="write-line"></div>
+                    </div>
+                    <div class="emoji-item">
+                        <div class="emoji">🍪</div>
+                        <div class="write-line"></div>
+                    </div>
+                </div>
+                <div style="margin-top: 15px; text-align: center; font-size: 16px; color: #666;">
+                    <strong>Segítség:</strong> SCHOKOLADE • KEKSE
+                </div>
+            </div>
+            
+            <div class="points-box">
+                ⭐ Másolásért: 3x2 pont | Egyedül írásért: 3x3 pont!
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>👗 3. FELADAT: RUHÁK - KLEIDUNG</h2>
+            <div class="instruction">Írd a számokat 1, 2, 3, 4 a képek mellé! (12 pont)</div>
+            
+            <div class="sequence-box">
+                <div class="sequence-item">
+                    <div class="emoji">👕</div>
+                    <div>T-SHIRT</div>
+                    <div class="number-circle"></div>
+                </div>
+                <div class="sequence-item">
+                    <div class="emoji">👗</div>
+                    <div>KLEID</div>
+                    <div class="number-circle"></div>
+                </div>
+                <div class="sequence-item">
+                    <div class="emoji">👠</div>
+                    <div>SCHUHE</div>
+                    <div class="number-circle"></div>
+                </div>
+                <div class="sequence-item">
+                    <div class="emoji">👑</div>
+                    <div>KRONE</div>
+                    <div class="number-circle"></div>
+                </div>
+            </div>
+            
+            <div class="instruction">
+                <strong>Sorrend:</strong> Mit vesz fel először egy hercegnő? 1=első, 4=utolsó
+            </div>
+            
+            <div class="points-box">
+                ⭐ Helyes sorrendért: 12 pont!
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>👤 4. FELADAT: TESTRÉSZEK - KÖRPERTEILE</h2>
+            <div class="instruction">Másold le a testrészek nevét! (18 pont)</div>
+            
+            <div class="copy-section">
+                <div class="emoji-row">
+                    <div class="emoji-item">
+                        <div class="body-part">
+                            <div class="simple-drawing">👁️</div>
+                        </div>
+                        <div class="word-to-copy">AUGE</div>
+                        <div class="write-line"></div>
+                    </div>
+                    <div class="emoji-item">
+                        <div class="body-part">
+                            <div class="simple-drawing">👃</div>
+                        </div>
+                        <div class="word-to-copy">NASE</div>
+                        <div class="write-line"></div>
+                    </div>
+                    <div class="emoji-item">
+                        <div class="body-part">
+                            <div class="simple-drawing">👄</div>
+                        </div>
+                        <div class="word-to-copy">MUND</div>
+                        <div class="write-line"></div>
+                    </div>
+                </div>
+                <div class="emoji-row">
+                    <div class="emoji-item">
+                        <div class="body-part">
+                            <div class="simple-drawing">✋</div>
+                        </div>
+                        <div class="word-to-copy">HAND</div>
+                        <div class="write-line"></div>
+                    </div>
+                    <div class="emoji-item">
+                        <div class="body-part">
+                            <div class="simple-drawing">🦵</div>
+                        </div>
+                        <div class="word-to-copy">BEIN</div>
+                        <div class="write-line"></div>
+                    </div>
+                    <div class="emoji-item">
+                        <div class="body-part">
+                            <div class="simple-drawing">🦶</div>
+                        </div>
+                        <div class="word-to-copy">FUSS</div>
+                        <div class="write-line"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="points-box">
+                ⭐ Minden testrészért: 3 pont!
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>🏠 5. FELADAT: OTTHON - ZUHAUSE</h2>
+            <div class="instruction">Kapcsold össze a képet a szóval! Írd a betűt! (15 pont)</div>
+            
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h3 style="color: #e91e63;">KÉPEK:</h3>
+                    <div class="emoji-item">
+                        <div class="emoji">🛏️</div>
+                        <div class="number-circle">1</div>
+                        <div class="write-line" style="min-width: 50px;"></div>
+                    </div>
+                    <div class="emoji-item">
+                        <div class="emoji">🪑</div>
+                        <div class="number-circle">2</div>
+                        <div class="write-line" style="min-width: 50px;"></div>
+                    </div>
+                    <div class="emoji-item">
+                        <div class="emoji">🚪</div>
+                        <div class="number-circle">3</div>
+                        <div class="write-line" style="min-width: 50px;"></div>
+                    </div>
+                    <div class="emoji-item">
+                        <div class="emoji">🪟</div>
+                        <div class="number-circle">4</div>
+                        <div class="write-line" style="min-width: 50px;"></div>
+                    </div>
+                    <div class="emoji-item">
+                        <div class="emoji">📺</div>
+                        <div class="number-circle">5</div>
+                        <div class="write-line" style="min-width: 50px;"></div>
+                    </div>
+                </div>
+                
+                <div style="flex: 1; min-width: 200px;">
+                    <h3 style="color: #9c27b0;">SZAVAK:</h3>
+                    <div style="font-size: 18px; font-weight: bold; margin: 10px 0;">
+                        <div>A) BETT</div>
+                        <div>B) STUHL</div>
+                        <div>C) TÜR</div>
+                        <div>D) FENSTER</div>
+                        <div>E) FERNSEHER</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="points-box">
+                ⭐ Minden helyes párosításért: 3 pont!
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>🎨 6. FELADAT: SZÉP SZAVAK</h2>
+            <div class="instruction">Írd le, milyen szép! Válassz a dobozból! (10 pont)</div>
+            
+            <div style="text-align: center; background-color: #fff3cd; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                <strong>SZAVAK:</strong> SCHÖN • GROSS • KLEIN • BUNT • SÜSS
+            </div>
+            
+            <div class="emoji-row">
+                <div class="emoji-item">
+                    <div class="emoji">🦄</div>
+                    <div>Das Einhorn ist <div class="write-line"></div></div>
+                </div>
+                <div class="emoji-item">
+                    <div class="emoji">🏰</div>
+                    <div>Das Schloss ist <div class="write-line"></div></div>
+                </div>
+                <div class="emoji-item">
+                    <div class="emoji">🐱</div>
+                    <div>Die Katze ist <div class="write-line"></div></div>
+                </div>
+                <div class="emoji-item">
+                    <div class="emoji">🌈</div>
+                    <div>Der Regenbogen ist <div class="write-line"></div></div>
+                </div>
+                <div class="emoji-item">
+                    <div class="emoji">🐭</div>
+                    <div>Die Maus ist <div class="write-line"></div></div>
+                </div>
+            </div>
+            
+            <div class="points-box">
+                ⭐ Minden helyes leírásért: 2 pont!
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>💎 BÓNUSZ: RAJZOLJ ÉS ÍRJ!</h2>
+            <div class="instruction">Rajzold le magad hercegnőként és írj 3 német szót! (10 bónusz pont)</div>
+            
+            <div style="background-color: white; border: 3px solid #e91e63; border-radius: 15px; padding: 30px; margin: 20px 0; min-height: 200px;">
+                <div style="text-align: center; color: #999; font-size: 18px; margin-bottom: 20px;">
+                    Itt rajzolj! 🎨
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <strong>3 német szó a rajzodról:</strong><br>
+                    1. <div class="write-line" style="min-width: 150px;"></div><br>
+                    2. <div class="write-line" style="min-width: 150px;"></div><br>
+                    3. <div class="write-line" style="min-width: 150px;"></div>
+                </div>
+            </div>
+            
+            <div class="points-box">
+                <span style="font-size: 20px;">✨</span> Kreatív rajzért és szavakért: 10 bónusz pont! <span style="font-size: 20px;">✨</span>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(45deg, #fce4ec, #f8bbd9); border: 4px solid #e91e63; padding: 25px; border-radius: 20px; margin: 30px 0;">
+            <h2 style="text-align: center;"><span style="font-size: 30px;">👑</span> PONTOK <span style="font-size: 30px;">👑</span></h2>
+            <div style="font-size: 18px; font-weight: bold;">
+                <p><strong>1. Színek:</strong> _____ / 10 pont</p>
+                <p><strong>2. Ételek:</strong> _____ / 15 pont</p>
+                <p><strong>3. Ruhák:</strong> _____ / 12 pont</p>
+                <p><strong>4. Testrészek:</strong> _____ / 18 pont</p>
+                <p><strong>5. Otthon:</strong> _____ / 15 pont</p>
+                <p><strong>6. Szép szavak:</strong> _____ / 10 pont</p>
+                <p><strong>Bónusz rajz:</strong> _____ / 10 pont</p>
+                <hr style="border: 3px solid #e91e63; margin: 20px 0;">
+                <p style="font-size: 24px; text-align: center;"><strong>ÖSSZESEN:</strong> _____ / 80 pont (+10 bónusz)</p>
+            </div>
+        </div>
+
+        <div class="completion-box">
+            <h2><span style="font-size: 24px;">✨🌟</span> LIZI HERCEGNŐ EREDMÉNYE <span style="font-size: 24px;">🌟✨</span></h2>
+            <div style="font-size: 18px; font-weight: bold;">
+                <p><strong>80-90 pont:</strong> 👑 NÉMET HERCEGNŐ! Tökéletes!</p>
+                <p><strong>70-79 pont:</strong> 💎 SZUPER TANULÓ! Nagyon jó!</p>
+                <p><strong>60-69 pont:</strong> 🌸 ÜGYES KISLÁNY! Jól csinálod!</p>
+                <p><strong>50-59 pont:</strong> 🦄 EGYSZARVÚ BARÁT! Szép munka!</p>
+                <p><strong>50 pont alatt:</strong> 🌈 SZIVÁRVÁNY HERCEGNŐ! Gyakorolj még!</p>
+            </div>
+            
+            <div style="margin-top: 25px; padding: 20px; background: linear-gradient(45deg, #fce4ec, #f8bbd9); border-radius: 15px;">
+                <p style="font-size: 20px; font-weight: bold; text-align: center; color: #e91e63;">
+                    SZUPER VOLTÁL, LIZI! 👑✨<br>
+                    Most már tudsz:<br>
+                    🌈 Színeket németül!<br>
+                    🍎 Ételeket megnevezni!<br>
+                    👗 Ruhákról beszélni!<br>
+                    👤 Testrészeket!<br>
+                    🏠 Otthoni dolgokat!<br>
+                    🎨 Mindent szépen leírni!
+                </p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; padding: 20px; background: linear-gradient(45deg, #fff3e0, #fce4ec); border-radius: 15px; border: 3px solid #ff9800;">
+            <p style="font-size: 20px; font-weight: bold;">
+                🏆 <span style="color: #e91e63;">LIZI HERCEGNŐ KALANDJA FOLYTATÓDIK!</span> 🏆<br>
+                <span style="color: #9c27b0;">Kész vagy a következő német órára!</span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

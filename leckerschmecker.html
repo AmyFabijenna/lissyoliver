@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deutsche Lektion 8</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #c0392b;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        h3 {
+            color: #8e44ad;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .section {
+            background-color: #f8f9fa;
+            border: 2px solid #dee2e6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .food-section {
+            background: linear-gradient(45deg, #fff8e1, #f1f8e9, #fce4ec, #e8f5e8);
+            border: 3px solid #666;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .vocabulary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .vocabulary-table th,
+        .vocabulary-table td {
+            border: 2px solid #333;
+            padding: 12px;
+            text-align: left;
+            font-size: 16px;
+        }
+        
+        .vocabulary-table th {
+            background-color: #34495e;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .vocabulary-table tr:nth-child(even) {
+            background-color: #ecf0f1;
+        }
+        
+        .food-icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .example-box {
+            background-color: #e8f5e8;
+            border: 2px solid #27ae60;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .exercise-box {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .game-box {
+            background-color: #d4edda;
+            border: 3px solid #28a745;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .story-box {
+            background-color: #f0e6ff;
+            border: 2px solid #9c27b0;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .homework-box {
+            background-color: #f8d7da;
+            border: 2px solid #dc3545;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .character-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .character-card {
+            border: 2px solid #666;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fafafa;
+            text-align: center;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+        
+        .large-text {
+            font-size: 18px;
+        }
+        
+        .huge-text {
+            font-size: 22px;
+        }
+        
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        
+        .fill-blank {
+            border-bottom: 2px solid #333;
+            min-width: 100px;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        
+        .sentence-builder {
+            border: 3px dashed #666;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .restaurant-box {
+            background-color: #fff8e1;
+            border: 2px solid #ff9800;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .meal-box {
+            background-color: #e3f2fd;
+            border: 3px solid #2196f3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .recipe-box {
+            background-color: #fff3e0;
+            border: 2px solid #ff9800;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>DEUTSCHE LEKTION 8: ESSEN & TRINKEN POWER!</h1>
+    <p class="large-text bold" style="text-align: center;">Für Oliver den Helden 🦸‍♂️ und Lizi die Prinzessin 👑</p>
+
+    <div class="section">
+        <h2>🍕 HUNGER-AKTIVIERUNG: WAS ISST DU GERNE?</h2>
+        <p class="large-text">Heute lernen wir alles über Essen und Trinken! Was ist dein Lieblings-Essen?</p>
+        <div class="example-box">
+            <p class="bold">Fragen zum Start:</p>
+            <ul>
+                <li>"Mi a kedvenc ételed?" → "Was ist dein Lieblings-Essen?"</li>
+                <li>"Mit iszol szívesen?" → "Was trinkst du gerne?"</li>
+                <li>"Éhes vagy?" → "Bist du hungrig?"</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="food-section">
+        <h2>🥘 ESSEN-POWER: LECKER SCHMECKER!</h2>
+        
+        <table class="vocabulary-table">
+            <tr>
+                <th>ESSEN</th>
+                <th>DEUTSCH</th>
+                <th>UNGARISCH</th>
+                <th>ICH-SATZ</th>
+            </tr>
+            <tr>
+                <td><span class="food-icon">🍕</span></td>
+                <td><strong>DIE PIZZA</strong></td>
+                <td>pizza</td>
+                <td>ICH ESSE PIZZA</td>
+            </tr>
+            <tr>
+                <td><span class="food-icon">🍎</span></td>
+                <td><strong>DER APFEL</strong></td>
+                <td>alma</td>
+                <td>ICH ESSE EINEN APFEL</td>
+            </tr>
+            <tr>
+                <td><span class="food-icon">🍌</span></td>
+                <td><strong>DIE BANANE</strong></td>
+                <td>banán</td>
+                <td>ICH ESSE EINE BANANE</td>
+            </tr>
+            <tr>
+                <td><span class="food-icon">🍞</span></td>
+                <td><strong>DAS BROT</strong></td>
+                <td>kenyér</td>
+                <td>ICH ESSE BROT</td>
+            </tr>
+            <tr>
+                <td><span class="food-icon">🧀</span></td>
+                <td><strong>DER KÄSE</strong></td>
+                <td>sajt</td>
+                <td>ICH ESSE KÄSE</td>
+            </tr>
+            <tr>
+                <td><span class="food-icon">🥛</span></td>
+                <td><strong>DIE MILCH</strong></td>
+                <td>tej</td>
+                <td>ICH TRINKE MILCH</td>
+            </tr>
+            <tr>
+                <td><span class="food-icon">💧</span></td>
+                <td><strong>DAS WASSER</strong></td>
+                <td>víz</td>
+                <td>ICH TRINKE WASSER</td>
+            </tr>
+            <tr>
+                <td><span class="food-icon">🧃</span></td>
+                <td><strong>DER SAFT</strong></td>
+                <td>gyümölcslé</td>
+                <td>ICH TRINKE SAFT</td>
+            </tr>
+            <tr>
+                <td><span class="food-icon">🍫</span></td>
+                <td><strong>DIE SCHOKOLADE</strong></td>
+                <td>csokoládé</td>
+                <td>ICH ESSE SCHOKOLADE</td>
+            </tr>
+            <tr>
+                <td><span class="food-icon">🍪</span></td>
+                <td><strong>DER KEKS</strong></td>
+                <td>keksz</td>
+                <td>ICH ESSE KEKSE</td>
+            </tr>
+            <tr>
+                <td><span class="food-icon">🥕</span></td>
+                <td><strong>DIE KAROTTE</strong></td>
+                <td>sárgarépa</td>
+                <td>ICH ESSE KAROTTEN</td>
+            </tr>
+            <tr>
+                <td><span class="food-icon">🍝</span></td>
+                <td><strong>DIE NUDELN</strong></td>
+                <td>tészta</td>
+                <td>ICH ESSE NUDELN</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="meal-box">
+        <h2>🍽️ MAHLZEITEN: FRÜHSTÜCK, MITTAG, ABEND!</h2>
+        
+        <div class="character-grid">
+            <div class="character-card">
+                <h3>🌅 FRÜHSTÜCK</h3>
+                <p class="bold">Das Frühstück = reggeli</p>
+                <ul style="text-align: left;">
+                    <li>ICH ESSE BROT MIT KÄSE</li>
+                    <li>ICH TRINKE MILCH</li>
+                    <li>ICH ESSE EINEN APFEL</li>
+                    <li>ICH TRINKE SAFT</li>
+                </ul>
+            </div>
+            
+            <div class="character-card">
+                <h3>🌞 MITTAGESSEN</h3>
+                <p class="bold">Das Mittagessen = ebéd</p>
+                <ul style="text-align: left;">
+                    <li>ICH ESSE NUDELN</li>
+                    <li>ICH ESSE KAROTTEN</li>
+                    <li>ICH TRINKE WASSER</li>
+                    <li>ICH ESSE PIZZA</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="character-grid">
+            <div class="character-card">
+                <h3>🌙 ABENDESSEN</h3>
+                <p class="bold">Das Abendessen = vacsora</p>
+                <ul style="text-align: left;">
+                    <li>ICH ESSE BROT</li>
+                    <li>ICH TRINKE MILCH</li>
+                    <li>ICH ESSE KÄSE</li>
+                    <li>ICH ESSE EINE BANANE</li>
+                </ul>
+            </div>
+            
+            <div class="character-card">
+                <h3>🍯 ZWISCHENMAHLZEIT</h3>
+                <p class="bold">Der Snack = tízórai/uzsonna</p>
+                <ul style="text-align: left;">
+                    <li>ICH ESSE KEKSE</li>
+                    <li>ICH ESSE SCHOKOLADE</li>
+                    <li>ICH TRINKE SAFT</li>
+                    <li>ICH ESSE EINEN APFEL</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="story-box">
+        <h2>📖 HELDEN- UND PRINZESSINNEN-ESSEN</h2>
+        
+        <div class="character-grid">
+            <div class="character-card">
+                <h3>🦸‍♂️ OLIVERS HELDEN-MENÜ</h3>
+                <p class="large-text">
+                    <strong>FRÜHSTÜCK:</strong><br>
+                    ICH ESSE STARKES BROT!<br>
+                    ICH TRINKE HELDEN-MILCH!<br><br>
+                    <strong>MITTAG:</strong><br>
+                    ICH ESSE POWER-NUDELN!<br>
+                    ICH TRINKE ENERGIE-WASSER!<br><br>
+                    <strong>ABEND:</strong><br>
+                    ICH ESSE KÄSE FÜR KRAFT!<br>
+                    ICH TRINKE SCHLAF-MILCH!
+                </p>
+            </div>
+            
+            <div class="character-card">
+                <h3>👑 LIZIS PRINZESSINNEN-MENÜ</h3>
+                <p class="large-text">
+                    <strong>FRÜHSTÜCK:</strong><br>
+                    ICH ESSE ZAUBER-KEKSE!<br>
+                    ICH TRINKE ROSA SAFT!<br><br>
+                    <strong>MITTAG:</strong><br>
+                    ICH ESSE REGENBOGEN-PIZZA!<br>
+                    ICH TRINKE KRISTALL-WASSER!<br><br>
+                    <strong>ABEND:</strong><br>
+                    ICH ESSE MOND-SCHOKOLADE!<br>
+                    ICH TRINKE TRAUM-MILCH!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-box">
+        <h2>🎲 SPIEL 1: ESSEN-THEATER</h2>
+        
+        <h3>🎭 So funktioniert's:</h3>
+        <ol class="large-text">
+            <li><strong>Einer macht vor</strong> - wie man isst oder trinkt!</li>
+            <li><strong>Der andere rät</strong> und sagt den ICH-Satz!</li>
+            <li><strong>Dann wird getauscht!</strong></li>
+        </ol>
+        
+        <div class="example-box">
+            <h3>Beispiele zum Vormachen:</h3>
+            <ul>
+                <li>🍕 Pizza essen zeigen → <strong>"ICH ESSE PIZZA!"</strong></li>
+                <li>🥛 Milch trinken zeigen → <strong>"ICH TRINKE MILCH!"</strong></li>
+                <li>🍎 Apfel essen zeigen → <strong>"ICH ESSE EINEN APFEL!"</strong></li>
+                <li>🧃 Saft trinken zeigen → <strong>"ICH TRINKE SAFT!"</strong></li>
+                <li>🍫 Schokolade essen zeigen → <strong>"ICH ESSE SCHOKOLADE!"</strong></li>
+            </ul>
+        </div>
+        
+        <p class="bold large-text">⭐ BONUS: Wer die meisten Essen-Sätze richtig sagt, gewinnt!</p>
+    </div>
+
+    <div class="game-box">
+        <h2>🍽️ SPIEL 2: RESTAURANT-SPIEL</h2>
+        
+        <div class="restaurant-box">
+            <h3>🏪 Willkommen im Restaurant!</h3>
+            <p class="large-text">Einer ist der Kellner, der andere der Gast!</p>
+            
+            <div class="example-box">
+                <h3>Restaurant-Gespräch:</h3>
+                <ul>
+                    <li><strong>Kellner:</strong> "Was möchten Sie essen?"</li>
+                    <li><strong>Gast:</strong> "ICH MÖCHTE PIZZA!"</li>
+                    <li><strong>Kellner:</strong> "Was möchten Sie trinken?"</li>
+                    <li><strong>Gast:</strong> "ICH MÖCHTE SAFT!"</li>
+                    <li><strong>Kellner:</strong> "Hier ist Ihre Pizza und Ihr Saft!"</li>
+                    <li><strong>Gast:</strong> "Danke! ICH ESSE und ICH TRINKE!"</li>
+                </ul>
+            </div>
+        </div>
+        
+        <p class="bold">🏆 CHALLENGE: Bestellt ein komplettes Menü mit Vorspeise, Hauptgang und Dessert!</p>
+    </div>
+
+    <div class="game-box">
+        <h2>🎵 SPIEL 3: ESSEN-RAP</h2>
+        
+        <div class="sentence-builder">
+            <h3>🎤 Gemeinsam rappen wir unser Essen:</h3>
+            <p class="large-text bold" style="text-align: center;">
+                "ICH ESSE PIZZA - YAY YAY!<br>
+                ICH TRINKE SAFT - OKAY!<br>
+                ICH ESSE KEKSE - HEY HEY!<br>
+                LECKER SCHMECKER - EVERY DAY!"
+            </p>
+        </div>
+        
+        <div class="example-box">
+            <h3>🎶 Macht euren eigenen Essen-Rap:</h3>
+            <ul>
+                <li>Oliver: Helden-Essen-Rap mit Power-Food!</li>
+                <li>Lizi: Prinzessinnen-Essen-Rap mit Zauber-Food!</li>
+                <li>Zusammen: Lieblings-Essen-Rap!</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="exercise-box">
+        <h2>🏃‍♂️ ÜBUNG 1: RICHTIGE ARTIKEL</h2>
+        <p><strong>Aufgabe:</strong> Ergänze die richtigen Artikel!</p>
+        
+        <div class="sentence-builder">
+            <ul>
+                <li>ICH ESSE <span class="fill-blank"></span> PIZZA. (DIE)</li>
+                <li>ICH TRINKE <span class="fill-blank"></span> WASSER. (DAS)</li>
+                <li>ICH ESSE <span class="fill-blank"></span> APFEL. (EINEN)</li>
+                <li>ICH TRINKE <span class="fill-blank"></span> MILCH. (DIE)</li>
+                <li>ICH ESSE <span class="fill-blank"></span> BROT. (DAS)</li>
+            </ul>
+        </div>
+        
+        <div class="example-box">
+            <p><strong>Lösung:</strong></p>
+            <ol>
+                <li>ICH ESSE DIE PIZZA.</li>
+                <li>ICH TRINKE DAS WASSER.</li>
+                <li>ICH ESSE EINEN APFEL.</li>
+                <li>ICH TRINKE DIE MILCH.</li>
+                <li>ICH ESSE DAS BROT.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="exercise-box">
+        <h2>🎯 ÜBUNG 2: MEINE MAHLZEITEN</h2>
+        
+        <div class="sentence-builder">
+            <h3>🌟 Erzählt eure Lieblings-Mahlzeiten:</h3>
+            <ol class="large-text">
+                <li>ZUM FRÜHSTÜCK esse ich <span class="fill-blank"></span>.</li>
+                <li>ZUM FRÜHSTÜCK trinke ich <span class="fill-blank"></span>.</li>
+                <li>ZUM MITTAGESSEN esse ich <span class="fill-blank"></span>.</li>
+                <li>ZUM MITTAGESSEN trinke ich <span class="fill-blank"></span>.</li>
+                <li>ZUM ABENDESSEN esse ich <span class="fill-blank"></span>.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="exercise-box">
+        <h2>🗣️ ÜBUNG 3: HUNGER ODER DURST?</h2>
+        <p><strong>Aufgabe:</strong> Antwortet auf die Fragen!</p>
+        
+        <div class="example-box">
+            <h3>🤔 Wichtige Fragen und Antworten:</h3>
+            <ul>
+                <li><strong>"Bist du hungrig?"</strong> → "JA, ICH BIN HUNGRIG!" / "NEIN, ICH BIN NICHT HUNGRIG!"</li>
+                <li><strong>"Hast du Durst?"</strong> → "JA, ICH HABE DURST!" / "NEIN, ICH HABE KEINEN DURST!"</li>
+                <li><strong>"Was isst du gerne?"</strong> → "ICH ESSE GERNE..."</li>
+                <li><strong>"Was trinkst du gerne?"</strong> → "ICH TRINKE GERNE..."</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="recipe-box">
+        <h2>👨‍🍳 ÜBUNG 4: MEIN LIEBLINGS-REZEPT</h2>
+        
+        <div class="sentence-builder">
+            <h3>🍳 Beschreibt, wie ihr euer Lieblings-Essen macht:</h3>
+            <p class="large-text"><strong>Mein Lieblings-Sandwich:</strong></p>
+            <ol class="large-text">
+                <li>ICH NEHME <span class="fill-blank"></span>. (DAS BROT)</li>
+                <li>ICH LEGE <span class="fill-blank"></span> darauf. (DEN KÄSE)</li>
+                <li>ICH ESSE <span class="fill-blank"></span>. (DAS SANDWICH)</li>
+                <li>ICH TRINKE <span class="fill-blank"></span> dazu. (DIE MILCH)</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="meal-box">
+        <h2>🎉 WOCHENEND-MISSION: ESSEN-CHAMPIONS!</h2>
+        
+        <h3>🏠 Mission 1: Meine Küche erkunden</h3>
+        <ul>
+            <li>Gehe in die Küche und finde 10 Lebensmittel</li>
+            <li>Sage ihre deutschen Namen: "DAS ist BROT, DAS ist KÄSE..."</li>
+            <li>Mache ICH-Sätze: "ICH ESSE BROT, ICH TRINKE MILCH..."</li>
+        </ul>
+
+        <h3>🍽️ Mission 2: Mahlzeiten-Protokoll</h3>
+        <ul>
+            <li>Jeden Tag: Beschreibe alle deine Mahlzeiten auf Deutsch</li>
+            <li><strong>Morgens:</strong> "ICH ESSE... zum Frühstück"</li>
+            <li><strong>Mittags:</strong> "ICH ESSE... zum Mittagessen"</li>
+            <li><strong>Abends:</strong> "ICH ESSE... zum Abendessen"</li>
+        </ul>
+
+        <h3>🎭 Mission 3: Familie-Restaurant</h3>
+        <ul>
+            <li>Spielt Restaurant mit der ganzen Familie</li>
+            <li>Jeder bestellt auf Deutsch: "ICH MÖCHTE..."</li>
+            <li>Der Kellner antwortet: "Hier ist Ihr..."</li>
+        </ul>
+
+        <h3>🛒 Mission 4: Einkaufs-Liste</h3>
+        <ul>
+            <li>Schreibt eine Einkaufs-Liste auf Deutsch</li>
+            <li>Bei jedem Einkauf: Sagt die Lebensmittel auf Deutsch</li>
+            <li>"ICH BRAUCHE BROT, ICH BRAUCHE MILCH..."</li>
+        </ul>
+
+        <h3>🎵 Mission 5: Lieblings-Essen-Lied</h3>
+        <ul>
+            <li>Erfindet ein Lied über euer Lieblings-Essen</li>
+            <li>Singt es jeden Tag beim Essen</li>
+            <li>Bringt das Lied in die nächste Stunde mit!</li>
+        </ul>
+
+        <h3>🌟 BONUS-Challenge:</h3>
+        <p class="bold large-text">Kocht zusammen ein einfaches Gericht und beschreibt jeden Schritt auf Deutsch! 👨‍🍳</p>
+    </div>
+
+    <div class="section">
+        <h2>🏆 HEUTE HABEN WIR EROBERT:</h2>
+        <ul class="large-text">
+            <li>✅ 12 wichtige Lebensmittel gelernt</li>
+            <li>✅ Alle Mahlzeiten auf Deutsch benannt</li>
+            <li>✅ Restaurant-Gespräche geführt</li>
+            <li>✅ ICH-Sätze mit Essen und Trinken gemeistert</li>
+            <li>✅ Artikel bei Lebensmitteln richtig verwendet</li>
+            <li>✅ Hunger und Durst ausgedrückt</li>
+        </ul>
+        
+        <div class="example-box">
+            <p class="bold huge-text" style="text-align: center;">
+                Jetzt könnt ihr über euer Essen auf Deutsch sprechen! 🍽️
+            </p>
+            <p class="large-text" style="text-align: center;">
+                Oliver der starke Held und Lizi die elegante Prinzessin essen wie echte Deutsche! 🇩🇪
+            </p>
+            <p class="bold large-text" style="text-align: center;">
+                Guten Appetit und bis zur nächsten Stunde! 🌟
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine Kleidung - Deutsche Kleidungsstücke</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #FFB6C1 0%, #87CEEB 50%, #98FB98 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 5px solid #FFD700;
+            overflow: visible;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #FF6B6B;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #4ECDC4;
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        
+        .seasons-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .season-section {
+            flex: 1;
+            min-width: 450px;
+            background: #F0F8FF;
+            border-radius: 20px;
+            padding: 30px;
+            border: 4px solid;
+            position: relative;
+            overflow: visible;
+            margin: 0 20px;
+        }
+        
+        .summer-section {
+            border-color: #FFA500;
+            background: linear-gradient(145deg, #FFF8DC, #FFFACD);
+        }
+        
+        .winter-section {
+            border-color: #4169E1;
+            background: linear-gradient(145deg, #E6F3FF, #F0F8FF);
+        }
+        
+        .season-title {
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .summer-title {
+            color: #FF8C00;
+        }
+        
+        .winter-title {
+            color: #4169E1;
+        }
+        
+        .character-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            margin: 0 auto;
+        }
+        
+        .character-svg {
+            width: 250px;
+            height: 100%;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .clothing-label {
+            position: absolute;
+            font-size: 16px;
+            font-weight: bold;
+            color: #2C3E50;
+            background: #FFFFE0;
+            padding: 6px 10px;
+            border-radius: 12px;
+            border: 2px solid;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            white-space: nowrap;
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .summer-label {
+            border-color: #FFA500;
+            background: #FFF8DC;
+        }
+        
+        .winter-label {
+            border-color: #4169E1;
+            background: #E6F3FF;
+        }
+        
+        /* Summer clothing labels - innerhalb der Grenzen */
+        .summer .t-shirt { top: 80px; left: -80px; }
+        .summer .shorts { top: 180px; right: -80px; }
+        .summer .sandals { top: 380px; left: 50%; transform: translateX(-50%); }
+        .summer .cap { top: 10px; left: 50%; transform: translateX(-50%); }
+        
+        /* Winter clothing labels - innerhalb der Grenzen */
+        .winter .jacket { top: 60px; left: -80px; }
+        .winter .scarf { top: 90px; right: -80px; }
+        .winter .hat { top: 10px; left: 50%; transform: translateX(-50%); }
+        .winter .gloves { top: 140px; left: -80px; }
+        .winter .pants { top: 200px; right: -80px; }
+        .winter .boots { top: 380px; left: 50%; transform: translateX(-50%); }
+        .winter .socks { top: 320px; left: -80px; }
+        
+        .weather-icons {
+            position: absolute;
+            font-size: 30px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .summer-icons {
+            color: #FFA500;
+        }
+        
+        .winter-icons {
+            color: #4169E1;
+        }
+        
+        .icon1 { top: 20px; left: 20px; }
+        .icon2 { top: 20px; right: 20px; }
+        .icon3 { bottom: 20px; left: 20px; }
+        .icon4 { bottom: 20px; right: 20px; }
+        
+        @media (max-width: 768px) {
+            .seasons-container {
+                flex-direction: column;
+            }
+            
+            .season-section {
+                min-width: auto;
+            }
+            
+            .clothing-label {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 MEINE KLEIDUNG 🌟</h1>
+        <div class="subtitle">Deutsche Kleidungsstücke für jede Jahreszeit!</div>
+        
+        <div class="seasons-container">
+            <!-- SUMMER SECTION -->
+            <div class="season-section summer-section">
+                <div class="season-title summer-title">☀️ SOMMER ☀️</div>
+                
+                <div class="character-container summer">
+                    <svg class="character-svg" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Girl figure -->
+                        <!-- Head -->
+                        <circle cx="100" cy="40" r="25" fill="#FDBCB4" stroke="#333" stroke-width="2"/>
+                        <!-- Hair (long) -->
+                        <path d="M75 20 Q100 10 125 20 Q130 30 125 40 Q100 45 75 40 Q70 30 75 20" fill="#DEB887"/>
+                        <path d="M75 40 Q85 55 95 50 Q105 55 115 50 Q125 55 125 40" fill="#DEB887"/>
+                        <!-- Eyes -->
+                        <circle cx="92" cy="35" r="2" fill="#000"/>
+                        <circle cx="108" cy="35" r="2" fill="#000"/>
+                        <!-- Nose and mouth -->
+                        <ellipse cx="100" cy="42" rx="1" ry="2" fill="#F4A460"/>
+                        <path d="M96 48 Q100 50 104 48" stroke="#333" stroke-width="1" fill="none"/>
+                        
+                        <!-- Summer Cap -->
+                        <ellipse cx="100" cy="20" rx="30" ry="8" fill="#FF69B4" stroke="#333" stroke-width="1"/>
+                        <ellipse cx="120" cy="20" rx="8" ry="3" fill="#FF69B4"/>
+                        
+                        <!-- Body -->
+                        <rect x="80" y="60" width="40" height="50" fill="#FFB6C1" stroke="#333" stroke-width="2" rx="5"/>
+                        <!-- T-shirt design -->
+                        <circle cx="100" cy="80" r="8" fill="#FF1493"/>
+                        
+                        <!-- Arms -->
+                        <ellipse cx="65" cy="80" rx="6" ry="20" fill="#FDBCB4" stroke="#333" stroke-width="1"/>
+                        <ellipse cx="135" cy="80" rx="6" ry="20" fill="#FDBCB4" stroke="#333" stroke-width="1"/>
+                        
+                        <!-- Shorts -->
+                        <rect x="85" y="110" width="30" height="25" fill="#4169E1" stroke="#333" stroke-width="2" rx="3"/>
+                        
+                        <!-- Legs -->
+                        <ellipse cx="92" cy="160" rx="6" ry="25" fill="#FDBCB4" stroke="#333" stroke-width="1"/>
+                        <ellipse cx="108" cy="160" rx="6" ry="25" fill="#FDBCB4" stroke="#333" stroke-width="1"/>
+                        
+                        <!-- Sandals -->
+                        <ellipse cx="92" cy="190" rx="8" ry="5" fill="#8B4513" stroke="#333" stroke-width="1"/>
+                        <ellipse cx="108" cy="190" rx="8" ry="5" fill="#8B4513" stroke="#333" stroke-width="1"/>
+                        <!-- Sandal straps -->
+                        <line x1="85" y1="190" x2="99" y2="190" stroke="#654321" stroke-width="2"/>
+                        <line x1="101" y1="190" x2="115" y2="190" stroke="#654321" stroke-width="2"/>
+                    </svg>
+                    
+                    <!-- Summer clothing labels -->
+                    <div class="clothing-label summer-label t-shirt">DAS T-SHIRT 👕</div>
+                    <div class="clothing-label summer-label shorts">DIE SHORTS 🩳</div>
+                    <div class="clothing-label summer-label sandals">DIE SANDALEN 👡</div>
+                    <div class="clothing-label summer-label cap">DIE KAPPE 🧢</div>
+                </div>
+                
+                <!-- Summer weather icons -->
+                <div class="weather-icons summer-icons icon1">☀️</div>
+                <div class="weather-icons summer-icons icon2">🌻</div>
+                <div class="weather-icons summer-icons icon3">🦋</div>
+                <div class="weather-icons summer-icons icon4">🌈</div>
+            </div>
+            
+            <!-- WINTER SECTION -->
+            <div class="season-section winter-section">
+                <div class="season-title winter-title">❄️ WINTER ❄️</div>
+                
+                <div class="character-container winter">
+                    <svg class="character-svg" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Boy figure -->
+                        <!-- Head -->
+                        <circle cx="100" cy="45" r="25" fill="#FDBCB4" stroke="#333" stroke-width="2"/>
+                        <!-- Hair (short) -->
+                        <path d="M75 25 Q100 15 125 25 Q130 35 125 40 Q100 35 75 40 Q70 35 75 25" fill="#8B4513"/>
+                        <!-- Eyes -->
+                        <circle cx="92" cy="40" r="2" fill="#000"/>
+                        <circle cx="108" cy="40" r="2" fill="#000"/>
+                        <!-- Nose and mouth -->
+                        <ellipse cx="100" cy="47" rx="1" ry="2" fill="#F4A460"/>
+                        <path d="M96 53 Q100 55 104 53" stroke="#333" stroke-width="1" fill="none"/>
+                        
+                        <!-- Winter Hat -->
+                        <ellipse cx="100" cy="25" rx="28" ry="12" fill="#FF0000" stroke="#333" stroke-width="2"/>
+                        <circle cx="100" cy="15" r="5" fill="#FF0000" stroke="#333" stroke-width="1"/>
+                        
+                        <!-- Scarf -->
+                        <ellipse cx="100" cy="65" rx="35" ry="8" fill="#FFA500" stroke="#333" stroke-width="2"/>
+                        
+                        <!-- Winter Jacket -->
+                        <rect x="70" y="75" width="60" height="60" fill="#006400" stroke="#333" stroke-width="2" rx="8"/>
+                        <!-- Jacket zipper -->
+                        <line x1="100" y1="80" x2="100" y2="130" stroke="#C0C0C0" stroke-width="3"/>
+                        <!-- Pockets -->
+                        <rect x="75" y="110" width="12" height="8" fill="#005500" stroke="#333" stroke-width="1" rx="2"/>
+                        <rect x="113" y="110" width="12" height="8" fill="#005500" stroke="#333" stroke-width="1" rx="2"/>
+                        
+                        <!-- Arms with sleeves -->
+                        <ellipse cx="55" cy="95" rx="8" ry="25" fill="#006400" stroke="#333" stroke-width="1"/>
+                        <ellipse cx="145" cy="95" rx="8" ry="25" fill="#006400" stroke="#333" stroke-width="1"/>
+                        
+                        <!-- Gloves -->
+                        <circle cx="55" cy="120" r="8" fill="#FF0000" stroke="#333" stroke-width="1"/>
+                        <circle cx="145" cy="120" r="8" fill="#FF0000" stroke="#333" stroke-width="1"/>
+                        
+                        <!-- Winter Pants -->
+                        <rect x="80" y="135" width="40" height="50" fill="#000080" stroke="#333" stroke-width="2" rx="5"/>
+                        
+                        <!-- Legs -->
+                        <ellipse cx="90" cy="210" rx="8" ry="25" fill="#000080" stroke="#333" stroke-width="1"/>
+                        <ellipse cx="110" cy="210" rx="8" ry="25" fill="#000080" stroke="#333" stroke-width="1"/>
+                        
+                        <!-- Winter Boots -->
+                        <ellipse cx="90" cy="245" rx="12" ry="8" fill="#8B4513" stroke="#333" stroke-width="2"/>
+                        <ellipse cx="110" cy="245" rx="12" ry="8" fill="#8B4513" stroke="#333" stroke-width="2"/>
+                        <!-- Boot details -->
+                        <rect x="82" y="240" width="16" height="10" fill="#654321" stroke="#333" stroke-width="1" rx="2"/>
+                        <rect x="102" y="240" width="16" height="10" fill="#654321" stroke="#333" stroke-width="1" rx="2"/>
+                        
+                        <!-- Warm socks (visible) -->
+                        <rect x="85" y="230" width="10" height="8" fill="#FF69B4" stroke="#333" stroke-width="1"/>
+                        <rect x="105" y="230" width="10" height="8" fill="#FF69B4" stroke="#333" stroke-width="1"/>
+                    </svg>
+                    
+                    <!-- Winter clothing labels -->
+                    <div class="clothing-label winter-label jacket">DIE JACKE 🧥</div>
+                    <div class="clothing-label winter-label scarf">DER SCHAL 🧣</div>
+                    <div class="clothing-label winter-label hat">DIE MÜTZE 🧢</div>
+                    <div class="clothing-label winter-label gloves">DIE HANDSCHUHE 🧤</div>
+                    <div class="clothing-label winter-label pants">DIE HOSE 👖</div>
+                    <div class="clothing-label winter-label boots">DIE STIEFEL 🥾</div>
+                    <div class="clothing-label winter-label socks">DIE SOCKEN 🧦</div>
+                </div>
+                
+                <!-- Winter weather icons -->
+                <div class="weather-icons winter-icons icon1">❄️</div>
+                <div class="weather-icons winter-icons icon2">⛄</div>
+                <div class="weather-icons winter-icons icon3">🌨️</div>
+                <div class="weather-icons winter-icons icon4">🧊</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

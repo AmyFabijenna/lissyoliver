@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Früchte lernen mit Oliver und Lizi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap');
+        
+        body {
+            background: linear-gradient(135deg, #D8B2C4, #E6C7D3);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #2C3E50;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            color: #8E4B78;
+            font-weight: bold;
+        }
+        
+        .fruits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .fruit-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .fruit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .fruit-emoji {
+            font-size: 60px;
+            margin-bottom: 15px;
+            display: block;
+            animation: bounce 2s infinite;
+        }
+        
+        .fruit-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 8px;
+        }
+        
+        .fruit-type {
+            font-size: 16px;
+            color: #8E4B78;
+            font-style: italic;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2C3E50;
+            text-align: center;
+            margin: 40px 0 25px 0;
+            background: rgba(255,255,255,0.3);
+            padding: 15px;
+            border-radius: 15px;
+        }
+        
+        .learning-tip {
+            background: rgba(142, 75, 120, 0.1);
+            border: 3px solid #8E4B78;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .learning-tip h3 {
+            color: #2C3E50;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .learning-tip p {
+            color: #8E4B78;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .click-effect {
+            animation: pulse 0.5s ease;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">🍎 FRÜCHTE LERNEN 🍓</h1>
+            <p class="subtitle">Ein Lernguide für Oliver und Lizi</p>
+        </div>
+        
+        <div class="learning-tip">
+            <h3>💡 Lerntipp</h3>
+            <p>Klickt auf die Früchte und sprecht die Namen laut aus!</p>
+        </div>
+        
+        <div class="section-title">🍎 Kernobst & Steinobst</div>
+        <div class="fruits-grid">
+            <div class="fruit-card" onclick="speakFruit('Apfel')">
+                <span class="fruit-emoji">🍎</span>
+                <div class="fruit-name">der Apfel</div>
+                <div class="fruit-type">Kernobst</div>
+            </div>
+            <div class="fruit-card" onclick="speakFruit('Birne')">
+                <span class="fruit-emoji">🍐</span>
+                <div class="fruit-name">die Birne</div>
+                <div class="fruit-type">Kernobst</div>
+            </div>
+            <div class="fruit-card" onclick="speakFruit('Pflaume')">
+                <span class="fruit-emoji">🟣</span>
+                <div class="fruit-name">die Pflaume</div>
+                <div class="fruit-type">Steinobst</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🍇 Beerenfrüchte</div>
+        <div class="fruits-grid">
+            <div class="fruit-card" onclick="speakFruit('Traube')">
+                <span class="fruit-emoji">🍇</span>
+                <div class="fruit-name">die Traube</div>
+                <div class="fruit-type">Beere</div>
+            </div>
+            <div class="fruit-card" onclick="speakFruit('Erdbeere')">
+                <span class="fruit-emoji">🍓</span>
+                <div class="fruit-name">die Erdbeere</div>
+                <div class="fruit-type">Sammelnussfrucht</div>
+            </div>
+            <div class="fruit-card" onclick="speakFruit('Heidelbeere')">
+                <span class="fruit-emoji">🫐</span>
+                <div class="fruit-name">die Heidelbeere</div>
+                <div class="fruit-type">Beere</div>
+            </div>
+            <div class="fruit-card" onclick="speakFruit('Himbeere')">
+                <span class="fruit-emoji">🍇</span>
+                <div class="fruit-name">die Himbeere</div>
+                <div class="fruit-type">Sammelsteinfrucht</div>
+            </div>
+            <div class="fruit-card" onclick="speakFruit('Brombeere')">
+                <span class="fruit-emoji">🫐</span>
+                <div class="fruit-name">die Brombeere</div>
+                <div class="fruit-type">Sammelsteinfrucht</div>
+            </div>
+            <div class="fruit-card" onclick="speakFruit('Johannisbeere')">
+                <span class="fruit-emoji">🔴</span>
+                <div class="fruit-name">die Johannisbeere</div>
+                <div class="fruit-type">Beere</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🍊 Zitrusfrüchte</div>
+        <div class="fruits-grid">
+            <div class="fruit-card" onclick="speakFruit('Orange')">
+                <span class="fruit-emoji">🍊</span>
+                <div class="fruit-name">die Orange</div>
+                <div class="fruit-type">Zitrusfrucht</div>
+            </div>
+            <div class="fruit-card" onclick="speakFruit('Zitrone')">
+                <span class="fruit-emoji">🍋</span>
+                <div class="fruit-name">die Zitrone</div>
+                <div class="fruit-type">Zitrusfrucht</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🍉 Melonen</div>
+        <div class="fruits-grid">
+            <div class="fruit-card" onclick="speakFruit('Wassermelone')">
+                <span class="fruit-emoji">🍉</span>
+                <div class="fruit-name">die Wassermelone</div>
+                <div class="fruit-type">Kürbisfrucht</div>
+            </div>
+            <div class="fruit-card" onclick="speakFruit('Honigmelone')">
+                <span class="fruit-emoji">🍈</span>
+                <div class="fruit-name">die Honigmelone</div>
+                <div class="fruit-type">Kürbisfrucht</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🥭 Exotische Früchte</div>
+        <div class="fruits-grid">
+            <div class="fruit-card" onclick="speakFruit('Mango')">
+                <span class="fruit-emoji">🥭</span>
+                <div class="fruit-name">die Mango</div>
+                <div class="fruit-type">Steinfrucht</div>
+            </div>
+            <div class="fruit-card" onclick="speakFruit('Papaya')">
+                <span class="fruit-emoji">🧡</span>
+                <div class="fruit-name">die Papaya</div>
+                <div class="fruit-type">Beerenfrucht</div>
+            </div>
+            <div class="fruit-card" onclick="speakFruit('Banane')">
+                <span class="fruit-emoji">🍌</span>
+                <div class="fruit-name">die Banane</div>
+                <div class="fruit-type">Beere</div>
+            </div>
+            <div class="fruit-card" onclick="speakFruit('Ananas')">
+                <span class="fruit-emoji">🍍</span>
+                <div class="fruit-name">die Ananas</div>
+                <div class="fruit-type">Sammelfrucht</div>
+            </div>
+        </div>
+        
+        <div class="learning-tip">
+            <h3>🌟 Toll gemacht, Oliver und Lizi!</h3>
+            <p>Ihr kennt jetzt viele deutsche Fruchtnamen! 🎉</p>
+        </div>
+    </div>
+    
+    <script>
+        function speakFruit(fruitName) {
+            // Visual feedback
+            event.target.closest('.fruit-card').classList.add('click-effect');
+            setTimeout(() => {
+                event.target.closest('.fruit-card').classList.remove('click-effect');
+            }, 500);
+            
+            // Audio feedback (if browser supports it)
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(fruitName);
+                utterance.lang = 'de-DE';
+                utterance.rate = 0.8;
+                speechSynthesis.speak(utterance);
+            }
+            
+            // Console log for learning reinforcement
+            console.log(`🍎 Gelernt: ${fruitName}`);
+        }
+        
+        // Add some interactive sparkles
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.fruit-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

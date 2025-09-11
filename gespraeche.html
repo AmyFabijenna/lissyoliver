@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deutsche Lektion 13</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #c0392b;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        h3 {
+            color: #8e44ad;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .section {
+            background-color: #f8f9fa;
+            border: 2px solid #dee2e6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .greeting-section {
+            background: linear-gradient(45deg, #fff8e1, #f3e5f5, #e8f5e8, #e3f2fd);
+            border: 3px solid #666;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .conversation-section {
+            background: linear-gradient(45deg, #ffe0e6, #fff0e6, #e6f3ff, #e6ffe6);
+            border: 3px solid #666;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .vocabulary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .vocabulary-table th,
+        .vocabulary-table td {
+            border: 2px solid #333;
+            padding: 12px;
+            text-align: left;
+            font-size: 16px;
+        }
+        
+        .vocabulary-table th {
+            background-color: #34495e;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .vocabulary-table tr:nth-child(even) {
+            background-color: #ecf0f1;
+        }
+        
+        .item-symbol {
+            font-size: 32px;
+            text-align: center;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        
+        .example-box {
+            background-color: #e8f5e8;
+            border: 2px solid #27ae60;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .exercise-box {
+            background-color: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .game-box {
+            background-color: #d4edda;
+            border: 3px solid #28a745;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .story-box {
+            background-color: #f0e6ff;
+            border: 2px solid #9c27b0;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .homework-box {
+            background-color: #f8d7da;
+            border: 2px solid #dc3545;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .dialog-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .dialog-card {
+            border: 2px solid #666;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+        
+        .large-text {
+            font-size: 18px;
+        }
+        
+        .huge-text {
+            font-size: 22px;
+        }
+        
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        
+        .fill-blank {
+            border-bottom: 2px solid #333;
+            min-width: 100px;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        
+        .sentence-builder {
+            border: 3px dashed #666;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .activity-box {
+            background-color: #e3f2fd;
+            border: 3px solid #2196f3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .celebration-box {
+            background: linear-gradient(45deg, #ffd700, #ffeb3b, #4caf50, #2196f3);
+            border: 4px solid #ff6b35;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .person-a {
+            background-color: #e3f2fd;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 15px 15px 5px 15px;
+            border: 2px solid #2196f3;
+        }
+        
+        .person-b {
+            background-color: #f3e5f5;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 15px 15px 15px 5px;
+            border: 2px solid #9c27b0;
+        }
+        
+        .school-box {
+            background: linear-gradient(45deg, #fff3e0, #e8f5e8, #f3e5f5);
+            border: 3px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>DEUTSCHE LEKTION 13: GESPRÄCHE & PHRASEN IN DER WALDORFSCHULE</h1>
+    <p class="large-text bold" style="text-align: center;">Für Oliver den Helden 🦸‍♂️ und Lizi die Prinzessin 👑</p>
+    <p class="huge-text bold" style="text-align: center; color: #ff6b35;">🎭 SPRECHEN & FREUNDE FINDEN IN DER SCHULE! 🎭</p>
+
+    <div class="section">
+        <h2>🌟 HEUTE LERNEN WIR ZU SPRECHEN WIE ECHTE DEUTSCHE KINDER!</h2>
+        <p class="large-text">In der Waldorfschule sprechen wir mit vielen neuen Freunden und Lehrern! Heute lernt ihr alle wichtigen Sätze und Fragen, damit ihr euch toll unterhalten könnt!</p>
+        <div class="example-box">
+            <p class="bold">Unsere Mission heute:</p>
+            <ul>
+                <li>🤝 Neue Freunde kennenlernen</li>
+                <li>🗣️ Höflich mit Lehrern sprechen</li>
+                <li>❓ Die richtigen Fragen stellen</li>
+                <li>🎉 Spaß beim Sprechen haben!</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="greeting-section">
+        <h2>👋 BEGRÜSSUNGEN: SO SAGT MAN HALLO!</h2>
+        
+        <table class="vocabulary-table">
+            <tr>
+                <th>SYMBOL</th>
+                <th>DEUTSCH</th>
+                <th>UNGARISCH</th>
+                <th>WANN SAGEN WIR DAS?</th>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">👋</div></td>
+                <td><strong>HALLO!</strong></td>
+                <td>Szia!</td>
+                <td>IMMER - ZU ALLEN!</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">☀️</div></td>
+                <td><strong>GUTEN MORGEN!</strong></td>
+                <td>Jó reggelt!</td>
+                <td>BIS 11 UHR</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🌞</div></td>
+                <td><strong>GUTEN TAG!</strong></td>
+                <td>Jó napot!</td>
+                <td>AB 11 UHR BIS ABEND</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🙏</div></td>
+                <td><strong>GRÜSS GOTT!</strong></td>
+                <td>Isten hozott!</td>
+                <td>IN ÖSTERREICH - SEHR HÖFLICH</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">👋</div></td>
+                <td><strong>AUF WIEDERSEHEN!</strong></td>
+                <td>Viszlát!</td>
+                <td>HÖFLICHER ABSCHIED</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">😊</div></td>
+                <td><strong>TSCHÜSS!</strong></td>
+                <td>Szia!</td>
+                <td>ZU FREUNDEN</td>
+            </tr>
+            <tr>
+                <td><div class="item-symbol">🌙</div></td>
+                <td><strong>GUTE NACHT!</strong></td>
+                <td>Jó éjszakát!</td>
+                <td>WENN WIR SCHLAFEN GEHEN</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="conversation-section">
+        <h2>🗣️ SICH VORSTELLEN: WER BIN ICH?</h2>
+        
+        <table class="vocabulary-table">
+            <tr>
+                <th>FRAGE</th>
+                <th>ANTWORT</th>
+                <th>UNGARISCH</th>
+            </tr>
+            <tr>
+                <td><strong>WIE HEISST DU?</strong></td>
+                <td><strong>ICH HEISSE OLIVER</strong></td>
+                <td>Hogy hívnak? - Olivernek hívnak</td>
+            </tr>
+            <tr>
+                <td><strong>WIE ALT BIST DU?</strong></td>
+                <td><strong>ICH BIN NEUN JAHRE ALT</strong></td>
+                <td>Hány éves vagy? - Kilenc éves vagyok</td>
+            </tr>
+            <tr>
+                <td><strong>WOHER KOMMST DU?</strong></td>
+                <td><strong>ICH KOMME AUS UNGARN</strong></td>
+                <td>Honnan jössz? - Magyarországról jövök</td>
+            </tr>
+            <tr>
+                <td><strong>WO WOHNST DU?</strong></td>
+                <td><strong>ICH WOHNE IN VILLACH</strong></td>
+                <td>Hol laksz? - Villachban lakom</td>
+            </tr>
+            <tr>
+                <td><strong>SEIT WANN WOHNST DU HIER?</strong></td>
+                <td><strong>SEIT AUGUST</strong></td>
+                <td>Mióta laksz itt? - Augusztus óta</td>
+            </tr>
+            <tr>
+                <td><strong>IN WELCHE KLASSE GEHST DU?</strong></td>
+                <td><strong>ICH GEHE IN DIE DRITTE KLASSE</strong></td>
+                <td>Hányadikba jársz? - Harmadikba járok</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="school-box">
+        <h2>👨‍👩‍👧‍👦 FAMILIE VORSTELLEN: MEINE LIEBEN MENSCHEN</h2>
+        
+        <div class="dialog-grid">
+            <div class="dialog-card">
+                <h3>👦 Oliver stellt vor:</h3>
+                <div class="example-box">
+                    <p><strong>"DAS IST MEINE SCHWESTER LIZI."</strong></p>
+                    <p><strong>"SIE IST SIEBEN JAHRE ALT."</strong></p>
+                    <p><strong>"SIE GEHT IN DIE ERSTE KLASSE."</strong></p>
+                    <p><strong>"SIE IST SEHR KLUG UND NETT."</strong></p>
+                </div>
+            </div>
+            
+            <div class="dialog-card">
+                <h3>👧 Lizi stellt vor:</h3>
+                <div class="example-box">
+                    <p><strong>"DAS IST MEIN BRUDER OLIVER."</strong></p>
+                    <p><strong>"ER IST NEUN JAHRE ALT."</strong></p>
+                    <p><strong>"ER GEHT IN DIE DRITTE KLASSE."</strong></p>
+                    <p><strong>"ER IST SEHR MUTIG UND LUSTIG."</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="example-box">
+            <h3>👨‍👩‍👧‍👦 Mehr Familie-Sätze:</h3>
+            <ul class="large-text">
+                <li><strong>"WIR KOMMEN ALLE AUS UNGARN."</strong></li>
+                <li><strong>"MEINE MAMA HEISST..."</strong></li>
+                <li><strong>"MEIN PAPA ARBEITET ALS..."</strong></li>
+                <li><strong>"WIR SPRECHEN UNGARISCH UND DEUTSCH."</strong></li>
+                <li><strong>"WIR LERNEN GERNE NEUE SACHEN."</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="conversation-section">
+        <h2>💬 ALLTAGS-GESPRÄCHE: WIE GEHT'S DIR?</h2>
+        
+        <div class="sentence-builder">
+            <h3>🤗 Gefühle und Befinden:</h3>
+            <table class="vocabulary-table">
+                <tr>
+                    <th>FRAGE</th>
+                    <th>ANTWORT</th>
+                    <th>BEDEUTUNG</th>
+                </tr>
+                <tr>
+                    <td><strong>WIE GEHT'S DIR?</strong></td>
+                    <td><strong>DANKE, MIR GEHT ES GUT!</strong></td>
+                    <td>zu einer Person</td>
+                </tr>
+                <tr>
+                    <td><strong>WIE GEHT'S EUCH?</strong></td>
+                    <td><strong>UNS GEHT ES SUPER!</strong></td>
+                    <td>zu mehreren Personen</td>
+                </tr>
+                <tr>
+                    <td><strong>WAS MACHST DU?</strong></td>
+                    <td><strong>ICH SPIELE / LERNE / LESE</strong></td>
+                    <td>eine Aktivität</td>
+                </tr>
+                <tr>
+                    <td><strong>WAS MACHT IHR?</strong></td>
+                    <td><strong>WIR SPIELEN ZUSAMMEN!</strong></td>
+                    <td>mehrere machen was</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="activity-box">
+            <h3>😊 Verschiedene Antworten auf "Wie geht's?":</h3>
+            <ul class="large-text">
+                <li>🌟 <strong>"MIR GEHT ES SUPER!"</strong> - amikor nagyon jól érzed magad</li>
+                <li>😊 <strong>"GUT, DANKE!"</strong> - normális jó napod van</li>
+                <li>😐 <strong>"ES GEHT SO."</strong> - nem rossz, de nem is tökéletes</li>
+                <li>🤧 <strong>"ICH BIN EIN BISSCHEN MÜDE."</strong> - fáradt vagy</li>
+                <li>🤒 <strong>"ICH FÜHLE MICH NICHT SO GUT."</strong> - nem érzed jól magad</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="story-box">
+        <h2>🎭 DIALOG-GESCHICHTEN: OLIVER UND LIZI IN DER SCHULE</h2>
+        
+        <div class="sentence-builder">
+            <h3>🦸‍♂️ Oliver trifft einen neuen Freund:</h3>
+            <div class="person-a"><strong>OLIVER:</strong> "Hallo! Ich heisse Oliver. Wie heisst du?"</div>
+            <div class="person-b"><strong>MAX:</strong> "Hi! Ich bin Max. Woher kommst du denn?"</div>
+            <div class="person-a"><strong>OLIVER:</strong> "Ich komme aus Ungarn. Wir wohnen seit August in Villach."</div>
+            <div class="person-b"><strong>MAX:</strong> "Cool! Wie alt bist du?"</div>
+            <div class="person-a"><strong>OLIVER:</strong> "Ich bin neun Jahre alt. In welche Klasse gehst du?"</div>
+            <div class="person-b"><strong>MAX:</strong> "Ich gehe auch in die dritte Klasse! Kommst du mit spielen?"</div>
+            <div class="person-a"><strong>OLIVER:</strong> "Ja, gerne! Was spielen wir denn?"</div>
+        </div>
+
+        <div class="sentence-builder">
+            <h3>👑 Lizi spricht mit ihrer Lehrerin:</h3>
+            <div class="person-a"><strong>LIZI:</strong> "Guten Morgen, Frau Schmidt!"</div>
+            <div class="person-b"><strong>FRAU SCHMIDT:</strong> "Guten Morgen, Lizi! Wie geht's dir heute?"</div>
+            <div class="person-a"><strong>LIZI:</strong> "Danke, mir geht es gut! Ich freue mich auf den Unterricht!"</div>
+            <div class="person-b"><strong>FRAU SCHMIDT:</strong> "Das ist schön! Hast du deine Hausaufgaben dabei?"</div>
+            <div class="person-a"><strong>LIZI:</strong> "Ja! Ich habe alles gemacht. Es war interessant!"</div>
+            <div class="person-b"><strong>FRAU SCHMIDT:</strong> "Wunderbar! Du lernst so fleißig Deutsch!"</div>
+            <div class="person-a"><strong>LIZI:</strong> "Danke! Deutsch macht mir Spaß!"</div>
+        </div>
+    </div>
+
+    <div class="conversation-section">
+        <h2>🤝 EINLADUNGEN & AKTIVITÄTEN: KOMM MIT!</h2>
+        
+        <table class="vocabulary-table">
+            <tr>
+                <th>EINLADUNG</th>
+                <th>JA-ANTWORT</th>
+                <th>NEIN-ANTWORT</th>
+            </tr>
+            <tr>
+                <td><strong>KOMMST DU MIT?</strong></td>
+                <td><strong>JA, GERNE!</strong></td>
+                <td><strong>TUT MIR LEID, ICH KANN NICHT.</strong></td>
+            </tr>
+            <tr>
+                <td><strong>KOMMT IHR MIT?</strong></td>
+                <td><strong>JA, WIR KOMMEN!</strong></td>
+                <td><strong>NEIN, WIR HABEN KEINE ZEIT.</strong></td>
+            </tr>
+            <tr>
+                <td><strong>WILLST DU SPIELEN?</strong></td>
+                <td><strong>JA, WAS SPIELEN WIR?</strong></td>
+                <td><strong>VIELLEICHT SPÄTER!</strong></td>
+            </tr>
+            <tr>
+                <td><strong>HILFST DU MIR?</strong></td>
+                <td><strong>NATÜRLICH!</strong></td>
+                <td><strong>ICH BIN GERADE BESCHÄFTIGT.</strong></td>
+            </tr>
+        </table>
+
+        <div class="example-box">
+            <h3>🎯 Aktivitäts-Einladungen:</h3>
+            <ul class="large-text">
+                <li>🏃‍♂️ <strong>"KOMMST DU MIT NACH DRAUSSEN?"</strong></li>
+                <li>📚 <strong>"WILLST DU ZUSAMMEN LERNEN?"</strong></li>
+                <li>🎨 <strong>"HILFST DU MIR BEIM MALEN?"</strong></li>
+                <li>🍎 <strong>"GEHST DU MIT ZUM PAUSENHOF?"</strong></li>
+                <li>🎭 <strong>"SPIELST DU MIT UNS THEATER?"</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="game-box">
+        <h2>🎲 SPIEL 1: SPEED-INTERVIEWS</h2>
+        
+        <h3>🔄 So geht's:</h3>
+        <ol class="large-text">
+            <li><strong>Stellt euch in zwei Reihen gegenüber auf</strong></li>
+            <li><strong>Jeder hat 2 Minuten für ein Gespräch</strong></li>
+            <li><strong>Fragt: Name, Alter, Woher, Was magst du?</strong></li>
+            <li><strong>Nach 2 Minuten: eine Reihe rückt weiter!</strong></li>
+        </ol>
+        
+        <div class="example-box">
+            <h3>Interview-Fragen:</h3>
+            <ul>
+                <li>❓ <strong>"WIE HEISST DU UND WIE ALT BIST DU?"</strong></li>
+                <li>🌍 <strong>"WOHER KOMMST DU? WO WOHNST DU?"</strong></li>
+                <li>❤️ <strong>"WAS MACHST DU GERNE?"</strong></li>
+                <li>🏫 <strong>"WIE GEFÄLLT DIR UNSERE SCHULE?"</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="game-box">
+        <h2>🎭 SPIEL 2: ROLLEN-THEATER</h2>
+        
+        <div class="activity-box">
+            <h3>🎪 Theater-Szenen:</h3>
+            <ol>
+                <li>🏫 <strong>Erster Schultag - Neue Freunde kennenlernen</strong></li>
+                <li>👩‍🏫 <strong>Gespräch mit der Lehrerin - Höflich und respektvoll</strong></li>
+                <li>🍎 <strong>In der Pause - Einladung zum Spielen</strong></li>
+                <li>📚 <strong>In der Bibliothek - Um Hilfe bitten</strong></li>
+            </ol>
+        </div>
+        
+        <div class="example-box">
+            <p class="bold large-text">🏆 Jede Szene sollte mindestens 5 deutsche Sätze haben!</p>
+        </div>
+    </div>
+
+    <div class="exercise-box">
+        <h2>📝 ÜBUNG 1: LÜCKEN-GESPRÄCHE</h2>
+        <p><strong>Aufgabe:</strong> Füllt die Lücken aus!</p>
+        
+        <div class="sentence-builder">
+            <h3>Gespräch 1:</h3>
+            <p><strong>A:</strong> "Hallo! <span class="fill-blank"></span> heisst du?" (Wie)</p>
+            <p><strong>B:</strong> "Ich <span class="fill-blank"></span> Anna. Und du?" (heisse)</p>
+            <p><strong>A:</strong> "Ich bin Tom. <span class="fill-blank"></span> alt bist du?" (Wie)</p>
+            <p><strong>B:</strong> "Ich bin <span class="fill-blank"></span> Jahre alt." (acht)</p>
+            
+            <h3>Gespräch 2:</h3>
+            <p><strong>A:</strong> "<span class="fill-blank"></span> kommst du?" (Woher)</p>
+            <p><strong>B:</strong> "Ich komme <span class="fill-blank"></span> Italien." (aus)</p>
+            <p><strong>A:</strong> "Cool! <span class="fill-blank"></span> du mit spielen?" (Kommst)</p>
+            <p><strong>B:</strong> "Ja, <span class="fill-blank"></span>!" (gerne)</p>
+        </div>
+    </div>
+
+    <div class="exercise-box">
+        <h2>🗣️ ÜBUNG 2: MEINE VORSTELLUNG</h2>
+        
+        <div class="sentence-builder">
+            <h3>🌟 Stellt euch selbst vor:</h3>
+            <ol class="large-text">
+                <li>HALLO! ICH HEISSE <span class="fill-blank"></span>.</li>
+                <li>ICH BIN <span class="fill-blank"></span> JAHRE ALT.</li>
+                <li>ICH KOMME AUS <span class="fill-blank"></span>.</li>
+                <li>ICH WOHNE IN <span class="fill-blank"></span>.</li>
+                <li>ICH GEHE IN DIE <span class="fill-blank"></span> KLASSE.</li>
+                <li>ICH MAG <span class="fill-blank"></span>.</li>
+                <li>MEIN LIEBLINGS-<span class="fill-blank"></span> IST <span class="fill-blank"></span>.</li>
+            </ol>
+        </div>
+        
+        <div class="example-box">
+            <h3>Beispiel:</h3>
+            <p><strong>"HALLO! ICH HEISSE LIZI. ICH BIN SIEBEN JAHRE ALT. ICH KOMME AUS UNGARN UND WOHNE JETZT IN VILLACH. ICH GEHE IN DIE ERSTE KLASSE. ICH MAG MALEN UND LESEN. MEIN LIEBLINGS-TIER IST DER SCHMETTERLING!"</strong></p>
+        </div>
+    </div>
+
+    <div class="exercise-box">
+        <h2>🤝 ÜBUNG 3: HÖFLICHKEITS-TRAINING</h2>
+        
+        <div class="activity-box">
+            <h3>🎭 Spielt diese Situationen:</h3>
+            <ol class="large-text">
+                <li><strong>Ihr kommt in die Klasse:</strong> Was sagt ihr?</li>
+                <li><strong>Ihr braucht Hilfe:</strong> Wie fragt ihr höflich?</li>
+                <li><strong>Jemand hilft euch:</strong> Wie bedankt ihr euch?</li>
+                <li><strong>Ihr geht nach Hause:</strong> Wie verabschiedet ihr euch?</li>
+            </ol>
+        </div>
+        
+        <div class="example-box">
+            <h3>🌟 Höflichkeits-Sätze:</h3>
+            <ul>
+                <li>"ENTSCHULDIGUNG, KÖNNEN SIE MIR HELFEN?"</li>
+                <li>"VIELEN DANK FÜR IHRE HILFE!"</li>
+                <li>"DARF ICH BITTE...?"</li>
+                <li>"TUT MIR LEID!"</li>
+                <li>"BITTE SCHÖN!" und "DANKE SCHÖN!"</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="celebration-box">
+        <h2>🎉 GROßE CHALLENGE: DEUTSCH-GESPRÄCHS-MEISTER! 🎉</h2>
+        
+        <div class="sentence-builder">
+            <h3>🏆 ZEIGT EURE GESPRÄCHS-SUPERKRAFT:</h3>
+            <ol class="huge-text bold">
+                <li>FÜHRT EIN 5-MINUTEN-GESP

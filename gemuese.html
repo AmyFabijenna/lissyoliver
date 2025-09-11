@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemüse lernen mit Oliver und Lizi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap');
+        
+        body {
+            background: linear-gradient(135deg, #D8B2C4, #E6C7D3);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #2C3E50;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            color: #8E4B78;
+            font-weight: bold;
+        }
+        
+        .vegetables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .vegetable-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .vegetable-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .vegetable-emoji {
+            font-size: 60px;
+            margin-bottom: 15px;
+            display: block;
+            animation: bounce 2s infinite;
+        }
+        
+        .vegetable-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 8px;
+        }
+        
+        .vegetable-type {
+            font-size: 16px;
+            color: #8E4B78;
+            font-style: italic;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2C3E50;
+            text-align: center;
+            margin: 40px 0 25px 0;
+            background: rgba(255,255,255,0.3);
+            padding: 15px;
+            border-radius: 15px;
+        }
+        
+        .learning-tip {
+            background: rgba(142, 75, 120, 0.1);
+            border: 3px solid #8E4B78;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .learning-tip h3 {
+            color: #2C3E50;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .learning-tip p {
+            color: #8E4B78;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .click-effect {
+            animation: pulse 0.5s ease;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .fun-fact {
+            background: linear-gradient(45deg, rgba(44, 62, 80, 0.1), rgba(142, 75, 120, 0.1));
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #8E4B78;
+        }
+        
+        .fun-fact h4 {
+            color: #2C3E50;
+            margin: 0 0 5px 0;
+            font-size: 18px;
+        }
+        
+        .fun-fact p {
+            color: #8E4B78;
+            margin: 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">🥕 GEMÜSE LERNEN 🥒</h1>
+            <p class="subtitle">Ein Lernguide für Oliver und Lizi</p>
+        </div>
+        
+        <div class="learning-tip">
+            <h3>💡 Lerntipp</h3>
+            <p>Klickt auf das Gemüse und sprecht die Namen laut aus!</p>
+        </div>
+        
+        <div class="section-title">🥕 Wurzelgemüse</div>
+        <div class="vegetables-grid">
+            <div class="vegetable-card" onclick="speakVegetable('Karotte')">
+                <span class="vegetable-emoji">🥕</span>
+                <div class="vegetable-name">die Karotte</div>
+                <div class="vegetable-type">Wurzelgemüse</div>
+            </div>
+            <div class="vegetable-card" onclick="speakVegetable('Kartoffel')">
+                <span class="vegetable-emoji">🥔</span>
+                <div class="vegetable-name">die Kartoffel</div>
+                <div class="vegetable-type">Knolle</div>
+            </div>
+            <div class="vegetable-card" onclick="speakVegetable('Radieschen')">
+                <span class="vegetable-emoji">🔴</span>
+                <div class="vegetable-name">das Radieschen</div>
+                <div class="vegetable-type">Wurzelgemüse</div>
+            </div>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>🌟 Wusstet ihr schon?</h4>
+            <p>Karotten machen die Augen stark und Kartoffeln geben viel Energie!</p>
+        </div>
+        
+        <div class="section-title">🥬 Blattgemüse</div>
+        <div class="vegetables-grid">
+            <div class="vegetable-card" onclick="speakVegetable('Salat')">
+                <span class="vegetable-emoji">🥬</span>
+                <div class="vegetable-name">der Salat</div>
+                <div class="vegetable-type">Blattgemüse</div>
+            </div>
+            <div class="vegetable-card" onclick="speakVegetable('Spinat')">
+                <span class="vegetable-emoji">🥬</span>
+                <div class="vegetable-name">der Spinat</div>
+                <div class="vegetable-type">Blattgemüse</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🍅 Fruchtgemüse</div>
+        <div class="vegetables-grid">
+            <div class="vegetable-card" onclick="speakVegetable('Tomate')">
+                <span class="vegetable-emoji">🍅</span>
+                <div class="vegetable-name">die Tomate</div>
+                <div class="vegetable-type">Fruchtgemüse</div>
+            </div>
+            <div class="vegetable-card" onclick="speakVegetable('Gurke')">
+                <span class="vegetable-emoji">🥒</span>
+                <div class="vegetable-name">die Gurke</div>
+                <div class="vegetable-type">Fruchtgemüse</div>
+            </div>
+            <div class="vegetable-card" onclick="speakVegetable('Paprika')">
+                <span class="vegetable-emoji">🫑</span>
+                <div class="vegetable-name">die Paprika</div>
+                <div class="vegetable-type">Fruchtgemüse</div>
+            </div>
+            <div class="vegetable-card" onclick="speakVegetable('Zucchini')">
+                <span class="vegetable-emoji">🥒</span>
+                <div class="vegetable-name">die Zucchini</div>
+                <div class="vegetable-type">Fruchtgemüse</div>
+            </div>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>🌈 Buntes Gemüse</h4>
+            <p>Je bunter euer Teller, desto gesünder seid ihr!</p>
+        </div>
+        
+        <div class="section-title">🌽 Süßes Gemüse</div>
+        <div class="vegetables-grid">
+            <div class="vegetable-card" onclick="speakVegetable('Mais')">
+                <span class="vegetable-emoji">🌽</span>
+                <div class="vegetable-name">der Mais</div>
+                <div class="vegetable-type">Getreide</div>
+            </div>
+            <div class="vegetable-card" onclick="speakVegetable('Erbsen')">
+                <span class="vegetable-emoji">🟢</span>
+                <div class="vegetable-name">die Erbsen</div>
+                <div class="vegetable-type">Hülsenfrüchte</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🥦 Kohlgemüse</div>
+        <div class="vegetables-grid">
+            <div class="vegetable-card" onclick="speakVegetable('Brokkoli')">
+                <span class="vegetable-emoji">🥦</span>
+                <div class="vegetable-name">der Brokkoli</div>
+                <div class="vegetable-type">Kohlgemüse</div>
+            </div>
+            <div class="vegetable-card" onclick="speakVegetable('Blumenkohl')">
+                <span class="vegetable-emoji">🥬</span>
+                <div class="vegetable-name">der Blumenkohl</div>
+                <div class="vegetable-type">Kohlgemüse</div>
+            </div>
+        </div>
+        
+        <div class="section-title">🧅 Zwiebelgewächse</div>
+        <div class="vegetables-grid">
+            <div class="vegetable-card" onclick="speakVegetable('Zwiebel')">
+                <span class="vegetable-emoji">🧅</span>
+                <div class="vegetable-name">die Zwiebel</div>
+                <div class="vegetable-type">Zwiebelgewächs</div>
+            </div>
+            <div class="vegetable-card" onclick="speakVegetable('Knoblauch')">
+                <span class="vegetable-emoji">🧄</span>
+                <div class="vegetable-name">der Knoblauch</div>
+                <div class="vegetable-type">Zwiebelgewächs</div>
+            </div>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>💪 Supergemüse</h4>
+            <p>Brokkoli und Spinat machen euch so stark wie Superhelden!</p>
+        </div>
+        
+        <div class="section-title">🍄 Pilze</div>
+        <div class="vegetables-grid">
+            <div class="vegetable-card" onclick="speakVegetable('Pilz')">
+                <span class="vegetable-emoji">🍄</span>
+                <div class="vegetable-name">der Pilz</div>
+                <div class="vegetable-type">Pilz</div>
+            </div>
+        </div>
+        
+        <div class="learning-tip">
+            <h3>🌟 Fantastisch, Oliver und Lizi!</h3>
+            <p>Ihr kennt jetzt viele deutsche Gemüsenamen! Probiert sie alle mal! 🥕🥦</p>
+        </div>
+        
+        <div class="fun-fact">
+            <h4>🎨 Mach-mit-Tipp</h4>
+            <p>Malt euer Lieblingsgemüse und schreibt den deutschen Namen dazu!</p>
+        </div>
+    </div>
+    
+    <script>
+        function speakVegetable(vegetableName) {
+            // Visual feedback
+            event.target.closest('.vegetable-card').classList.add('click-effect');
+            setTimeout(() => {
+                event.target.closest('.vegetable-card').classList.remove('click-effect');
+            }, 500);
+            
+            // Audio feedback (if browser supports it)
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(vegetableName);
+                utterance.lang = 'de-DE';
+                utterance.rate = 0.8;
+                speechSynthesis.speak(utterance);
+            }
+            
+            // Console log for learning reinforcement
+            console.log(`🥕 Gelernt: ${vegetableName}`);
+        }
+        
+        // Add some interactive sparkles
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.vegetable-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 100);
+            });
+        });
+        
+        // Add some fun interactions
+        let clickCount = 0;
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.vegetable-card')) {
+                clickCount++;
+                if (clickCount === 5) {
+                    setTimeout(() => {
+                        alert('🌟 Toll! Ihr lernt sehr fleißig! 🌟');
+                        clickCount = 0;
+                    }, 100);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

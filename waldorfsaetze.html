@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waldorfschul-Sätze Lernen</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #FFE4B5 0%, #F0E68C 50%, #E6E6FA 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #8B4513;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border: 3px solid #DAA520;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #4B0082;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .phrase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .phrase-card {
+            background: linear-gradient(145deg, #FFF8DC, #F5F5DC);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #DAA520;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .phrase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        .icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .german-text {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2F4F4F;
+            margin-bottom: 8px;
+        }
+        
+        .hungarian-text {
+            font-size: 1.1em;
+            color: #8B0000;
+            font-style: italic;
+        }
+        
+        .activity-section {
+            background: linear-gradient(145deg, #E6E6FA, #DDA0DD);
+        }
+        
+        .conversation-section {
+            background: linear-gradient(145deg, #F0FFFF, #B0E0E6);
+        }
+        
+        .emergency-section {
+            background: linear-gradient(145deg, #FFE4E1, #FFC0CB);
+            border-color: #FF6347;
+        }
+        
+        .memory-tip {
+            background: #FFFACD;
+            border: 2px dashed #FFD700;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            font-style: italic;
+            color: #B8860B;
+        }
+        
+        .practice-button {
+            background: linear-gradient(145deg, #32CD32, #228B22);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: all 0.3s ease;
+        }
+        
+        .practice-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏫 Waldorfschul-Sätze für Lizi & Oliver 🎨</h1>
+        
+        <div class="section conversation-section">
+            <div class="section-title">💬 Wichtige Gespräche im Klassenzimmer</div>
+            <div class="phrase-grid">
+                <div class="phrase-card" onclick="playSound('question')">
+                    <span class="icon">🙋‍♀️</span>
+                    <div class="german-text">"ICH HABE EINE FRAGE!"</div>
+                    <div class="hungarian-text">"Van egy kérdésem!"</div>
+                </div>
+                
+                <div class="phrase-card" onclick="playSound('understand')">
+                    <span class="icon">🤔</span>
+                    <div class="german-text">"ICH VERSTEHE NICHT!"</div>
+                    <div class="hungarian-text">"Nem értem!"</div>
+                </div>
+                
+                <div class="phrase-card" onclick="playSound('repeat')">
+                    <span class="icon">🔄</span>
+                    <div class="german-text">"KÖNNEN SIE DAS WIEDERHOLEN?"</div>
+                    <div class="hungarian-text">"Meg tudja ismételni?"</div>
+                </div>
+                
+                <div class="phrase-card" onclick="playSound('finished')">
+                    <span class="icon">✅</span>
+                    <div class="german-text">"ICH BIN FERTIG!"</div>
+                    <div class="hungarian-text">"Kész vagyok!"</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section activity-section">
+            <div class="section-title">🎨 Handarbeiten & Basteln</div>
+            <div class="phrase-grid">
+                <div class="phrase-card" onclick="playSound('knit')">
+                    <span class="icon">🧶</span>
+                    <div class="german-text">"ICH STRICKE"</div>
+                    <div class="hungarian-text">"kötök"</div>
+                </div>
+                
+                <div class="phrase-card" onclick="playSound('crochet')">
+                    <span class="icon">🪝</span>
+                    <div class="german-text">"ICH HÄKELE"</div>
+                    <div class="hungarian-text">"horgolok"</div>
+                </div>
+                
+                <div class="phrase-card" onclick="playSound('craft')">
+                    <span class="icon">✂️</span>
+                    <div class="german-text">"ICH BASTLE"</div>
+                    <div class="hungarian-text">"barkácsolok"</div>
+                </div>
+                
+                <div class="phrase-card" onclick="playSound('paint')">
+                    <span class="icon">🎨</span>
+                    <div class="german-text">"ICH MALE"</div>
+                    <div class="hungarian-text">"festek"</div>
+                </div>
+                
+                <div class="phrase-card" onclick="playSound('draw')">
+                    <span class="icon">✏️</span>
+                    <div class="german-text">"ICH ZEICHNE"</div>
+                    <div class="hungarian-text">"rajzolok"</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section emergency-section">
+            <div class="section-title">🆘 Wichtige Hilfe-Sätze</div>
+            <div class="phrase-grid">
+                <div class="phrase-card" onclick="playSound('help')">
+                    <span class="icon">🆘</span>
+                    <div class="german-text">"ICH BRAUCHE HILFE!"</div>
+                    <div class="hungarian-text">"Segítségre van szükségem!"</div>
+                </div>
+                
+                <div class="phrase-card" onclick="playSound('toilet')">
+                    <span class="icon">🚻</span>
+                    <div class="german-text">"DARF ICH ZUR TOILETTE?"</div>
+                    <div class="hungarian-text">"Mehetek a WC-re?"</div>
+                </div>
+                
+                <div class="phrase-card" onclick="playSound('water')">
+                    <span class="icon">💧</span>
+                    <div class="german-text">"ICH BRAUCHE WASSER"</div>
+                    <div class="hungarian-text">"Vizre van szükségem"</div>
+                </div>
+                
+                <div class="phrase-card" onclick="playSound('sick')">
+                    <span class="icon">🤒</span>
+                    <div class="german-text">"MIR IST NICHT GUT"</div>
+                    <div class="hungarian-text">"Rosszul vagyok"</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">👩‍🏫 Lehrer-Antworten verstehen</div>
+            <div class="phrase-grid">
+                <div class="phrase-card" onclick="playSound('yes')">
+                    <span class="icon">👍</span>
+                    <div class="german-text">"Ja, gerne!"</div>
+                    <div class="hungarian-text">"Igen, szívesen!"</div>
+                </div>
+                
+                <div class="phrase-card" onclick="playSound('good')">
+                    <span class="icon">⭐</span>
+                    <div class="german-text">"Sehr gut!"</div>
+                    <div class="hungarian-text">"Nagyon jó!"</div>
+                </div>
+                
+                <div class="phrase-card" onclick="playSound('help_offer')">
+                    <span class="icon">🤝</span>
+                    <div class="german-text">"Kann ich dir helfen?"</div>
+                    <div class="hungarian-text">"Segíthetek?"</div>
+                </div>
+                
+                <div class="phrase-card" onclick="playSound('continue')">
+                    <span class="icon">➡️</span>
+                    <div class="german-text">"Macht weiter so!"</div>
+                    <div class="hungarian-text">"Folytassátok így!"</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="memory-tip">
+            💡 <strong>Lern-Tipp:</strong> Übt die Sätze mit Handbewegungen! 
+            Bei "ICH HABE EINE FRAGE" → Hand heben! 🙋‍♀️
+            Bei "ICH VERSTEHE NICHT" → Schultern zucken! 🤷‍♀️
+        </div>
+        
+        <button class="practice-button bounce" onclick="startPractice()">
+            🎯 Übung starten!
+        </button>
+    </div>
+    
+    <script>
+        function playSound(type) {
+            // Visueller Effekt beim Klicken
+            event.target.closest('.phrase-card').style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                event.target.closest('.phrase-card').style.transform = 'scale(1)';
+            }, 150);
+            
+            // Hier könnte Audiowiedergabe implementiert werden
+            console.log('Playing sound for:', type);
+        }
+        
+        function startPractice() {
+            const phrases = document.querySelectorAll('.phrase-card');
+            let currentIndex = 0;
+            
+            function highlightNext() {
+                // Alle Karten normal machen
+                phrases.forEach(card => {
+                    card.style.border = '2px solid #DAA520';
+                    card.style.transform = 'scale(1)';
+                });
+                
+                // Aktuelle Karte hervorheben
+                if (currentIndex < phrases.length) {
+                    phrases[currentIndex].style.border = '4px solid #FF6347';
+                    phrases[currentIndex].style.transform = 'scale(1.05)';
+                    phrases[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    currentIndex++;
+                    
+                    setTimeout(highlightNext, 2000);
+                } else {
+                    alert('🎉 Super! Ihr habt alle Sätze durchgegangen! Jetzt könnt ihr sie in der Schule verwenden!');
+                }
+            }
+            
+            alert('🎯 Übung startet! Schaut euch jeden Satz genau an und sprecht ihn laut nach!');
+            highlightNext();
+        }
+        
+        // Interaktive Elemente beim Laden
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.phrase-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

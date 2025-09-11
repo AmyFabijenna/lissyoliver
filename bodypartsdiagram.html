@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mein Körper - Deutsche Körperteile</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #87CEEB 0%, #98FB98 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 5px solid #FFD700;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #FF6B6B;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .body-diagram {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .child-figure {
+            width: 300px;
+            height: 500px;
+            margin: 0 auto;
+            position: relative;
+            background: transparent;
+        }
+        
+        .body-part {
+            position: absolute;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2C3E50;
+            background: #FFE4B5;
+            padding: 8px 12px;
+            border-radius: 15px;
+            border: 3px solid #FF6B6B;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            white-space: nowrap;
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-5px);
+            }
+            60% {
+                transform: translateY(-3px);
+            }
+        }
+        
+        /* SVG Child Figure */
+        .child-svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Label positions - optimiert für keine Überlappungen */
+        .head { top: -15px; left: 50%; transform: translateX(-50%); }
+        .hair { top: -45px; left: -20px; }
+        .eyes { top: 30px; left: -100px; }
+        .nose { top: 60px; right: -100px; }
+        .mouth { top: 100px; left: -100px; }
+        .ears { top: 40px; right: -100px; }
+        .teeth { top: 130px; right: -100px; }
+        .neck { top: 160px; left: 50%; transform: translateX(-50%); }
+        .arms { top: 180px; left: -100px; }
+        .hands { top: 250px; left: -100px; }
+        .chest { top: 200px; right: -100px; }
+        .belly { top: 240px; right: -100px; }
+        .legs { top: 340px; left: -100px; }
+        .feet { top: 420px; left: 50%; transform: translateX(-50%); }
+        
+        .decorative {
+            position: absolute;
+            font-size: 30px;
+            animation: rotate 3s infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .star1 { top: 20px; left: 50px; }
+        .star2 { top: 50px; right: 50px; }
+        .star3 { bottom: 100px; left: 100px; }
+        .star4 { bottom: 150px; right: 100px; }
+        
+        .subtitle {
+            text-align: center;
+            color: #4ECDC4;
+            font-size: 1.3em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 MEIN KÖRPER 🌟</h1>
+        <div class="subtitle">Deutsche Körperteile lernen macht Spaß!</div>
+        
+        <div class="body-diagram">
+            <div class="child-figure">
+                <!-- Simple SVG child figure -->
+                <svg class="child-svg" viewBox="0 0 200 350" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Head -->
+                    <circle cx="100" cy="50" r="35" fill="#FDBCB4" stroke="#333" stroke-width="2"/>
+                    <!-- Hair -->
+                    <path d="M65 25 Q100 15 135 25 Q140 35 135 45 Q100 40 65 45 Q60 35 65 25" fill="#8B4513"/>
+                    <!-- Eyes -->
+                    <circle cx="88" cy="45" r="3" fill="#000"/>
+                    <circle cx="112" cy="45" r="3" fill="#000"/>
+                    <!-- Nose -->
+                    <ellipse cx="100" cy="55" rx="2" ry="4" fill="#F4A460"/>
+                    <!-- Mouth -->
+                    <path d="M92 65 Q100 70 108 65" stroke="#333" stroke-width="2" fill="none"/>
+                    <!-- Ears -->
+                    <ellipse cx="65" cy="50" rx="5" ry="8" fill="#FDBCB4" stroke="#333" stroke-width="1"/>
+                    <ellipse cx="135" cy="50" rx="5" ry="8" fill="#FDBCB4" stroke="#333" stroke-width="1"/>
+                    
+                    <!-- Neck -->
+                    <rect x="92" y="80" width="16" height="20" fill="#FDBCB4" stroke="#333" stroke-width="1"/>
+                    
+                    <!-- Body -->
+                    <ellipse cx="100" cy="150" rx="35" ry="50" fill="#87CEEB" stroke="#333" stroke-width="2"/>
+                    
+                    <!-- Arms -->
+                    <ellipse cx="60" cy="130" rx="8" ry="30" fill="#FDBCB4" stroke="#333" stroke-width="1"/>
+                    <ellipse cx="140" cy="130" rx="8" ry="30" fill="#FDBCB4" stroke="#333" stroke-width="1"/>
+                    
+                    <!-- Hands -->
+                    <circle cx="60" cy="160" r="10" fill="#FDBCB4" stroke="#333" stroke-width="1"/>
+                    <circle cx="140" cy="160" r="10" fill="#FDBCB4" stroke="#333" stroke-width="1"/>
+                    
+                    <!-- Legs -->
+                    <ellipse cx="85" cy="230" rx="10" ry="40" fill="#4169E1" stroke="#333" stroke-width="1"/>
+                    <ellipse cx="115" cy="230" rx="10" ry="40" fill="#4169E1" stroke="#333" stroke-width="1"/>
+                    
+                    <!-- Feet -->
+                    <ellipse cx="85" cy="290" rx="12" ry="8" fill="#8B4513" stroke="#333" stroke-width="1"/>
+                    <ellipse cx="115" cy="290" rx="12" ry="8" fill="#8B4513" stroke="#333" stroke-width="1"/>
+                </svg>
+                
+                <!-- Labels -->
+                <div class="body-part head">DER KOPF</div>
+                <div class="body-part hair">DIE HAARE</div>
+                <div class="body-part eyes">DIE AUGEN 👁️</div>
+                <div class="body-part nose">DIE NASE 👃</div>
+                <div class="body-part mouth">DER MUND 👄</div>
+                <div class="body-part ears">DIE OHREN 👂</div>
+                <div class="body-part teeth">DIE ZÄHNE 🦷</div>
+                <div class="body-part neck">DER HALS</div>
+                <div class="body-part arms">DIE ARME 💪</div>
+                <div class="body-part hands">DIE HÄNDE ✋</div>
+                <div class="body-part chest">DIE BRUST</div>
+                <div class="body-part belly">DER BAUCH</div>
+                <div class="body-part legs">DIE BEINE 🦵</div>
+                <div class="body-part feet">DIE FÜßE 🦶</div>
+            </div>
+        </div>
+        
+        <!-- Decorative elements -->
+        <div class="decorative star1">⭐</div>
+        <div class="decorative star2">🌟</div>
+        <div class="decorative star3">✨</div>
+        <div class="decorative star4">💫</div>
+    </div>
+</body>
+</html>
