@@ -1,408 +1,589 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unsere Deutsch-Reise</title>
+    <title>Német tanulás - Amy Lang</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #4a90a4 0%, #6ab7db 50%, #87ceeb 100%);
-            min-height: 100vh;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f8f9fa; color: #333; }
         
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
+        .header { background: #ff9a7b; color: white; padding: 15px; text-align: center; }
+        .header h1 { font-size: 1.8em; margin-bottom: 5px; }
         
-        h1 {
-            text-align: center;
-            color: #2d5f6f;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
+        .contact { background: white; margin: 15px auto; max-width: 600px; padding: 20px; border-radius: 10px; text-align: center; }
+        .whatsapp-btn { display: inline-block; background: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 20px; margin: 10px 0; }
         
-        .subtitle {
-            text-align: center;
-            color: #4a7c8a;
-            font-size: 1.2em;
-            margin-bottom: 30px;
-            font-style: italic;
-        }
+        .container { max-width: 800px; margin: 0 auto; padding: 15px; }
         
-        .category-section {
-            margin-bottom: 25px;
-            background: rgba(74, 144, 164, 0.2);
-            border-radius: 15px;
-            padding: 20px;
-            border-left: 5px solid #4a90a4;
-        }
+        .tabs { display: flex; flex-wrap: wrap; background: white; border-radius: 8px 8px 0 0; }
+        .tab { flex: 1; min-width: 80px; padding: 8px 4px; background: #f8f9fa; border: none; cursor: pointer; font-size: 0.8em; color: #ff9a7b; text-align: center; }
+        .tab.active { background: #ff9a7b; color: white; }
         
-        .category-header {
-            color: #2d5f6f;
-            font-size: 1.4em;
-            font-weight: bold;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .content { background: white; border-radius: 0 0 8px 8px; padding: 20px; min-height: 400px; }
+        .section { display: none; }
+        .section.active { display: block; }
+        .section-title { font-size: 1.5em; color: #ff9a7b; margin-bottom: 15px; text-align: center; }
         
-        .category-icon {
-            background: #4a90a4;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2em;
-            color: white;
-        }
+        .word-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin: 15px 0; }
+        .word-item { background: #fff5f0; border: 1px solid #ff9a7b; border-radius: 6px; padding: 8px 12px; cursor: pointer; transition: all 0.3s ease; position: relative; }
+        .word-item:hover { background: #ff9a7b; color: white; transform: translateY(-1px); }
+        .german { font-weight: bold; font-size: 0.95em; }
+        .hungarian { font-size: 0.85em; color: #666; opacity: 0; transition: opacity 0.3s; }
+        .word-item:hover .hungarian { opacity: 1; color: #fff; }
         
-        .lesson-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
+        .category-title { font-size: 1.1em; color: #ff9a7b; margin: 20px 0 10px 0; border-bottom: 2px solid #ff9a7b; padding-bottom: 5px; }
         
-        .lesson-link {
-            background: white;
-            padding: 15px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #2d5f6f;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            display: block;
-            cursor: pointer;
-        }
-        
-        .lesson-link:hover {
-            border-color: #4a90a4;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-            background: linear-gradient(135deg, #fff 0%, #f0f8ff 100%);
-        }
-        
-        .lesson-title {
-            font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 5px;
-        }
-        
-        .lesson-description {
-            font-size: 0.9em;
-            color: #666;
-            font-style: italic;
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            color: #4a7c8a;
-            font-style: italic;
-            border-top: 2px dotted #4a90a4;
+        @media (max-width: 600px) {
+            .word-list { grid-template-columns: 1fr 1fr; }
+            .tab { font-size: 0.7em; padding: 6px 2px; }
+            .content { padding: 15px; }
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <h1>Német tanulás - Amy Lang</h1>
+        <p>Professzionális német oktatás A1-C2 szinteken</p>
+    </div>
+
+    <div class="contact">
+        <p><strong>Üdvözöllek! Amy Lang vagyok, egyetemi végzettségű, 20+ év tapasztalattal rendelkező német oktató.</strong></p>
+        <p>Online tanítok minden szinten A1-től C2-ig. Szívesen küldök referenciákat és egyéni ajánlatot.</p>
+        <a href="https://wa.me/436301818503" class="whatsapp-btn">📱 WhatsApp jelentkezés</a>
+    </div>
+
     <div class="container">
-        <h1>Unsere Deutsch-Reise</h1>
-        <div class="subtitle">Unsere gemeinsame Sprachabenteuer-Sammlung</div>
-        
-        <!-- Grundlagen & Erste Schritte -->
-        <div class="category-section">
-            <div class="category-header">
-                <div class="category-icon">📚</div>
-                Grundlagen & Erste Schritte
-            </div>
-            <div class="lesson-grid">
-                <a href="lissyssaetze.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Prinzessinnensätze</div>
-                    <div class="lesson-description">Erste deutsche Sätze</div>
-                </a>
-                <a href="oliverssaetze.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Heldensätze</div>
-                    <div class="lesson-description">Olivers erste Sätze</div>
-                </a>
-            </div>
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('alapok')">🌟 Alapok</button>
+            <button class="tab" onclick="showTab('szamok')">🔢 Számok</button>
+            <button class="tab" onclick="showTab('szinek')">🌈 Színek</button>
+            <button class="tab" onclick="showTab('test')">👤 Test</button>
+            <button class="tab" onclick="showTab('ruha')">👕 Ruházat</button>
+            <button class="tab" onclick="showTab('csalad')">👨‍👩‍👧‍👦 Család</button>
+            <button class="tab" onclick="showTab('etel')">🍎 Étel</button>
+            <button class="tab" onclick="showTab('otthon')">🏠 Otthon</button>
+            <button class="tab" onclick="showTab('iskola')">🎓 Iskola</button>
+            <button class="tab" onclick="showTab('allatok')">🦁 Állatok</button>
+            <button class="tab" onclick="showTab('nap')">📅 Napi rutin</button>
+            <button class="tab" onclick="showTab('mondatok')">💬 Mondatok</button>
         </div>
-        
-        <!-- Verben & Grammatik -->
-        <div class="category-section">
-            <div class="category-header">
-                <div class="category-icon">⚙️</div>
-                Verben & Grammatik
+
+        <div class="content">
+            <!-- ALAPOK -->
+            <div id="alapok" class="section active">
+                <h2 class="section-title">Alapok - Első lépések</h2>
+                
+                <div class="category-title">Köszönés és búcsúzás</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">HALLO</div><div class="hungarian">szia / helló</div></div>
+                    <div class="word-item"><div class="german">GUTEN MORGEN</div><div class="hungarian">jó reggelt</div></div>
+                    <div class="word-item"><div class="german">GUTEN TAG</div><div class="hungarian">jó napot</div></div>
+                    <div class="word-item"><div class="german">GUTEN ABEND</div><div class="hungarian">jó estét</div></div>
+                    <div class="word-item"><div class="german">GUTE NACHT</div><div class="hungarian">jó éjszakát</div></div>
+                    <div class="word-item"><div class="german">AUF WIEDERSEHEN</div><div class="hungarian">viszlát</div></div>
+                    <div class="word-item"><div class="german">TSCHÜSS</div><div class="hungarian">szia / csáo</div></div>
+                    <div class="word-item"><div class="german">BIS BALD</div><div class="hungarian">hamarosan találkozunk</div></div>
+                </div>
+
+                <div class="category-title">Udvariasság</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DANKE</div><div class="hungarian">köszönöm</div></div>
+                    <div class="word-item"><div class="german">BITTE</div><div class="hungarian">kérem / szívesen</div></div>
+                    <div class="word-item"><div class="german">ENTSCHULDIGUNG</div><div class="hungarian">elnézést</div></div>
+                    <div class="word-item"><div class="german">ES TUT MIR LEID</div><div class="hungarian">sajnálom</div></div>
+                    <div class="word-item"><div class="german">KEIN PROBLEM</div><div class="hungarian">semmi baj</div></div>
+                    <div class="word-item"><div class="german">GERN GESCHEHEN</div><div class="hungarian">szívesen</div></div>
+                </div>
             </div>
-            <div class="lesson-grid">
-                <a href="modalverbenpraxisapp.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Modalverben Praxis App</div>
-                    <div class="lesson-description">Können, wollen, müssen üben</div>
-                </a>
-                <a href="modalverben.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Modalverben</div>
-                    <div class="lesson-description">Modalverben lernen</div>
-                </a>
-                <a href="verbenfuerdieschule.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Verben für die Schule</div>
-                    <div class="lesson-description">Schulverben üben</div>
-                </a>
-                <a href="konjugation.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Konjugation</div>
-                    <div class="lesson-description">Verbformen üben</div>
-                </a>
-                <a href="dasverbsein.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Das Verb Sein</div>
-                    <div class="lesson-description">Bin, bist, ist...</div>
-                </a>
-                <a href="haben.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Haben</div>
-                    <div class="lesson-description">Das Verb haben</div>
-                </a>
-                <a href="personalpronomenapp.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Personalpronomen App</div>
-                    <div class="lesson-description">Ich, du, er, sie, es...</div>
-                </a>
-                <a href="modalverbenapp.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Modalverben App</div>
-                    <div class="lesson-description">Interaktive Modalverben</div>
-                </a>
+
+            <!-- SZÁMOK -->
+            <div id="szamok" class="section">
+                <h2 class="section-title">Számok és idő</h2>
+                
+                <div class="category-title">Számok 0-20</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">NULL</div><div class="hungarian">nulla</div></div>
+                    <div class="word-item"><div class="german">EINS</div><div class="hungarian">egy</div></div>
+                    <div class="word-item"><div class="german">ZWEI</div><div class="hungarian">kettő</div></div>
+                    <div class="word-item"><div class="german">DREI</div><div class="hungarian">három</div></div>
+                    <div class="word-item"><div class="german">VIER</div><div class="hungarian">négy</div></div>
+                    <div class="word-item"><div class="german">FÜNF</div><div class="hungarian">öt</div></div>
+                    <div class="word-item"><div class="german">SECHS</div><div class="hungarian">hat</div></div>
+                    <div class="word-item"><div class="german">SIEBEN</div><div class="hungarian">hét</div></div>
+                    <div class="word-item"><div class="german">ACHT</div><div class="hungarian">nyolc</div></div>
+                    <div class="word-item"><div class="german">NEUN</div><div class="hungarian">kilenc</div></div>
+                    <div class="word-item"><div class="german">ZEHN</div><div class="hungarian">tíz</div></div>
+                    <div class="word-item"><div class="german">ELF</div><div class="hungarian">tizenegy</div></div>
+                    <div class="word-item"><div class="german">ZWÖLF</div><div class="hungarian">tizenkettő</div></div>
+                    <div class="word-item"><div class="german">DREIZEHN</div><div class="hungarian">tizenhárom</div></div>
+                    <div class="word-item"><div class="german">VIERZEHN</div><div class="hungarian">tizennégy</div></div>
+                    <div class="word-item"><div class="german">FÜNFZEHN</div><div class="hungarian">tizenöt</div></div>
+                    <div class="word-item"><div class="german">SECHZEHN</div><div class="hungarian">tizenhat</div></div>
+                    <div class="word-item"><div class="german">SIEBZEHN</div><div class="hungarian">tizenhét</div></div>
+                    <div class="word-item"><div class="german">ACHTZEHN</div><div class="hungarian">tizennyolc</div></div>
+                    <div class="word-item"><div class="german">NEUNZEHN</div><div class="hungarian">tizenkilenc</div></div>
+                    <div class="word-item"><div class="german">ZWANZIG</div><div class="hungarian">húsz</div></div>
+                </div>
+
+                <div class="category-title">Hét napjai</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">MONTAG</div><div class="hungarian">hétfő</div></div>
+                    <div class="word-item"><div class="german">DIENSTAG</div><div class="hungarian">kedd</div></div>
+                    <div class="word-item"><div class="german">MITTWOCH</div><div class="hungarian">szerda</div></div>
+                    <div class="word-item"><div class="german">DONNERSTAG</div><div class="hungarian">csütörtök</div></div>
+                    <div class="word-item"><div class="german">FREITAG</div><div class="hungarian">péntek</div></div>
+                    <div class="word-item"><div class="german">SAMSTAG</div><div class="hungarian">szombat</div></div>
+                    <div class="word-item"><div class="german">SONNTAG</div><div class="hungarian">vasárnap</div></div>
+                </div>
             </div>
-        </div>
-        
-        <!-- Zahlen & Geld -->
-        <div class="category-section">
-            <div class="category-header">
-                <div class="category-icon">🔢</div>
-                Zahlen & Geld
+
+            <!-- SZÍNEK -->
+            <div id="szinek" class="section">
+                <h2 class="section-title">Színek</h2>
+                
+                <div class="word-list">
+                    <div class="word-item"><div class="german">ROT</div><div class="hungarian">piros</div></div>
+                    <div class="word-item"><div class="german">BLAU</div><div class="hungarian">kék</div></div>
+                    <div class="word-item"><div class="german">GRÜN</div><div class="hungarian">zöld</div></div>
+                    <div class="word-item"><div class="german">GELB</div><div class="hungarian">sárga</div></div>
+                    <div class="word-item"><div class="german">ORANGE</div><div class="hungarian">narancssárga</div></div>
+                    <div class="word-item"><div class="german">LILA</div><div class="hungarian">lila</div></div>
+                    <div class="word-item"><div class="german">ROSA</div><div class="hungarian">rózsaszín</div></div>
+                    <div class="word-item"><div class="german">SCHWARZ</div><div class="hungarian">fekete</div></div>
+                    <div class="word-item"><div class="german">WEIß</div><div class="hungarian">fehér</div></div>
+                    <div class="word-item"><div class="german">GRAU</div><div class="hungarian">szürke</div></div>
+                    <div class="word-item"><div class="german">BRAUN</div><div class="hungarian">barna</div></div>
+                    <div class="word-item"><div class="german">HELL</div><div class="hungarian">világos</div></div>
+                    <div class="word-item"><div class="german">DUNKEL</div><div class="hungarian">sötét</div></div>
+                </div>
             </div>
-            <div class="lesson-grid">
-                <a href="geldundzahlen.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Geld und Zahlen</div>
-                    <div class="lesson-description">Rechnen mit Geld</div>
-                </a>
-                <a href="wassagstdu.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Was sagst du</div>
-                    <div class="lesson-description">Zahlen sprechen</div>
-                </a>
+
+            <!-- TEST -->
+            <div id="test" class="section">
+                <h2 class="section-title">Test - Testrészek</h2>
+                
+                <div class="category-title">Fej és arc</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DER KOPF</div><div class="hungarian">a fej</div></div>
+                    <div class="word-item"><div class="german">DAS GESICHT</div><div class="hungarian">az arc</div></div>
+                    <div class="word-item"><div class="german">DIE HAARE</div><div class="hungarian">a haj</div></div>
+                    <div class="word-item"><div class="german">DIE STIRN</div><div class="hungarian">a homlok</div></div>
+                    <div class="word-item"><div class="german">DIE AUGEN</div><div class="hungarian">a szemek</div></div>
+                    <div class="word-item"><div class="german">DIE AUGENBRAUEN</div><div class="hungarian">a szemöldök</div></div>
+                    <div class="word-item"><div class="german">DIE WIMPERN</div><div class="hungarian">a szempilla</div></div>
+                    <div class="word-item"><div class="german">DIE NASE</div><div class="hungarian">az orr</div></div>
+                    <div class="word-item"><div class="german">DER MUND</div><div class="hungarian">a száj</div></div>
+                    <div class="word-item"><div class="german">DIE LIPPEN</div><div class="hungarian">az ajkak</div></div>
+                    <div class="word-item"><div class="german">DIE ZÄHNE</div><div class="hungarian">a fogak</div></div>
+                    <div class="word-item"><div class="german">DIE ZUNGE</div><div class="hungarian">a nyelv</div></div>
+                    <div class="word-item"><div class="german">DAS KINN</div><div class="hungarian">az áll</div></div>
+                    <div class="word-item"><div class="german">DIE OHREN</div><div class="hungarian">a fülek</div></div>
+                    <div class="word-item"><div class="german">DIE WANGEN</div><div class="hungarian">az orcák</div></div>
+                </div>
+
+                <div class="category-title">Test</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DER HALS</div><div class="hungarian">a nyak</div></div>
+                    <div class="word-item"><div class="german">DIE SCHULTERN</div><div class="hungarian">a vállak</div></div>
+                    <div class="word-item"><div class="german">DIE ARME</div><div class="hungarian">a karok</div></div>
+                    <div class="word-item"><div class="german">DIE ELLBOGEN</div><div class="hungarian">a könyökök</div></div>
+                    <div class="word-item"><div class="german">DIE HÄNDE</div><div class="hungarian">a kezek</div></div>
+                    <div class="word-item"><div class="german">DIE FINGER</div><div class="hungarian">az ujjak</div></div>
+                    <div class="word-item"><div class="german">DIE BRUST</div><div class="hungarian">a mellkas</div></div>
+                    <div class="word-item"><div class="german">DER BAUCH</div><div class="hungarian">a has</div></div>
+                    <div class="word-item"><div class="german">DER RÜCKEN</div><div class="hungarian">a hát</div></div>
+                    <div class="word-item"><div class="german">DIE BEINE</div><div class="hungarian">a lábak</div></div>
+                    <div class="word-item"><div class="german">DIE KNIE</div><div class="hungarian">a térdek</div></div>
+                    <div class="word-item"><div class="german">DIE FÜßE</div><div class="hungarian">a lábfejek</div></div>
+                    <div class="word-item"><div class="german">DIE ZEHEN</div><div class="hungarian">a lábujjak</div></div>
+                </div>
             </div>
-        </div>
-        
-        <!-- Alltag & Zeit -->
-        <div class="category-section">
-            <div class="category-header">
-                <div class="category-icon">🕐</div>
-                Alltag & Zeit
+
+            <!-- RUHÁZAT -->
+            <div id="ruha" class="section">
+                <h2 class="section-title">Ruházat</h2>
+                
+                <div class="category-title">Alapruházat</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DAS T-SHIRT</div><div class="hungarian">a póló</div></div>
+                    <div class="word-item"><div class="german">DAS HEMD</div><div class="hungarian">az ing</div></div>
+                    <div class="word-item"><div class="german">DIE BLUSE</div><div class="hungarian">a blúz</div></div>
+                    <div class="word-item"><div class="german">DER PULLOVER</div><div class="hungarian">a pulóver</div></div>
+                    <div class="word-item"><div class="german">DIE JACKE</div><div class="hungarian">a kabát</div></div>
+                    <div class="word-item"><div class="german">DIE HOSE</div><div class="hungarian">a nadrág</div></div>
+                    <div class="word-item"><div class="german">DIE JEANS</div><div class="hungarian">a farmer</div></div>
+                    <div class="word-item"><div class="german">DER ROCK</div><div class="hungarian">a szoknya</div></div>
+                    <div class="word-item"><div class="german">DAS KLEID</div><div class="hungarian">a ruha</div></div>
+                    <div class="word-item"><div class="german">DER MANTEL</div><div class="hungarian">a kabát</div></div>
+                </div>
+
+                <div class="category-title">Alsóruházat és kiegészítők</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DIE UNTERWÄSCHE</div><div class="hungarian">az alsónemű</div></div>
+                    <div class="word-item"><div class="german">DIE SOCKEN</div><div class="hungarian">a zoknik</div></div>
+                    <div class="word-item"><div class="german">DIE STRUMPFHOSE</div><div class="hungarian">a harisnyanadrág</div></div>
+                    <div class="word-item"><div class="german">DER SCHAL</div><div class="hungarian">a sál</div></div>
+                    <div class="word-item"><div class="german">DIE MÜTZE</div><div class="hungarian">a sapka</div></div>
+                    <div class="word-item"><div class="german">DIE HANDSCHUHE</div><div class="hungarian">a kesztyűk</div></div>
+                    <div class="word-item"><div class="german">DER GÜRTEL</div><div class="hungarian">az öv</div></div>
+                    <div class="word-item"><div class="german">DIE BRILLE</div><div class="hungarian">a szemüveg</div></div>
+                </div>
+
+                <div class="category-title">Cipők</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DIE SCHUHE</div><div class="hungarian">a cipők</div></div>
+                    <div class="word-item"><div class="german">DIE TURNSCHUHE</div><div class="hungarian">a tornacipők</div></div>
+                    <div class="word-item"><div class="german">DIE SANDALEN</div><div class="hungarian">a szandálok</div></div>
+                    <div class="word-item"><div class="german">DIE STIEFEL</div><div class="hungarian">a csizmák</div></div>
+                    <div class="word-item"><div class="german">DIE HAUSSCHUHE</div><div class="hungarian">a papucsok</div></div>
+                </div>
             </div>
-            <div class="lesson-grid">
-                <a href="meintag.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Mein Tag</div>
-                    <div class="lesson-description">Tagesablauf beschreiben</div>
-                </a>
-                <a href="meintagalsheld.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Mein Tag als Held</div>
-                    <div class="lesson-description">Heldenhafter Tagesablauf</div>
-                </a>
-                <a href="derersteschultagmaedchen.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Der erste Schultag (Leicht)</div>
-                    <div class="lesson-description">Erster Schultag erleben</div>
-                </a>
-                <a href="derersteschultag.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Der erste Schultag (Fortgeschritten)</div>
-                    <div class="lesson-description">Schulanfang meistern</div>
-                </a>
+
+            <!-- CSALÁD -->
+            <div id="csalad" class="section">
+                <h2 class="section-title">Család</h2>
+                
+                <div class="category-title">Közvetlen család</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DIE FAMILIE</div><div class="hungarian">a család</div></div>
+                    <div class="word-item"><div class="german">DIE MUTTER</div><div class="hungarian">az anya</div></div>
+                    <div class="word-item"><div class="german">DER VATER</div><div class="hungarian">az apa</div></div>
+                    <div class="word-item"><div class="german">DIE ELTERN</div><div class="hungarian">a szülők</div></div>
+                    <div class="word-item"><div class="german">DAS KIND</div><div class="hungarian">a gyerek</div></div>
+                    <div class="word-item"><div class="german">DIE KINDER</div><div class="hungarian">a gyerekek</div></div>
+                    <div class="word-item"><div class="german">DER SOHN</div><div class="hungarian">a fiú</div></div>
+                    <div class="word-item"><div class="german">DIE TOCHTER</div><div class="hungarian">a lány</div></div>
+                    <div class="word-item"><div class="german">DER BRUDER</div><div class="hungarian">a testvér (fiú)</div></div>
+                    <div class="word-item"><div class="german">DIE SCHWESTER</div><div class="hungarian">a testvér (lány)</div></div>
+                    <div class="word-item"><div class="german">DIE GESCHWISTER</div><div class="hungarian">a testvérek</div></div>
+                    <div class="word-item"><div class="german">DAS BABY</div><div class="hungarian">a baba</div></div>
+                </div>
+
+                <div class="category-title">Nagyszülők és rokonok</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DIE GROßMUTTER</div><div class="hungarian">a nagyanya</div></div>
+                    <div class="word-item"><div class="german">DER GROßVATER</div><div class="hungarian">a nagyapa</div></div>
+                    <div class="word-item"><div class="german">DIE GROßELTERN</div><div class="hungarian">a nagyszülők</div></div>
+                    <div class="word-item"><div class="german">DIE TANTE</div><div class="hungarian">a néni</div></div>
+                    <div class="word-item"><div class="german">DER ONKEL</div><div class="hungarian">a bácsi</div></div>
+                    <div class="word-item"><div class="german">DIE COUSINE</div><div class="hungarian">az unokatestvér (lány)</div></div>
+                    <div class="word-item"><div class="german">DER COUSIN</div><div class="hungarian">az unokatestvér (fiú)</div></div>
+                    <div class="word-item"><div class="german">DIE NICHTE</div><div class="hungarian">az unokahúg</div></div>
+                    <div class="word-item"><div class="german">DER NEFFE</div><div class="hungarian">az unokaöcs</div></div>
+                    <div class="word-item"><div class="german">DIE ENKELIN</div><div class="hungarian">az unoka (lány)</div></div>
+                    <div class="word-item"><div class="german">DER ENKEL</div><div class="hungarian">az unoka (fiú)</div></div>
+                </div>
             </div>
-        </div>
-        
-        <!-- Sinne & Wahrnehmung -->
-        <div class="category-section">
-            <div class="category-header">
-                <div class="category-icon">👁️</div>
-                Sinne & Wahrnehmung
+
+            <!-- ÉTEL -->
+            <div id="etel" class="section">
+                <h2 class="section-title">Étel és ital</h2>
+                
+                <div class="category-title">Gyümölcsök</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DER APFEL</div><div class="hungarian">az alma</div></div>
+                    <div class="word-item"><div class="german">DIE BANANE</div><div class="hungarian">a banán</div></div>
+                    <div class="word-item"><div class="german">DIE BIRNE</div><div class="hungarian">a körte</div></div>
+                    <div class="word-item"><div class="german">DIE ORANGE</div><div class="hungarian">a narancs</div></div>
+                    <div class="word-item"><div class="german">DIE ERDBEERE</div><div class="hungarian">az eper</div></div>
+                    <div class="word-item"><div class="german">DIE WASSERMELONE</div><div class="hungarian">a görögdinnye</div></div>
+                    <div class="word-item"><div class="german">DIE PFLAUME</div><div class="hungarian">a szilva</div></div>
+                    <div class="word-item"><div class="german">DER PFIRSICH</div><div class="hungarian">az őszibarack</div></div>
+                    <div class="word-item"><div class="german">DIE APRIKOSE</div><div class="hungarian">a sárgabarack</div></div>
+                    <div class="word-item"><div class="german">DIE ANANAS</div><div class="hungarian">az ananász</div></div>
+                    <div class="word-item"><div class="german">DIE MANGO</div><div class="hungarian">a mangó</div></div>
+                    <div class="word-item"><div class="german">DIE BLAUBEERE</div><div class="hungarian">az áfonya</div></div>
+                    <div class="word-item"><div class="german">DIE HIMBEERE</div><div class="hungarian">a málna</div></div>
+                    <div class="word-item"><div class="german">DIE BROMBEERE</div><div class="hungarian">a szeder</div></div>
+                    <div class="word-item"><div class="german">DIE KIWI</div><div class="hungarian">a kivi</div></div>
+                    <div class="word-item"><div class="german">DIE PAPAYA</div><div class="hungarian">a papaya</div></div>
+                    <div class="word-item"><div class="german">DIE TRAUBEN</div><div class="hungarian">a szőlő</div></div>
+                </div>
+
+                <div class="category-title">Zöldségek</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DIE KAROTTE</div><div class="hungarian">a sárgarépa</div></div>
+                    <div class="word-item"><div class="german">DIE TOMATE</div><div class="hungarian">a paradicsom</div></div>
+                    <div class="word-item"><div class="german">DIE GURKE</div><div class="hungarian">az uborka</div></div>
+                    <div class="word-item"><div class="german">DIE PAPRIKA</div><div class="hungarian">a paprika</div></div>
+                    <div class="word-item"><div class="german">DIE ZWIEBEL</div><div class="hungarian">a hagyma</div></div>
+                    <div class="word-item"><div class="german">DER SALAT</div><div class="hungarian">a saláta</div></div>
+                    <div class="word-item"><div class="german">DIE KARTOFFEL</div><div class="hungarian">a burgonya</div></div>
+                    <div class="word-item"><div class="german">DER BROKKOLI</div><div class="hungarian">a brokkoli</div></div>
+                    <div class="word-item"><div class="german">DER BLUMENKOHL</div><div class="hungarian">a karfiol</div></div>
+                    <div class="word-item"><div class="german">DIE ERBSEN</div><div class="hungarian">a borsó</div></div>
+                    <div class="word-item"><div class="german">DIE BOHNEN</div><div class="hungarian">a bab</div></div>
+                    <div class="word-item"><div class="german">DER MAIS</div><div class="hungarian">a kukorica</div></div>
+                </div>
+
+                <div class="category-title">Italok</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DAS WASSER</div><div class="hungarian">a víz</div></div>
+                    <div class="word-item"><div class="german">DIE MILCH</div><div class="hungarian">a tej</div></div>
+                    <div class="word-item"><div class="german">DER SAFT</div><div class="hungarian">a gyümölcslé</div></div>
+                    <div class="word-item"><div class="german">DER TEE</div><div class="hungarian">a tea</div></div>
+                    <div class="word-item"><div class="german">DER KAKAO</div><div class="hungarian">a kakaó</div></div>
+                    <div class="word-item"><div class="german">DIE LIMONADE</div><div class="hungarian">a limonádé</div></div>
+                </div>
+
+                <div class="category-title">Alapélelmiszerek</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DAS BROT</div><div class="hungarian">a kenyér</div></div>
+                    <div class="word-item"><div class="german">DIE BUTTER</div><div class="hungarian">a vaj</div></div>
+                    <div class="word-item"><div class="german">DER KÄSE</div><div class="hungarian">a sajt</div></div>
+                    <div class="word-item"><div class="german">DAS EI</div><div class="hungarian">a tojás</div></div>
+                    <div class="word-item"><div class="german">DAS FLEISCH</div><div class="hungarian">a hús</div></div>
+                    <div class="word-item"><div class="german">DER FISCH</div><div class="hungarian">a hal</div></div>
+                    <div class="word-item"><div class="german">DER REIS</div><div class="hungarian">a rizs</div></div>
+                    <div class="word-item"><div class="german">DIE NUDELN</div><div class="hungarian">a tészta</div></div>
+                    <div class="word-item"><div class="german">DER ZUCKER</div><div class="hungarian">a cukor</div></div>
+                    <div class="word-item"><div class="german">DAS SALZ</div><div class="hungarian">a só</div></div>
+                </div>
             </div>
-            <div class="lesson-grid">
-                <a href="ichseheichhoere.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Ich sehe, ich höre</div>
-                    <div class="lesson-description">Sinne entdecken</div>
-                </a>
-                <a href="leckerschmecker.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Leckerschmecker</div>
-                    <div class="lesson-description">Schmecken und riechen</div>
-                </a>
+
+            <!-- OTTHON -->
+            <div id="otthon" class="section">
+                <h2 class="section-title">Otthon</h2>
+                
+                <div class="category-title">Szobák</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DAS HAUS</div><div class="hungarian">a ház</div></div>
+                    <div class="word-item"><div class="german">DIE WOHNUNG</div><div class="hungarian">a lakás</div></div>
+                    <div class="word-item"><div class="german">DAS WOHNZIMMER</div><div class="hungarian">a nappali</div></div>
+                    <div class="word-item"><div class="german">DAS SCHLAFZIMMER</div><div class="hungarian">a hálószoba</div></div>
+                    <div class="word-item"><div class="german">DIE KÜCHE</div><div class="hungarian">a konyha</div></div>
+                    <div class="word-item"><div class="german">DAS BADEZIMMER</div><div class="hungarian">a fürdőszoba</div></div>
+                    <div class="word-item"><div class="german">DIE TOILETTE</div><div class="hungarian">a WC</div></div>
+                    <div class="word-item"><div class="german">DER FLUR</div><div class="hungarian">az előszoba</div></div>
+                    <div class="word-item"><div class="german">DER BALKON</div><div class="hungarian">az erkély</div></div>
+                    <div class="word-item"><div class="german">DER GARTEN</div><div class="hungarian">a kert</div></div>
+                    <div class="word-item"><div class="german">DAS KINDERZIMMER</div><div class="hungarian">a gyerekszoba</div></div>
+                </div>
+
+                <div class="category-title">Bútorok</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DAS BETT</div><div class="hungarian">az ágy</div></div>
+                    <div class="word-item"><div class="german">DER TISCH</div><div class="hungarian">az asztal</div></div>
+                    <div class="word-item"><div class="german">DER STUHL</div><div class="hungarian">a szék</div></div>
+                    <div class="word-item"><div class="german">DAS SOFA</div><div class="hungarian">a kanapé</div></div>
+                    <div class="word-item"><div class="german">DER SCHRANK</div><div class="hungarian">a szekrény</div></div>
+                    <div class="word-item"><div class="german">DAS REGAL</div><div class="hungarian">a polc</div></div>
+                    <div class="word-item"><div class="german">DER FERNSEHER</div><div class="hungarian">a televízió</div></div>
+                    <div class="word-item"><div class="german">DER KÜHLSCHRANK</div><div class="hungarian">a hűtőszekrény</div></div>
+                    <div class="word-item"><div class="german">DER HERD</div><div class="hungarian">a tűzhely</div></div>
+                    <div class="word-item"><div class="german">DIE WASCHMASCHINE</div><div class="hungarian">a mosógép</div></div>
+                </div>
             </div>
-        </div>
-        
-        <!-- Märchen & Geschichten -->
-        <div class="category-section">
-            <div class="category-header">
-                <div class="category-icon">👸</div>
-                Märchen & Geschichten
+
+            <!-- ISKOLA -->
+            <div id="iskola" class="section">
+                <h2 class="section-title">Iskola</h2>
+                
+                <div class="category-title">Iskolai felszerelés</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DIE SCHULTASCHE</div><div class="hungarian">az iskolatáska</div></div>
+                    <div class="word-item"><div class="german">DAS HEFT</div><div class="hungarian">a füzet</div></div>
+                    <div class="word-item"><div class="german">DAS BUCH</div><div class="hungarian">a könyv</div></div>
+                    <div class="word-item"><div class="german">DER STIFT</div><div class="hungarian">a toll</div></div>
+                    <div class="word-item"><div class="german">DER BLEISTIFT</div><div class="hungarian">a ceruza</div></div>
+                    <div class="word-item"><div class="german">DER RADIERGUMMI</div><div class="hungarian">a radír</div></div>
+                    <div class="word-item"><div class="german">DAS LINEAL</div><div class="hungarian">a vonalzó</div></div>
+                    <div class="word-item"><div class="german">DIE SCHERE</div><div class="hungarian">az olló</div></div>
+                    <div class="word-item"><div class="german">DER KLEBER</div><div class="hungarian">a ragasztó</div></div>
+                    <div class="word-item"><div class="german">DIE KREIDE</div><div class="hungarian">a kréta</div></div>
+                    <div class="word-item"><div class="german">DIE TAFEL</div><div class="hungarian">a tábla</div></div>
+                </div>
+
+                <div class="category-title">Tantárgyak</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DEUTSCH</div><div class="hungarian">német nyelv</div></div>
+                    <div class="word-item"><div class="german">MATHEMATIK</div><div class="hungarian">matematika</div></div>
+                    <div class="word-item"><div class="german">ENGLISCH</div><div class="hungarian">angol nyelv</div></div>
+                    <div class="word-item"><div class="german">SPORT</div><div class="hungarian">testnevelés</div></div>
+                    <div class="word-item"><div class="german">KUNST</div><div class="hungarian">rajz</div></div>
+                    <div class="word-item"><div class="german">MUSIK</div><div class="hungarian">ének-zene</div></div>
+                    <div class="word-item"><div class="german">GESCHICHTE</div><div class="hungarian">történelem</div></div>
+                    <div class="word-item"><div class="german">GEOGRAFIE</div><div class="hungarian">földrajz</div></div>
+                </div>
+
+                <div class="category-title">Iskolai személyek</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DER LEHRER</div><div class="hungarian">a tanár (férfi)</div></div>
+                    <div class="word-item"><div class="german">DIE LEHRERIN</div><div class="hungarian">a tanárnő</div></div>
+                    <div class="word-item"><div class="german">DER SCHÜLER</div><div class="hungarian">a diák (fiú)</div></div>
+                    <div class="word-item"><div class="german">DIE SCHÜLERIN</div><div class="hungarian">a diák (lány)</div></div>
+                    <div class="word-item"><div class="german">DER FREUND</div><div class="hungarian">a barát</div></div>
+                    <div class="word-item"><div class="german">DIE FREUNDIN</div><div class="hungarian">a barátnő</div></div>
+                    <div class="word-item"><div class="german">DER DIREKTOR</div><div class="hungarian">az igazgató</div></div>
+                </div>
             </div>
-            <div class="lesson-grid">
-                <a href="prinzessinnensaetze.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Prinzessinnensätze</div>
-                    <div class="lesson-description">Märchenhafte Sätze</div>
-                </a>
+
+            <!-- ÁLLATOK -->
+            <div id="allatok" class="section">
+                <h2 class="section-title">Állatok</h2>
+                
+                <div class="category-title">Háziállatok</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DER HUND</div><div class="hungarian">a kutya</div></div>
+                    <div class="word-item"><div class="german">DIE KATZE</div><div class="hungarian">a macska</div></div>
+                    <div class="word-item"><div class="german">DER HAMSTER</div><div class="hungarian">a hörcsög</div></div>
+                    <div class="word-item"><div class="german">DAS KANINCHEN</div><div class="hungarian">a nyúl</div></div>
+                    <div class="word-item"><div class="german">DER VOGEL</div><div class="hungarian">a madár</div></div>
+                    <div class="word-item"><div class="german">DER FISCH</div><div class="hungarian">a hal</div></div>
+                    <div class="word-item"><div class="german">DIE SCHILDKRÖTE</div><div class="hungarian">a teknős</div></div>
+                </div>
+
+                <div class="category-title">Állatkert és vadállatok</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DER LÖWE</div><div class="hungarian">az oroszlán</div></div>
+                    <div class="word-item"><div class="german">DER TIGER</div><div class="hungarian">a tigris</div></div>
+                    <div class="word-item"><div class="german">DER ELEFANT</div><div class="hungarian">az elefánt</div></div>
+                    <div class="word-item"><div class="german">DIE GIRAFFE</div><div class="hungarian">a zsiráf</div></div>
+                    <div class="word-item"><div class="german">DER AFFE</div><div class="hungarian">a majom</div></div>
+                    <div class="word-item"><div class="german">DAS ZEBRA</div><div class="hungarian">a zebra</div></div>
+                    <div class="word-item"><div class="german">DER BÄR</div><div class="hungarian">a medve</div></div>
+                    <div class="word-item"><div class="german">DER WOLF</div><div class="hungarian">a farkas</div></div>
+                    <div class="word-item"><div class="german">DER FUCHS</div><div class="hungarian">a róka</div></div>
+                </div>
+
+                <div class="category-title">Farm és erdő</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DIE KUH</div><div class="hungarian">a tehén</div></div>
+                    <div class="word-item"><div class="german">DAS SCHWEIN</div><div class="hungarian">a disznó</div></div>
+                    <div class="word-item"><div class="german">DAS SCHAF</div><div class="hungarian">a juh</div></div>
+                    <div class="word-item"><div class="german">DIE ZIEGE</div><div class="hungarian">a kecske</div></div>
+                    <div class="word-item"><div class="german">DAS PFERD</div><div class="hungarian">a ló</div></div>
+                    <div class="word-item"><div class="german">DER HAHN</div><div class="hungarian">a kakas</div></div>
+                    <div class="word-item"><div class="german">DAS HUHN</div><div class="hungarian">a tyúk</div></div>
+                    <div class="word-item"><div class="german">DIE ENTE</div><div class="hungarian">a kacsa</div></div>
+                    <div class="word-item"><div class="german">DIE GANS</div><div class="hungarian">a liba</div></div>
+                    <div class="word-item"><div class="german">DAS REH</div><div class="hungarian">az őz</div></div>
+                    <div class="word-item"><div class="german">DER HIRSCH</div><div class="hungarian">a szarvas</div></div>
+                </div>
             </div>
-        </div>
-        
-        <!-- Schule & Lernen -->
-        <div class="category-section">
-            <div class="category-header">
-                <div class="category-icon">🎒</div>
-                Schule & Lernen
+
+            <!-- NAP -->
+            <div id="nap" class="section">
+                <h2 class="section-title">Napi rutin</h2>
+                
+                <div class="category-title">Reggeli rutin</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">ICH WACHE AUF</div><div class="hungarian">felébredek</div></div>
+                    <div class="word-item"><div class="german">ICH STEHE AUF</div><div class="hungarian">felkelek</div></div>
+                    <div class="word-item"><div class="german">ICH PUTZE ZÄHNE</div><div class="hungarian">fogat mosok</div></div>
+                    <div class="word-item"><div class="german">ICH WASCHE MICH</div><div class="hungarian">megmosakszom</div></div>
+                    <div class="word-item"><div class="german">ICH ZIEHE MICH AN</div><div class="hungarian">felöltözöm</div></div>
+                    <div class="word-item"><div class="german">ICH ESSE FRÜHSTÜCK</div><div class="hungarian">reggelizek</div></div>
+                    <div class="word-item"><div class="german">ICH GEHE ZUR SCHULE</div><div class="hungarian">iskolába megyek</div></div>
+                </div>
+
+                <div class="category-title">Napi tevékenységek</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">ICH LERNE</div><div class="hungarian">tanulok</div></div>
+                    <div class="word-item"><div class="german">ICH LESE</div><div class="hungarian">olvasok</div></div>
+                    <div class="word-item"><div class="german">ICH SCHREIBE</div><div class="hungarian">írok</div></div>
+                    <div class="word-item"><div class="german">ICH SPIELE</div><div class="hungarian">játszom</div></div>
+                    <div class="word-item"><div class="german">ICH ESSE MITTAGESSEN</div><div class="hungarian">ebédelek</div></div>
+                    <div class="word-item"><div class="german">ICH MACHE HAUSAUFGABEN</div><div class="hungarian">házi feladatot csinálok</div></div>
+                    <div class="word-item"><div class="german">ICH SCHAUE FERN</div><div class="hungarian">tévét nézek</div></div>
+                    <div class="word-item"><div class="german">ICH HÖRE MUSIK</div><div class="hungarian">zenét hallgatok</div></div>
+                </div>
+
+                <div class="category-title">Esti rutin</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">ICH ESSE ABENDESSEN</div><div class="hungarian">vacsorázom</div></div>
+                    <div class="word-item"><div class="german">ICH DUSCHE</div><div class="hungarian">zuhanyozom</div></div>
+                    <div class="word-item"><div class="german">ICH ZIEHE PYJAMA AN</div><div class="hungarian">pizsamát veszek fel</div></div>
+                    <div class="word-item"><div class="german">ICH PUTZE ZÄHNE</div><div class="hungarian">fogat mosok</div></div>
+                    <div class="word-item"><div class="german">ICH GEHE INS BETT</div><div class="hungarian">lefeküdni megyek</div></div>
+                    <div class="word-item"><div class="german">ICH SCHLAFE</div><div class="hungarian">alszom</div></div>
+                </div>
+
+                <div class="category-title">Hobbiok</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">ICH SPIELE FUSSBALL</div><div class="hungarian">focizom</div></div>
+                    <div class="word-item"><div class="german">ICH SCHWIMME</div><div class="hungarian">úszom</div></div>
+                    <div class="word-item"><div class="german">ICH FAHRE RAD</div><div class="hungarian">biciklizem</div></div>
+                    <div class="word-item"><div class="german">ICH MALE</div><div class="hungarian">festek</div></div>
+                    <div class="word-item"><div class="german">ICH BASTLE</div><div class="hungarian">barkácsolok</div></div>
+                    <div class="word-item"><div class="german">ICH SINGE</div><div class="hungarian">énekelek</div></div>
+                    <div class="word-item"><div class="german">ICH TANZE</div><div class="hungarian">táncolok</div></div>
+                    <div class="word-item"><div class="german">ICH SAMMLE</div><div class="hungarian">gyűjtök</div></div>
+                </div>
             </div>
-            <div class="lesson-grid">
-                <a href="schulphrasen.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Schulphrasen</div>
-                    <div class="lesson-description">Wichtige Schulausdrücke</div>
-                </a>
-                <a href="waldorfschulphrasen.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Waldorfschul Phrasen</div>
-                    <div class="lesson-description">Spezielle Waldorf-Begriffe</div>
-                </a>
-                <a href="waldorfpruefung.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Waldorfprüfung</div>
-                    <div class="lesson-description">Waldorf-Test vorbereiten</div>
-                </a>
-                <a href="waldorfsaetze.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Waldorfsätze</div>
-                    <div class="lesson-description">Waldorf-Sätze üben</div>
-                </a>
-            </div>
-        </div>
-        
-        <!-- Farben & Kreativität -->
-        <div class="category-section">
-            <div class="category-header">
-                <div class="category-icon">🎨</div>
-                Farben & Kreativität
-            </div>
-            <div class="lesson-grid">
-                <a href="farben.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Farben</div>
-                    <div class="lesson-description">Farben entdecken</div>
-                </a>
-                <a href="farbenaufgaben.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Farbenaufgaben</div>
-                    <div class="lesson-description">Farben üben</div>
-                </a>
-            </div>
-        </div>
-        
-        <!-- Körper & Kleidung -->
-        <div class="category-section">
-            <div class="category-header">
-                <div class="category-icon">👕</div>
-                Körper & Kleidung
-            </div>
-            <div class="lesson-grid">
-                <a href="bodypartsdiagram.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Mein Körper</div>
-                    <div class="lesson-description">Körperteile lernen</div>
-                </a>
-                <a href="clothingdiagram.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Meine Kleidung</div>
-                    <div class="lesson-description">Kleidung benennen</div>
-                </a>
-                <a href="meinkoerper.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Mein Körper</div>
-                    <div class="lesson-description">Den Körper kennenlernen</div>
-                </a>
-            </div>
-        </div>
-        
-        <!-- Tiere & Natur -->
-        <div class="category-section">
-            <div class="category-header">
-                <div class="category-icon">🦊</div>
-                Tiere & Natur
-            </div>
-            <div class="lesson-grid">
-                <a href="waldtiere.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Waldtiere</div>
-                    <div class="lesson-description">Tiere im Wald</div>
-                </a>
-                <a href="zoo.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Zoo</div>
-                    <div class="lesson-description">Zoo-Tiere entdecken</div>
-                </a>
-            </div>
-        </div>
-        
-        <!-- Essen & Trinken -->
-        <div class="category-section">
-            <div class="category-header">
-                <div class="category-icon">🍎</div>
-                Essen & Trinken
-            </div>
-            <div class="lesson-grid">
-                <a href="supermarkt.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Supermarkt</div>
-                    <div class="lesson-description">Einkaufen lernen</div>
-                </a>
-                <a href="gemuese.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Gemüse</div>
-                    <div class="lesson-description">Gemüsesorten kennenlernen</div>
-                </a>
-                <a href="fruechte.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Früchte</div>
-                    <div class="lesson-description">Obstsorten lernen</div>
-                </a>
-            </div>
-        </div>
-        
-        <!-- Wohnen & Möbel -->
-        <div class="category-section">
-            <div class="category-header">
-                <div class="category-icon">🏠</div>
-                Wohnen & Möbel
-            </div>
-            <div class="lesson-grid">
-                <a href="moebel.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Möbel</div>
-                    <div class="lesson-description">Möbel und Einrichtung</div>
-                </a>
-            </div>
-        </div>
-        
-        <!-- Übungen & Tests -->
-        <div class="category-section">
-            <div class="category-header">
-                <div class="category-icon">📝</div>
-                Übungen & Tests
-            </div>
-            <div class="lesson-grid">
-                <a href="vokabelcheckliste.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Vokabelcheckliste</div>
-                    <div class="lesson-description">Wortschatz überprüfen</div>
-                </a>
-                <a href="gespraeche.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Gespräche</div>
-                    <div class="lesson-description">Dialoge üben</div>
-                </a>
-                <a href="uebungsblatt.html" target="_blank" class="lesson-link">
-                    <div class="lesson-title">Übungsblatt</div>
-                    <div class="lesson-description">Gemischte Übungen</div>
-                </a>
+
+            <!-- MONDATOK -->
+            <div id="mondatok" class="section">
+                <h2 class="section-title">Fontos mondatok</h2>
+                
+                <div class="category-title">Iskolában</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">DARF ICH AUF DIE TOILETTE?</div><div class="hungarian">elmehetek a WC-re?</div></div>
+                    <div class="word-item"><div class="german">ICH VERSTEHE NICHT</div><div class="hungarian">nem értem</div></div>
+                    <div class="word-item"><div class="german">ICH BRAUCHE HILFE</div><div class="hungarian">segítségre van szükségem</div></div>
+                    <div class="word-item"><div class="german">ICH BIN FERTIG</div><div class="hungarian">készen vagyok</div></div>
+                    <div class="word-item"><div class="german">ICH HABE EINE FRAGE</div><div class="hungarian">van egy kérdésem</div></div>
+                    <div class="word-item"><div class="german">KÖNNEN SIE DAS WIEDERHOLEN?</div><div class="hungarian">meg tudná ismételni?</div></div>
+                    <div class="word-item"><div class="german">ICH HABE MEINE HAUSAUFGABEN VERGESSEN</div><div class="hungarian">elfelejtettem a házi feladatot</div></div>
+                </div>
+
+                <div class="category-title">Hogyan érzem magam</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">MIR IST KALT</div><div class="hungarian">fázom</div></div>
+                    <div class="word-item"><div class="german">MIR IST WARM</div><div class="hungarian">melegem van</div></div>
+                    <div class="word-item"><div class="german">MIR IST SCHLECHT</div><div class="hungarian">rosszul vagyok</div></div>
+                    <div class="word-item"><div class="german">ICH HABE HUNGER</div><div class="hungarian">éhes vagyok</div></div>
+                    <div class="word-item"><div class="german">ICH HABE DURST</div><div class="hungarian">szomjas vagyok</div></div>
+                    <div class="word-item"><div class="german">ICH BIN MÜDE</div><div class="hungarian">fáradt vagyok</div></div>
+                    <div class="word-item"><div class="german">ICH BIN GLÜCKLICH</div><div class="hungarian">boldog vagyok</div></div>
+                    <div class="word-item"><div class="german">ICH BIN TRAURIG</div><div class="hungarian">szomorú vagyok</div></div>
+                </div>
+
+                <div class="category-title">Segítségkérés</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">KANNST DU MIR HELFEN?</div><div class="hungarian">tudsz segíteni?</div></div>
+                    <div class="word-item"><div class="german">HAST DU EIN TASCHENTUCH?</div><div class="hungarian">van zsebkendőd?</div></div>
+                    <div class="word-item"><div class="german">DARF ICH MITSPIELEN?</div><div class="hungarian">játszhatok veletek?</div></div>
+                    <div class="word-item"><div class="german">WO IST DIE TOILETTE?</div><div class="hungarian">hol van a WC?</div></div>
+                    <div class="word-item"><div class="german">ICH HABE BAUCHSCHMERZEN</div><div class="hungarian">fáj a hasam</div></div>
+                    <div class="word-item"><div class="german">ICH HABE KOPFSCHMERZEN</div><div class="hungarian">fáj a fejem</div></div>
+                    <div class="word-item"><div class="german">ICH MÖCHTE ZU MAMA</div><div class="hungarian">anyuhoz szeretnék menni</div></div>
+                </div>
+
+                <div class="category-title">Bemutatkozás</div>
+                <div class="word-list">
+                    <div class="word-item"><div class="german">ICH HEIßE...</div><div class="hungarian">...a nevem</div></div>
+                    <div class="word-item"><div class="german">ICH BIN ... JAHRE ALT</div><div class="hungarian">... éves vagyok</div></div>
+                    <div class="word-item"><div class="german">ICH KOMME AUS UNGARN</div><div class="hungarian">Magyarországról jövök</div></div>
+                    <div class="word-item"><div class="german">ICH WOHNE IN WIEN</div><div class="hungarian">Bécsben lakom</div></div>
+                    <div class="word-item"><div class="german">ICH GEHE IN DIE WALDORFSCHULE</div><div class="hungarian">Waldorf iskolába járok</div></div>
+                    <div class="word-item"><div class="german">ICH LERNE DEUTSCH</div><div class="hungarian">németet tanulok</div></div>
+                </div>
             </div>
         </div>
 
-        <div class="footer">
-            🌿 Unser Sprachabenteuer mit Herz & Humor
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://wa.me/436301818503" class="whatsapp-btn">📱 Német tanulás - WhatsApp kapcsolat</a>
         </div>
     </div>
+
+    <div style="background: #f8f9fa; border-top: 3px solid #ff9a7b; margin-top: 40px; padding: 20px; font-size: 0.85em; color: #666;">
+        <h3 style="color: #ff9a7b; margin-bottom: 10px;">Általános Szerződési Feltételek</h3>
+        <p>A lefoglalt órák 24 órával a tanítás előtt díjmentesen átütemezhetők vagy lemondhatók. Későbbi lemondás vagy meg nem jelenés esetén a teljes díj felszámítása történik.</p>
+        
+        <h3 style="color: #ff9a7b; margin: 15px 0 10px 0;">Impresszum</h3>
+        <p><strong>Amy Lang</strong><br>Babenbergerstr. 128<br>8020 Graz, Ausztria</p>
+        <p>E-mail: amylan@ik.me | Telefon: +43 (0)30 181 8503</p>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
